@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class ObjDrag : MonoBehaviour
-{
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+public class ObjDrag : MonoBehaviour ,IDragHandler , IBeginDragHandler
+{    
     float distance = 10;
     public bool Des;
     public MouseDrag mouse;
     public bool IsCollision;
     public Vector3 CollisionTrans;
     public Vector3 CollisionTransY;
+    Vector3 ObjPosition;
     // Start is called before the first frame update
 
     private void OnMouseUp()
@@ -19,20 +21,22 @@ public class ObjDrag : MonoBehaviour
             transform.position = CollisionTrans + CollisionTransY;
         }
     }
-    private void OnMouseDrag()
+    /*public void OnMouseDrag()
     {
         Vector3 mousePosition = new Vector3(Input.mousePosition.x,
-                Input.mousePosition.y, distance);
-        Vector3 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        transform.position = objPosition;
-        
+        Input.mousePosition.y, distance);
+        ObjPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        transform.position = ObjPosition;
     }
+    */
     private void Awake()
     {
         mouse = GameObject.Find("GameManager").GetComponent<MouseDrag>();
     }
     void Update()
     {
+       
         if (!mouse.isMouseUse && Des && gameObject.name != "Box Pick up" && gameObject.name != "Box Pick Off")
         {
             Debug.Log("Destory");
@@ -80,4 +84,16 @@ public class ObjDrag : MonoBehaviour
         }
     }
 
+
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        Debug.Log("Drag0");
+        
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        Debug.Log("statr");
+    }
 }

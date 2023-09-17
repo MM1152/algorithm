@@ -10,16 +10,7 @@ public class MouseDrag : MonoBehaviour
 
     private void Awake()
     {
-        if(gameObject.name == "Box Pick Up")
-        {
-            GameObject prefeb = Instantiate(PickUp);
-            prefeb.transform.position = this.gameObject.transform.position;
-        }
-        if (gameObject.name == "Box Pick Off")
-        {
-            GameObject prefeb = Instantiate(PickOff);
-            prefeb.transform.position = this.gameObject.transform.position;
-        }
+        
 
     }
     void Update()
