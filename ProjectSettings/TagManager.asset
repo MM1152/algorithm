@@ -10,6 +10,7 @@ TagManager:
   - CheckCode
   - Codes
   - Canvas
+  - Layout
   layers:
   - Default
   - TransparentFX

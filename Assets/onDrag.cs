@@ -7,65 +7,65 @@ using UnityEngine.EventSystems;
 public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler
 {
     public List<GameObject> codes;
-    Vector3 collsionTrans;
-    Vector3 CollisionTransform;
     public GameObject Collision;
     public GameObject Canvas;
+    public GameObject originCanvas;
     public bool Iscollision;
     public bool Up;
+    public int index;
     private void Awake()
     {
+        index = -1;
         codes = new List<GameObject>();
-        Canvas = transform.parent.gameObject;
+        Canvas = GameObject.FindWithTag("Layout").gameObject;
+        originCanvas = GameObject.FindWithTag("Canvas").gameObject;
     }
     public void OnDrag(PointerEventData eventData)
     {
         gameObject.transform.position = eventData.position;
+        transform.SetParent(originCanvas.transform);
+        Debug.Log(transform.localPosition);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         if (Iscollision)
         {
-            if (Up)
-            {
-                transform.SetParent(Collision.gameObject.transform);
-                transform.localPosition = Vector2.down * 40f;
-            } else
-            {
-                Collision.transform.SetParent(gameObject.transform);
-                Collision.transform.localPosition = Vector2.down * 40f;
-            }
-            
+            transform.SetParent(Canvas.transform);
+        } else
+        {
+            Destroy(gameObject);
         }
+        if (index != -1)
+        {
+            Debug.Log(index);
+            transform.SetSiblingIndex(index + 1);
+            index = -1;
+        }
+        
+        
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.tag == "Codes")
         {
-            Collision = collision.gameObject;
+            if(collision.transform.position.y > transform.position.y)
+            {
+                
+                index = collision.transform.GetSiblingIndex();
+            }
+        }
+        if(collision.tag == "Layout")
+        {
+            Debug.Log("Collision");
             Iscollision = true;
-            CollisionTransform = collision.transform.position;
-            if (collision.transform.position.y > gameObject.transform.position.y)
-            {
-                Up = true;
-            }
-            else if (collision.transform.position.y < gameObject.transform.position.y)
-            {
-                Up = false;
-            }
- 
-            
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject == transform.parent.gameObject)
+        if(collision.tag == "Layout")
         {
-            transform.parent.GetComponent<onDrag>().Iscollision= false;
             Iscollision = false;
-            codes.RemoveAll(i => true);
-            transform.SetParent(Canvas.transform);
         }
     }
 
