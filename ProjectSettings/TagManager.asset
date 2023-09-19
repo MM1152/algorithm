@@ -9,6 +9,7 @@ TagManager:
   - OutputBelt
   - CheckCode
   - Codes
+  - Canvas
   layers:
   - Default
   - TransparentFX

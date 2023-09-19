@@ -7,6 +7,11 @@ public class Onclick : MonoBehaviour , IPointerClickHandler
 {
     public GameObject prefebs;
     GameObject prefeb;
+    public int count;
+    private void Awake()
+    {
+        count = 0;
+    }
     public void OnPointerClick(PointerEventData eventData)
     {
         
@@ -14,6 +19,7 @@ public class Onclick : MonoBehaviour , IPointerClickHandler
         if (hit.collider != null)
         {
             prefeb = Instantiate(prefebs , transform.parent) as GameObject;
+           
         }
     }
 }
