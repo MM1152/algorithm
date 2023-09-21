@@ -40,7 +40,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 253.1, y: 50.8}
-  m_SizeDelta: {x: 83.6266, y: 50}
+  m_SizeDelta: {x: 150, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3091491135816947792
 CanvasRenderer:
@@ -95,8 +95,10 @@ MonoBehaviour:
   codes: []
   Collision: {fileID: 0}
   Canvas: {fileID: 0}
+  originCanvas: {fileID: 0}
   Iscollision: 0
   Up: 0
+  index: 0
 --- !u!61 &4633694723288108152
 BoxCollider2D:
   m_ObjectHideFlags: 0

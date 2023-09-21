@@ -24,7 +24,6 @@ public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler
     {
         gameObject.transform.position = eventData.position;
         transform.SetParent(originCanvas.transform);
-        Debug.Log(transform.localPosition);
     }
 
     public void OnEndDrag(PointerEventData eventData)
