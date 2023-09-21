@@ -11,6 +11,7 @@ TagManager:
   - Codes
   - Canvas
   - Layout
+  - Value
   layers:
   - Default
   - TransparentFX
