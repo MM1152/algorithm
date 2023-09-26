@@ -14,14 +14,28 @@ public class Values : MonoBehaviour
     {
         
         rect = GetComponent<RectTransform>();
-        
-        for (int i = 0; i < GameObject.FindWithTag("Value").transform.childCount; i++)
+        if(gameObject.name == "values")
         {
-            rect.sizeDelta = new Vector3(rect.rect.width, rect.rect.height + 65f, 0f);
-            valuse.Add(GameObject.FindWithTag("Value").transform.GetChild(i).gameObject);
-            GameObject prefeb = Instantiate(valuesName, transform) as GameObject;
-            prefeb.transform.GetChild(0).GetComponent<Text>().text = valuse[i].name;
+            for (int i = 0; i < GameObject.FindWithTag("Value").transform.childCount; i++)
+            {
+                rect.sizeDelta = new Vector3(rect.rect.width, rect.rect.height + 65f, 0f);
+                valuse.Add(GameObject.FindWithTag("Value").transform.GetChild(i).gameObject);
+                GameObject prefeb = Instantiate(valuesName, transform) as GameObject;
+                prefeb.transform.GetChild(0).GetComponent<Text>().text = valuse[i].name;
+            }
         }
+        if(gameObject.name == "IFvalues")
+        {
+            char[] calcu = {'<' , '>' };
+            for (int i = 0; i < 2; i++)
+            {
+                rect.sizeDelta = new Vector3(rect.rect.width, rect.rect.height + 65f, 0f);
+                
+                GameObject prefeb = Instantiate(valuesName, transform) as GameObject;
+                prefeb.transform.GetChild(0).GetComponent<Text>().text = "" + calcu[i];
+            }
+        }
+        
     }
 
 

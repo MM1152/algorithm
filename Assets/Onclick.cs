@@ -22,10 +22,22 @@ public class Onclick : MonoBehaviour , IPointerClickHandler
         if (hit.collider != null)
         {
             prefeb = Instantiate(prefebs[0] , Canvas.transform) as GameObject;
+            
             if(hit.collider.name == "Jump")
             {
+                prefeb.name = "jump" + count;
                 prefeb = Instantiate(prefebs[1], Canvas.transform) as GameObject;
+                prefeb.name = "jump end" + count++;
+                prefeb.GetComponent<Image>().color = new Color(1f, 0f, 0, 1f);
             }
+            if (hit.collider.name == "IF")
+            {
+                prefeb.name = "if" + count;
+                prefeb = Instantiate(prefebs[1], Canvas.transform) as GameObject;
+                prefeb.name = "if end" + count++;
+                prefeb.GetComponent<Image>().color = new Color(0.7f, 0.3f, 1, 1); 
+            }
+            
             
         }
     }

@@ -4,73 +4,54 @@ using UnityEngine;
 using System;
 public class CheckCode : MonoBehaviour
 {
-    public List<GameObject> codes;
-    public Transform TargetPosition;
+    public static bool CodeRunning;
+    public Transform inputBelt;
+    public Transform outBelt;
+    public Transform target;
+
+    public Stack<GameObject> stack;
     public GameObject code;
-    public GameObject player;
-    public GameObject inputBelt;
-    public GameObject outBelt;
-    WaitForSeconds wait;
-    public GameObject a;
-    private void Start()
-    {
-        codes = new List<GameObject>();
-        wait = new WaitForSeconds(2f);
-        
-    }
+    public GameObject Lay;
+    public playerMove player;
+    public int count;
+
+    public GameObject value;
     public void checkCode()
     {
-        code = GameObject.FindWithTag("Codes");
-        codes.Add(code);
-
-        
-        while (true)
+        stack = new Stack<GameObject>();
+        for (int i = 0; i < Lay.transform.childCount; i++)
         {
-           
-            try
-            {
-                if (code.transform.GetChild(1) != null)
-                {
-                    code = code.transform.GetChild(1).gameObject;
-                    codes.Add(code);
-                    
-                    
-                    
-                }else
-                {
-                    break;
-                }
-            }
-            catch(Exception e)
-            {
-                break;
-            }
+            stack.Push(Lay.gameObject.transform.GetChild(i).gameObject);
         }
+
+        CodeRunning = true;
         StartCoroutine(Run());
     }
 
     private void Update()
     {
-        if(a != null)
+        if(code != null)
         {
-            if(a.name == "Pick up(Clone)")
+            if(code.name == "Pick up(Clone)")
             {
-                player.transform.localPosition += (inputBelt.transform.position - player.transform.position) * Time.deltaTime;
+                player.Move(inputBelt);
             }
-            else if (a.name == "Pick off(Clone)")
+            if (code.name == "Pick off(Clone)")
             {
-                player.transform.localPosition += (outBelt.transform.position - player.transform.position) * Time.deltaTime;   
+                player.Move(outBelt);
             }
         }
+        
+
     }
+
     IEnumerator Run()
     {
-        Debug.Log("asd");
-        foreach (var b in codes)
+        for(int i = 0; i < Lay.transform.childCount; i++)
         {
-            
-            a = b;
+            code = stack.Pop();
             yield return new WaitForSeconds(2f);
         }
     }
+  
 }
