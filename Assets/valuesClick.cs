@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class valuesClick : MonoBehaviour , IPointerClickHandler
+public class valuesClick : MonoBehaviour , IPointerClickHandler 
 {
     
     public void OnPointerClick(PointerEventData eventData)
@@ -13,12 +13,12 @@ public class valuesClick : MonoBehaviour , IPointerClickHandler
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             transform.parent.parent.GetChild(0).GetComponent<Text>().text = transform.GetChild(0).GetComponent<Text>().text;
+            transform.parent.gameObject.SetActive(false);
         }
     }
-    private void OnMouseDown()
-    {
-        Debug.Log("in");
-    }
+
+   
+
     // Start is called before the first frame update
     void Start()
     {
