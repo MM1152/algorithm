@@ -27,14 +27,14 @@ public class Onclick : MonoBehaviour , IPointerClickHandler
             {
                 prefeb.name = "jump" + count;
                 prefeb = Instantiate(prefebs[1], Canvas.transform) as GameObject;
-                prefeb.name = "jump end" + count++;
+                prefeb.name = "jump" + count++;
                 prefeb.GetComponent<Image>().color = new Color(1f, 0f, 0, 1f);
             }
             if (hit.collider.name == "IF")
             {
                 prefeb.name = "if" + count;
                 prefeb = Instantiate(prefebs[1], Canvas.transform) as GameObject;
-                prefeb.name = "if end" + count++;
+                prefeb.name = "if" + count++;
                 prefeb.GetComponent<Image>().color = new Color(0.7f, 0.3f, 1, 1); 
             }
             

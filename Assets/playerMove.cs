@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class playerMove : MonoBehaviour
 {
+    public CheckCode checkcode;
     public int count = 0;
     public float sum = 0.2f;
+    private void Start()
+    {
+        checkcode = GameObject.FindWithTag("CheckCode").GetComponent<CheckCode>();
+    }
     public void Move(Transform target)
     {
 
@@ -25,6 +30,29 @@ public class playerMove : MonoBehaviour
            
             collision.gameObject.transform.GetChild(count++).transform.localPosition = new Vector3(0f, -0.4f + sum, 0f);
             sum += 0.2f;
+        }
+        if(collision.name == "A")
+        {
+            if (checkcode.IsCopy)
+            {
+                if (gameObject.transform.childCount != 0)
+                {
+                    if(collision.transform.childCount > 1)
+                    {
+                        Destroy(collision.transform.GetChild(1).gameObject);
+                        gameObject.transform.GetChild(0).SetParent(collision.transform);
+                        collision.transform.GetChild(2).transform.localPosition = Vector3.zero;
+                        checkcode.IsCopy = false;
+                    }
+                    else
+                    {
+                        gameObject.transform.GetChild(0).SetParent(collision.transform);
+                        collision.transform.GetChild(1).transform.localPosition = Vector3.zero;
+                        checkcode.IsCopy = false;
+                    }
+                }
+            }
+           
         }
     }
 }
