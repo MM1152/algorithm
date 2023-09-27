@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class playerMove : MonoBehaviour
 {
@@ -52,7 +53,46 @@ public class playerMove : MonoBehaviour
                     }
                 }
             }
-           
+            if (checkcode.IsPaste)
+            {
+                if(gameObject.transform.childCount != 0)
+                {
+                    Destroy(gameObject.transform.GetChild(0).gameObject);
+                }
+                collision.transform.GetChild(1).transform.SetParent(gameObject.transform);
+                gameObject.transform.GetChild(1).transform.localPosition = Vector3.up;
+                checkcode.IsPaste = false;  
+            }
+            if (checkcode.Isif)
+            {
+                if( gameObject.transform.childCount != 0)
+                {
+                    int a = int.Parse(collision.gameObject.transform.GetChild(1).GetComponent<Text>().text[0].ToString());
+                    int b = int.Parse(gameObject.transform.GetChild(0).GetChild(0).GetComponent<Text>().text[0].ToString());
+                    if (checkcode.Ifvalue[1] == '>')
+                    {
+                        if(b > a)
+                        {
+                            checkcode.IF = true;
+                        }else
+                        {
+                            checkcode.IF = false;
+                        }
+                    }
+                    if(checkcode.Ifvalue[1] == '<')
+                    {
+                        if (b < a)
+                        {
+                            checkcode.IF = true;
+                        }
+                        else
+                        {
+                            checkcode.IF = false;
+                        }
+                    }
+                    checkcode.Isif = false;
+                }
+            }
         }
     }
 }
