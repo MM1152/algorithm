@@ -37,7 +37,6 @@ public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler
         }
         if (index != -1)
         {
-            Debug.Log(index);
             transform.SetSiblingIndex(index);
             index = -1;
         }
@@ -52,7 +51,6 @@ public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler
             {
                 index = collision.transform.GetSiblingIndex();
             } 
-            Debug.Log(index);
         }
         
         if(collision.tag == "Layout")
