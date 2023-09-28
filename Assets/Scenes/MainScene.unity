@@ -282,7 +282,11 @@ MonoBehaviour:
   count: 0
   copyValue: 0
   IsCopy: 0
+  IsPaste: 0
+  Isif: 0
+  Ifvalue: 
   value: {fileID: 0}
+  IF: 0
 --- !u!1 &24477581
 GameObject:
   m_ObjectHideFlags: 0
