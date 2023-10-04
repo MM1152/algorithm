@@ -35,53 +35,52 @@ public class playerMove : MonoBehaviour
         
         if(transform.position.x - target.position.x < 0)
         {
-            sprite[0].flipX = false; // ¸öÅë
-            sprite[1].flipX = false; // ¸Ó¸®
-            sprite[2].flipX = false; // ¼Õ
+            sprite[0].flipX = false; // ï¿½ï¿½ï¿½ï¿½
+            sprite[1].flipX = false; // ï¿½Ó¸ï¿½
+            sprite[2].flipX = false; // ï¿½ï¿½
         }
         else
         {
-            sprite[0].flipX = true; // ¸öÅë
-            sprite[1].flipX = true; // ¸Ó¸®
-            sprite[2].flipX = true; // ¼Õ
+            sprite[0].flipX = true; // ï¿½ï¿½ï¿½ï¿½
+            sprite[1].flipX = true; // ï¿½Ó¸ï¿½
+            sprite[2].flipX = true; // ï¿½ï¿½
         }
     }
     public void checkIF(GameObject valueBox)
-    {
-        int a = int.Parse(valueBox.transform.GetChild(1).GetComponent<Text>().text[0].ToString());
-        int b = int.Parse(gameObject.transform.GetChild(0).GetChild(0).GetComponent<Text>().text[0].ToString());
-        Debug.Log($"{a} , {b}");
+    {   
+        int a = int.Parse(valueBox.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>().text);
+        int b = int.Parse(gameObject.transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Text>().text);
         if (checkcode.Isif)
         {
-            Debug.Log($"asd");
-            if (gameObject.transform.childCount != 0)
-            {
-
-                Debug.Log($"{a} , {b}");
-                if (checkcode.Ifvalue[1] == '>')
+            Debug.Log(checkcode.Ifvalue[0]);
+                if (checkcode.Ifvalue[0] == '>')
                 {
                     if (b > a)
                     {
                         checkcode.IF = true;
+                        Debug.Log("IF TRUE");
                     }
                     else
                     {
                         checkcode.IF = false;
+                        Debug.Log("IF FALSE");
                     }
                 }
-                if (checkcode.Ifvalue[1] == '<')
+                else if (checkcode.Ifvalue[0] == '<')
                 {
                     if (b < a)
                     {
                         checkcode.IF = true;
+                        Debug.Log("IF TRUE");
                     }
                     else
                     {
                         checkcode.IF = false;
+                        Debug.Log("IF FALSE");
                     }
                 }
                 checkcode.Isif = false;
-            }
+            
         }
         if(gameObject.transform.childCount > 2)
         {
@@ -95,8 +94,19 @@ public class playerMove : MonoBehaviour
     {
         if(collision.name == "InputBelt")
         {
-            collision.transform.GetChild(0).gameObject.transform.SetParent(gameObject.transform);
-            gameObject.transform.GetChild(2).transform.localPosition = new Vector3(0f, 1f, 0f);
+            if(gameObject.transform.Find("Box(Clone)"))
+            {
+                
+                Destroy(gameObject.transform.Find("Box(Clone)").gameObject);
+                collision.transform.GetChild(0).gameObject.transform.SetParent(gameObject.transform);
+                gameObject.transform.GetChild(3).transform.localPosition = new Vector3(0f, 1f, 0f);
+            }
+            else
+            {
+                collision.transform.GetChild(0).gameObject.transform.SetParent(gameObject.transform);
+                gameObject.transform.GetChild(2).transform.localPosition = new Vector3(0f, 1f, 0f);
+            }
+            
         }
         if (collision.name == "OutputBelt")
         {
@@ -105,13 +115,17 @@ public class playerMove : MonoBehaviour
             collision.gameObject.transform.GetChild(count++).transform.localPosition = new Vector3(0f, -0.4f + sum, 0f);
             sum += 0.2f;
         }
-        if(collision.name == "A")
+
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.name == "A")
         {
             if (checkcode.IsCopy)
             {
                 if (gameObject.transform.childCount != 0)
                 {
-                    if(collision.transform.childCount > 1)
+                    if (collision.transform.childCount > 1)
                     {
                         Destroy(collision.transform.GetChild(1).gameObject);
                         gameObject.transform.GetChild(2).SetParent(collision.transform);
@@ -128,15 +142,15 @@ public class playerMove : MonoBehaviour
             }
             if (checkcode.IsPaste)
             {
-                if(gameObject.transform.childCount != 0)
+                if (gameObject.transform.childCount != 0)
                 {
                     Destroy(gameObject.transform.GetChild(0).gameObject);
                 }
                 collision.transform.GetChild(1).transform.SetParent(gameObject.transform);
                 gameObject.transform.GetChild(2).transform.localPosition = Vector3.up;
-                checkcode.IsPaste = false;  
+                checkcode.IsPaste = false;
             }
-           
+
         }
     }
 }

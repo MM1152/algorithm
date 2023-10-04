@@ -52,11 +52,11 @@ public class CheckCode : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log($"IF {IF}");
-        if (IF)
+        if (code != null)
         {
-            if (code != null)
-            {
+            if (IF)
+                 {
+      
                 wait = new WaitForSeconds(2f);
                 if (code.name == "Pick up(Clone)")
                 {
@@ -80,15 +80,19 @@ public class CheckCode : MonoBehaviour
                         player.Move(Values[0].transform);
                     }
                 }
-                if (code.name.Substring(0,2) == "if")
+                if (code.name.Substring(0,2) == "if" && check.ContainsKey(code.name))
                 {
                     if (Ifvalue[1] == 'A')
                     {
-                        Debug.Log("a");
-                        player.checkIF(Values[0].gameObject);
-                        player.Move(Values[0].transform);
+                        
+                        player.checkIF(Values[0]);  
+                    
                     }
                 }
+            }
+            if (code.name.Substring(0, 2) == "if" && check.ContainsKey(code.name))
+            {
+                player.Move(Values[0].transform);
             }
         }
         
@@ -97,6 +101,7 @@ public class CheckCode : MonoBehaviour
             wait = new WaitForSeconds(0f);
         }
         
+
     }
 
     IEnumerator Run()
@@ -106,7 +111,6 @@ public class CheckCode : MonoBehaviour
         {
             
             code = list[i];
-            Debug.Log(code.name);
             if (code.name == "Pick up(Clone)")
             {
                 count++;
@@ -121,6 +125,7 @@ public class CheckCode : MonoBehaviour
                 IsPaste = true;
                 copyValue = code.transform.GetChild(1).GetChild(0).GetComponent<Text>().text[0];
             }
+            
             if (!check.ContainsKey(code.name) && code.name.Substring(0,2) == "if")
             {
                 check.Add(code.name, i);
@@ -130,13 +135,14 @@ public class CheckCode : MonoBehaviour
             }
             else if (check.ContainsKey(code.name))
             {
+                
                 if (!IF)
                 {
                     IF = true;
                 }
-                Debug.Log(IF);
+                check.Remove(code.name);
             }
-            if ( !check.ContainsKey(code.name) && code.name.Substring(0, 4) == "jump") 
+            else if ( !check.ContainsKey(code.name) && code.name.Substring(0, 4) == "jump") 
             {
                 check.Add(code.name, i);
                 wait = new WaitForSeconds(0f);

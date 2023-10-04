@@ -12,10 +12,10 @@ public class inputBelt : MonoBehaviour
     {
         doubleCheck = new List<int>();
         boxtransY = 0f;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 30; i++)
         {
             
-            rand = Random.Range(1, 8);
+            rand = Random.Range(1, 50);
             if (!doubleCheck.Contains(rand))
             {
                 doubleCheck.Add(rand);
