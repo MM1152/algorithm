@@ -89,11 +89,13 @@ public class CheckCode : MonoBehaviour
                     
                     }
                 }
+                Debug.Log(code.name);
             }
             if (code.name.Substring(0, 2) == "if" && check.ContainsKey(code.name))
             {
                 player.Move(Values[0].transform);
             }
+            
         }
         
         else
@@ -111,21 +113,25 @@ public class CheckCode : MonoBehaviour
         {
             
             code = list[i];
-            if (code.name == "Pick up(Clone)")
+            if (IF)
             {
-                count++;
+                if (code.name == "Pick up(Clone)")
+                {
+                    count++;
+                }
+                if (code.name == "Copy(Clone)")
+                {
+                    IsCopy = true;
+                    copyValue = code.transform.GetChild(1).GetChild(0).GetComponent<Text>().text[0];
+                }
+                if (code.name == "take(Clone)")
+                {
+                    IsPaste = true;
+                    copyValue = code.transform.GetChild(1).GetChild(0).GetComponent<Text>().text[0];
+                }
+
             }
-            if (code.name == "Copy(Clone)")
-            {
-                IsCopy = true;
-                copyValue = code.transform.GetChild(1).GetChild(0).GetComponent<Text>().text[0];
-            }
-            if(code.name == "take(Clone)")
-            {
-                IsPaste = true;
-                copyValue = code.transform.GetChild(1).GetChild(0).GetComponent<Text>().text[0];
-            }
-            
+
             if (!check.ContainsKey(code.name) && code.name.Substring(0,2) == "if")
             {
                 check.Add(code.name, i);

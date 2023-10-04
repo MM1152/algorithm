@@ -82,14 +82,7 @@ public class playerMove : MonoBehaviour
                 checkcode.Isif = false;
             
         }
-        Debug.Log(gameObject.transform.childCount);
-        if(gameObject.transform.childCount > 2)
-        {
-            ani.SetBool("IsCarry", true);
-        }else
-        {
-            ani.SetBool("IsCarry", false);
-        }
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
