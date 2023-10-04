@@ -5,24 +5,16 @@ using UnityEngine.UI;
 
 public class playerMove : MonoBehaviour
 {
-    private Animator ani;
-    private SpriteRenderer[] sprite;
     public CheckCode checkcode;
     public int count = 0;
     public float sum = 0.2f;
     private void Start()
     {
-        ani = GetComponent<Animator>();
-        sprite = new SpriteRenderer[3];
-        sprite[0] = GetComponent<SpriteRenderer>();
-        for(int i = 0; i < 2; i++)
-        {
-            sprite[i + 1] = gameObject.transform.GetChild(i).GetComponent<SpriteRenderer>();
-        }
         checkcode = GameObject.FindWithTag("CheckCode").GetComponent<CheckCode>();
     }
     public void Move(Transform target)
     {
+<<<<<<< HEAD
         ani.SetBool("IsRun", true);
         if (Vector2.Distance(transform.position, target.position) <= 0.2)
         {
@@ -89,11 +81,17 @@ public class playerMove : MonoBehaviour
         {
             ani.SetBool("IsCarry", false);
         }
+=======
+
+        transform.position += (target.position - transform.position).normalized * Time.deltaTime * 5f;
+
+>>>>>>> 587c4af01ff763055f98b3ec6e59f411ef7c4aa7
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.name == "InputBelt")
         {
+<<<<<<< HEAD
             if(gameObject.transform.Find("Box(Clone)"))
             {
                 
@@ -107,10 +105,14 @@ public class playerMove : MonoBehaviour
                 gameObject.transform.GetChild(2).transform.localPosition = new Vector3(0f, 1f, 0f);
             }
             
+=======
+            collision.transform.GetChild(0).gameObject.transform.SetParent(gameObject.transform);
+            gameObject.transform.GetChild(0).transform.localPosition = new Vector3(0f, 1f, 0f);
+>>>>>>> 587c4af01ff763055f98b3ec6e59f411ef7c4aa7
         }
         if (collision.name == "OutputBelt")
         {
-            gameObject.transform.GetChild(2).transform.SetParent(collision.gameObject.transform);
+            gameObject.transform.GetChild(0).transform.SetParent(collision.gameObject.transform);
            
             collision.gameObject.transform.GetChild(count++).transform.localPosition = new Vector3(0f, -0.4f + sum, 0f);
             sum += 0.2f;
@@ -128,13 +130,13 @@ public class playerMove : MonoBehaviour
                     if (collision.transform.childCount > 1)
                     {
                         Destroy(collision.transform.GetChild(1).gameObject);
-                        gameObject.transform.GetChild(2).SetParent(collision.transform);
+                        gameObject.transform.GetChild(0).SetParent(collision.transform);
                         collision.transform.GetChild(2).transform.localPosition = Vector3.zero;
                         checkcode.IsCopy = false;
                     }
                     else
                     {
-                        gameObject.transform.GetChild(2).SetParent(collision.transform);
+                        gameObject.transform.GetChild(0).SetParent(collision.transform);
                         collision.transform.GetChild(1).transform.localPosition = Vector3.zero;
                         checkcode.IsCopy = false;
                     }
@@ -147,10 +149,46 @@ public class playerMove : MonoBehaviour
                     Destroy(gameObject.transform.GetChild(0).gameObject);
                 }
                 collision.transform.GetChild(1).transform.SetParent(gameObject.transform);
+<<<<<<< HEAD
                 gameObject.transform.GetChild(2).transform.localPosition = Vector3.up;
                 checkcode.IsPaste = false;
             }
 
+=======
+                gameObject.transform.GetChild(1).transform.localPosition = Vector3.up;
+                checkcode.IsPaste = false;  
+            }
+            if (checkcode.Isif)
+            {
+                if( gameObject.transform.childCount != 0)
+                {
+                    int a = int.Parse(collision.gameObject.transform.GetChild(1).GetComponent<Text>().text[0].ToString());
+                    int b = int.Parse(gameObject.transform.GetChild(0).GetChild(0).GetComponent<Text>().text[0].ToString());
+                    if (checkcode.Ifvalue[1] == '>')
+                    {
+                        if(b > a)
+                        {
+                            checkcode.IF = true;
+                        }else
+                        {
+                            checkcode.IF = false;
+                        }
+                    }
+                    if(checkcode.Ifvalue[1] == '<')
+                    {
+                        if (b < a)
+                        {
+                            checkcode.IF = true;
+                        }
+                        else
+                        {
+                            checkcode.IF = false;
+                        }
+                    }
+                    checkcode.Isif = false;
+                }
+            }
+>>>>>>> 587c4af01ff763055f98b3ec6e59f411ef7c4aa7
         }
     }
 }
