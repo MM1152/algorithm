@@ -139,21 +139,22 @@ public class CheckCode : MonoBehaviour
                 Ifvalue[1] = code.transform.GetChild(2).GetChild(0).GetComponent<Text>().text[0]; // value
                 Isif = true;
             }
-            else if (check.ContainsKey(code.name))
+            else if (code.name.Substring(0, 2) == "if" && check.ContainsKey(code.name))
             {
-                
+
                 if (!IF)
                 {
                     IF = true;
                 }
                 check.Remove(code.name);
             }
-            else if ( !check.ContainsKey(code.name) && code.name.Substring(0, 4) == "jump") 
+
+            if ( !check.ContainsKey(code.name) && code.name.Substring(0, 2) == "ju") 
             {
                 check.Add(code.name, i);
                 wait = new WaitForSeconds(0f);
             }
-            else if (check.ContainsKey(code.name))
+            else if (code.name.Substring(0, 2) == "ju" && check.ContainsKey(code.name))
             {
                 i = check[code.name];
                 wait = new WaitForSeconds(0f);
