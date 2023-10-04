@@ -3084,6 +3084,7 @@ GameObject:
   - component: {fileID: 1792428084}
   - component: {fileID: 1792428086}
   - component: {fileID: 1792428085}
+  - component: {fileID: 1792428087}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -3144,8 +3145,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC5EC\uAE30\uB294 \uC124\uBA85\uCC3D \uC785\uB2C8\uB2E4.\n\uC5EC\uAE30\uB294
-    \uC124\uBA85\uCC3D \uC785\uB2C8\uB2E4."
+  m_Text: 
 --- !u!222 &1792428086
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3154,6 +3154,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1792428083}
   m_CullTransparentMesh: 1
+--- !u!114 &1792428087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792428083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12dfc6d6b7b184f78b5c2cefada4ddf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tx: {fileID: 0}
 --- !u!1 &1880172502
 GameObject:
   m_ObjectHideFlags: 0
