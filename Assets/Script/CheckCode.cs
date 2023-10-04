@@ -11,7 +11,7 @@ public class CheckCode : MonoBehaviour
     public static bool CodeRunning;
     public Transform inputBelt;
     public Transform outBelt;
-    public Transform[] Values;
+    public GameObject[] Values;
     public Transform target;
 
     public List<GameObject> list;
@@ -52,6 +52,7 @@ public class CheckCode : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log($"IF {IF}");
         if (IF)
         {
             if (code != null)
@@ -69,38 +70,43 @@ public class CheckCode : MonoBehaviour
                 {
                     if (copyValue == 'A')
                     {
-                        player.Move(Values[0]);
+                        player.Move(Values[0].transform);
                     }
                 }
                 if (code.name == "take(Clone)")
                 {
                     if (copyValue == 'A')
                     {
-                        player.Move(Values[0]);
+                        player.Move(Values[0].transform);
                     }
                 }
-                if (code.name == "if(Clone)")
+                if (code.name.Substring(0,2) == "if")
                 {
                     if (Ifvalue[1] == 'A')
                     {
-                        player.Move(Values[0]);
+                        Debug.Log("a");
+                        player.checkIF(Values[0].gameObject);
+                        player.Move(Values[0].transform);
                     }
                 }
             }
         }
+        
         else
         {
             wait = new WaitForSeconds(0f);
         }
+        
     }
 
     IEnumerator Run()
     {
-        for(int i = 0; i < Lay.transform.childCount; i++)
+       
+        for (int i = 0; i < Lay.transform.childCount; i++)
         {
             
             code = list[i];
-        
+            Debug.Log(code.name);
             if (code.name == "Pick up(Clone)")
             {
                 count++;
@@ -122,30 +128,25 @@ public class CheckCode : MonoBehaviour
                 Ifvalue[1] = code.transform.GetChild(2).GetChild(0).GetComponent<Text>().text[0]; // value
                 Isif = true;
             }
+            else if (check.ContainsKey(code.name))
+            {
+                if (!IF)
+                {
+                    IF = true;
+                }
+                Debug.Log(IF);
+            }
             if ( !check.ContainsKey(code.name) && code.name.Substring(0, 4) == "jump") 
             {
                 check.Add(code.name, i);
                 wait = new WaitForSeconds(0f);
             }
-            if(check.ContainsKey(code.name))
+            else if (check.ContainsKey(code.name))
             {
-                if (code.name.Substring(0, 2) == "if")
-                {
-                    if (!IF)
-                    {
-                        IF = true;
-                    }
-                }
-                else if (code.name.Substring(0,4) == "jump")
-                {
-                    i = check[code.name];
-                    wait = new WaitForSeconds(0f);
-                }
-
-                
+                i = check[code.name];
+                wait = new WaitForSeconds(0f);
             }
-            Debug.Log(IF);
-            Debug.Log(i);
+
 
             yield return wait;
         }
