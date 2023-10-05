@@ -143,12 +143,14 @@ public class playerMove : MonoBehaviour
             }
             if (checkcode.IsPaste)
             {
-                if (gameObject.transform.childCount != 0)
+                if (gameObject.transform.Find("Box(Clone)"))
                 {
-                    Destroy(gameObject.transform.GetChild(0).gameObject);
+                    Destroy(gameObject.transform.GetChild(3).gameObject);
+
                 }
                 collision.transform.GetChild(1).transform.SetParent(gameObject.transform);
-                gameObject.transform.GetChild(2).transform.localPosition = Vector3.up;
+                gameObject.transform.GetChild(gameObject.transform.childCount - 1).transform.localPosition = Vector3.up;
+
                 checkcode.IsPaste = false;
             }
 
