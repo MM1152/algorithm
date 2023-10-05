@@ -17,7 +17,7 @@ public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler
     {
         index = -1;
         codes = new List<GameObject>();
-        Canvas = GameObject.FindWithTag("Layout").gameObject;
+        Canvas = GameObject.FindWithTag("Content").gameObject;
         originCanvas = GameObject.FindWithTag("Canvas").gameObject;
     }
     public void OnDrag(PointerEventData eventData)

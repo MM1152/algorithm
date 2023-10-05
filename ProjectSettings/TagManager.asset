@@ -12,6 +12,7 @@ TagManager:
   - Canvas
   - Layout
   - Value
+  - Content
   layers:
   - Default
   - TransparentFX
