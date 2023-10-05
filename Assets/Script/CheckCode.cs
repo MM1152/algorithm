@@ -7,7 +7,7 @@ public class CheckCode : MonoBehaviour
 {
     Dictionary<string, int> check;
 
-
+    public GameObject CodePoint;
     public static bool CodeRunning;
     public Transform inputBelt;
     public Transform outBelt;
@@ -57,7 +57,6 @@ public class CheckCode : MonoBehaviour
         {
             if (IF)
             {
-
                 wait = new WaitForSeconds(2f);
                 if (code.name == "Pick up(Clone)")
                 {
@@ -73,6 +72,10 @@ public class CheckCode : MonoBehaviour
                     {
                         player.Move(Values[0].transform);
                     }
+                    else if (copyValue == 'B')
+                    {
+                        player.Move(Values[1].transform);
+                    }
                 }
                 if (code.name == "take(Clone)")
                 {
@@ -80,21 +83,35 @@ public class CheckCode : MonoBehaviour
                     {
                         player.Move(Values[0].transform);
                     }
+                    else if (copyValue == 'B')
+                    {
+                        player.Move(Values[1].transform);
+                    }
                 }
                 if (code.name.Substring(0, 2) == "if" && check.ContainsKey(code.name))
                 {
                     if (Ifvalue[1] == 'A')
                     {
-
                         player.checkIF(Values[0]);
-
+                    }
+                    else if(Ifvalue[1] == 'B')
+                    {
+                        player.checkIF(Values[1]);
                     }
                 }
                 Debug.Log(code.name);
             }
             if (code.name.Substring(0, 2) == "if" && check.ContainsKey(code.name))
             {
-                player.Move(Values[0].transform);
+                if (Ifvalue[1] == 'A')
+                {
+                    player.Move(Values[0].transform);
+                }
+                else if (Ifvalue[1] == 'B')
+                {
+                    player.Move(Values[1].transform);
+                }
+               
             }
 
         }
@@ -165,10 +182,8 @@ public class CheckCode : MonoBehaviour
                 }
                 wait = new WaitForSeconds(0f);
             }
-
-
-
-
+            CodePoint.transform.SetParent(code.transform);
+            CodePoint.transform.localPosition = new Vector3(-150f, 0f, 0f);
             yield return wait;
         }
     }

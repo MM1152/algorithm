@@ -55,7 +55,6 @@ public class playerMove : MonoBehaviour
         int b = int.Parse(gameObject.transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Text>().text);
         if (checkcode.Isif)
         {
-            Debug.Log(checkcode.Ifvalue[0]);
                 if (checkcode.Ifvalue[0] == '>')
                 {
                     if (b > a)
@@ -95,7 +94,6 @@ public class playerMove : MonoBehaviour
             ani.SetBool("IsCarry", true);
             if (gameObject.transform.Find("Box(Clone)"))
             {
-                
                 Destroy(gameObject.transform.Find("Box(Clone)").gameObject);
                 collision.transform.GetChild(0).gameObject.transform.SetParent(gameObject.transform);
                 gameObject.transform.GetChild(3).transform.localPosition = new Vector3(0f, 1f, 0f);
@@ -109,7 +107,7 @@ public class playerMove : MonoBehaviour
         }
         if (collision.name == "OutputBelt")
         {
-            gameObject.transform.GetChild(2).transform.SetParent(collision.gameObject.transform);
+            gameObject.transform.GetChild(transform.Find("Box(Clone)").GetSiblingIndex()).transform.SetParent(collision.gameObject.transform);
            
             collision.gameObject.transform.GetChild(count++).transform.localPosition = new Vector3(0f, -0.4f + sum, 0f);
             sum += 0.2f;
@@ -119,7 +117,7 @@ public class playerMove : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.name == "A")
+        if (collision.name == "A" || collision.name == "B")
         {
             if (checkcode.IsCopy)
             {
@@ -143,14 +141,16 @@ public class playerMove : MonoBehaviour
             }
             if (checkcode.IsPaste)
             {
-               
-                
+                if (transform.Find("Box(Clone)"))
+                {
+                    Destroy(gameObject.transform.GetChild(transform.Find("Box(Clone)").GetSiblingIndex()).gameObject);
+                }
                 collision.transform.GetChild(1).transform.SetParent(gameObject.transform);
-                gameObject.transform.GetChild(gameObject.transform.childCount - 1).transform.localPosition = Vector3.up;
-                Destroy(gameObject.transform.GetChild(gameObject.transform.childCount - 2).gameObject);
+                gameObject.transform.GetChild(transform.Find("Box(Clone)").GetSiblingIndex()).transform.localPosition = Vector3.up;
+                
                 ani.SetBool("IsCarry", true);
                 checkcode.IsPaste = false;
-                
+
             }
 
         }
