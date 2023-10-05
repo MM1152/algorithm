@@ -7,12 +7,13 @@ public class inputBelt : MonoBehaviour
     public GameObject Box;
     public int rand;
     private float boxtransY;
+    public int maxBox;
     public List<int> doubleCheck;
     private void Start()
     {
         doubleCheck = new List<int>();
         boxtransY = 0f;
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < maxBox; i++)
         {
             
             rand = Random.Range(1, 50);

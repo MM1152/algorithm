@@ -23,12 +23,14 @@ public class playerMove : MonoBehaviour
     }
     public void Move(Transform target)
     {
-        ani.SetBool("IsRun", true);
+        
         if (Vector2.Distance(transform.position, target.position) <= 0.2)
         {
             ani.SetBool("IsRun", false);
-        }else
+        }
+        else
         {
+            ani.SetBool("IsRun", true);
             transform.position += (target.position - transform.position).normalized * Time.deltaTime * 5f;
         }
         
@@ -45,6 +47,7 @@ public class playerMove : MonoBehaviour
             sprite[1].flipX = true; // �Ӹ�
             sprite[2].flipX = true; // ��
         }
+        
     }
     public void checkIF(GameObject valueBox)
     {   
@@ -88,7 +91,9 @@ public class playerMove : MonoBehaviour
     {
         if(collision.name == "InputBelt")
         {
-            if(gameObject.transform.Find("Box(Clone)"))
+            ani.SetBool("IsRun", false);
+            ani.SetBool("IsCarry", true);
+            if (gameObject.transform.Find("Box(Clone)"))
             {
                 
                 Destroy(gameObject.transform.Find("Box(Clone)").gameObject);
@@ -108,6 +113,7 @@ public class playerMove : MonoBehaviour
            
             collision.gameObject.transform.GetChild(count++).transform.localPosition = new Vector3(0f, -0.4f + sum, 0f);
             sum += 0.2f;
+            ani.SetBool("IsCarry", false);
         }
 
     }
@@ -115,6 +121,7 @@ public class playerMove : MonoBehaviour
     {
         if (collision.name == "A")
         {
+            Debug.Log("In A");
             if (checkcode.IsCopy)
             {
                 if (gameObject.transform.childCount != 0)
