@@ -121,7 +121,6 @@ public class playerMove : MonoBehaviour
     {
         if (collision.name == "A")
         {
-            Debug.Log("In A");
             if (checkcode.IsCopy)
             {
                 if (gameObject.transform.childCount != 0)
@@ -140,18 +139,18 @@ public class playerMove : MonoBehaviour
                         checkcode.IsCopy = false;
                     }
                 }
+                ani.SetBool("IsCarry", false);
             }
             if (checkcode.IsPaste)
             {
-                if (gameObject.transform.Find("Box(Clone)"))
-                {
-                    Destroy(gameObject.transform.GetChild(3).gameObject);
-
-                }
+               
+                
                 collision.transform.GetChild(1).transform.SetParent(gameObject.transform);
                 gameObject.transform.GetChild(gameObject.transform.childCount - 1).transform.localPosition = Vector3.up;
-
+                Destroy(gameObject.transform.GetChild(gameObject.transform.childCount - 2).gameObject);
+                ani.SetBool("IsCarry", true);
                 checkcode.IsPaste = false;
+                
             }
 
         }
