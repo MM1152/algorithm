@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler
 {
+    public static bool isDrag;
     public List<GameObject> codes;
     public GameObject Collision;
     public GameObject Canvas;
@@ -15,6 +16,7 @@ public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler
     public int index;
     private void Awake()
     {
+        isDrag = false;
         index = -1;
         codes = new List<GameObject>();
         Canvas = GameObject.FindWithTag("Content").gameObject;
@@ -22,12 +24,16 @@ public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler
     }
     public void OnDrag(PointerEventData eventData)
     {
+        gameObject.tag = "Draging";
+        isDrag = true;
         gameObject.transform.position = eventData.position;
         transform.SetParent(originCanvas.transform);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        isDrag = false;
+        gameObject.tag = "Codes";
         if (Iscollision)
         {
             transform.SetParent(Canvas.transform);

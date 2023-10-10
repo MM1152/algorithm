@@ -13,6 +13,7 @@ TagManager:
   - Layout
   - Value
   - Content
+  - Draging
   layers:
   - Default
   - TransparentFX

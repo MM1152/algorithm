@@ -148,6 +148,9 @@ public class CheckCode : MonoBehaviour
                     copyValue = code.transform.GetChild(1).GetChild(0).GetComponent<Text>().text[0];
                 }
 
+            }else
+            {
+                wait = new WaitForSeconds(0f);
             }
 
             if (!check.ContainsKey(code.name) && code.name.Substring(0, 2) == "if")
