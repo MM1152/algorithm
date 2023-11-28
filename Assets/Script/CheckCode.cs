@@ -46,7 +46,6 @@ public class CheckCode : MonoBehaviour
         {
             list.Add(Lay.gameObject.transform.GetChild(i).gameObject);
         }
-        list.Reverse();
         CodeRunning = true;
         StartCoroutine(Run());
     }
