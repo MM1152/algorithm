@@ -6,28 +6,38 @@ using UnityEngine.EventSystems;
 
 public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler
 {
+    public static bool isDrag;
     public List<GameObject> codes;
     public GameObject Collision;
     public GameObject Canvas;
     public GameObject originCanvas;
+    public GameObject inside;
     public bool Iscollision;
     public bool Up;
     public int index;
     private void Awake()
     {
+
+        isDrag = false;
         index = -1;
         codes = new List<GameObject>();
         Canvas = GameObject.FindWithTag("Content").gameObject;
         originCanvas = GameObject.FindWithTag("Canvas").gameObject;
+        inside = GameObject.Find("Position").gameObject; // 블록 위치에 임의 생성될 다른 블록으로 코드의 이동될 위치를 미리 보여줌
     }
     public void OnDrag(PointerEventData eventData)
     {
+        gameObject.tag = "Draging";
+        isDrag = true;
         gameObject.transform.position = eventData.position;
         transform.SetParent(originCanvas.transform);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        isDrag = false;
+        gameObject.tag = "Codes";
+        inside.transform.SetParent(originCanvas.transform);
         if (Iscollision)
         {
             transform.SetParent(Canvas.transform);
@@ -47,9 +57,11 @@ public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler
     {
         if(collision.tag == "Codes")
         {
-            if(collision.transform.position.y > transform.position.y)
+            if(collision.transform.position.y < transform.position.y)
             {
                 index = collision.transform.GetSiblingIndex();
+                inside.transform.SetParent(Canvas.transform);
+                inside.transform.SetSiblingIndex(index);
             } 
         }
         

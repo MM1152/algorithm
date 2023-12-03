@@ -123,7 +123,7 @@ public class playerMove : MonoBehaviour
             {
                 if (gameObject.transform.childCount != 0)
                 {
-                    if (collision.transform.childCount > 1)
+                    if (collision.transform.Find("Box(Clone)"))
                     {
                         Destroy(collision.transform.GetChild(1).gameObject);
                         gameObject.transform.GetChild(2).SetParent(collision.transform);
