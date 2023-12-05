@@ -14,6 +14,7 @@ TagManager:
   - Value
   - Content
   - Draging
+  - GameManager
   layers:
   - Default
   - TransparentFX

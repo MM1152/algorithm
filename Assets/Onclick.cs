@@ -12,7 +12,7 @@ public class Onclick : MonoBehaviour , IPointerClickHandler
     public int count;
     private void Awake()
     {
-        //Canvas = GameObject.FindWithTag("Layout").gameObject;
+        Canvas = GameObject.FindWithTag("Content").gameObject;
         count = 0;
     }
     public void OnPointerClick(PointerEventData eventData)
