@@ -23,7 +23,7 @@ public class Onclick : MonoBehaviour , IPointerClickHandler
         {
             prefeb = Instantiate(prefebs[0] , Canvas.transform) as GameObject;
 
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
 
             if(hit.collider.name == "Jump")
             {
