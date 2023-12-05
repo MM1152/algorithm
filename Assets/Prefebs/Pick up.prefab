@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 3775508886213798795}
   - component: {fileID: 7847950868959865608}
   - component: {fileID: -1280680857379580299}
+  - component: {fileID: -4283089261235763767}
   m_Layer: 5
   m_Name: Pick up
   m_TagString: Codes
@@ -176,6 +177,7 @@ MonoBehaviour:
   Collision: {fileID: 0}
   Canvas: {fileID: 0}
   originCanvas: {fileID: 0}
+  inside: {fileID: 0}
   Iscollision: 0
   Up: 0
   index: 0
@@ -226,3 +228,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-4283089261235763767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7575825572670548157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49c957c8df7921647b9a7e20c3dfe2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefebs: []
+  Canvas: {fileID: 1142365075936811018, guid: 5464abf4b1614430c9d34e225b618e4e, type: 3}
+  count: 0

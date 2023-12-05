@@ -23,7 +23,7 @@ public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler
         codes = new List<GameObject>();
         Canvas = GameObject.FindWithTag("Content").gameObject;
         originCanvas = GameObject.FindWithTag("Canvas").gameObject;
-        inside = GameObject.Find("Position").gameObject; // ºí·Ï À§Ä¡¿¡ ÀÓÀÇ »ý¼ºµÉ ´Ù¸¥ ºí·ÏÀ¸·Î ÄÚµåÀÇ ÀÌµ¿µÉ À§Ä¡¸¦ ¹Ì¸® º¸¿©ÁÜ
+        inside = GameObject.Find("Position").gameObject; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     }
     public void OnDrag(PointerEventData eventData)
     {
@@ -76,6 +76,7 @@ public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler
         {
             index = -1;
             Iscollision = false;
+            gameObject.SetActive(true);
         }
     }
 

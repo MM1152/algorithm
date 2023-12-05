@@ -22,7 +22,9 @@ public class Onclick : MonoBehaviour , IPointerClickHandler
         if (hit.collider != null)
         {
             prefeb = Instantiate(prefebs[0] , Canvas.transform) as GameObject;
-            
+
+            gameObject.SetActive(false);
+
             if(hit.collider.name == "Jump")
             {
                 prefeb.name = "jump" + count;
