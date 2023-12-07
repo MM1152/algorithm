@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 877019822807341768}
   - component: {fileID: 5580631751354560374}
   - component: {fileID: 1878767667896206000}
-  - component: {fileID: 6559594119983410828}
   - component: {fileID: 253491242490572303}
   - component: {fileID: 96557765224289138}
+  - component: {fileID: -2070588699696311245}
   m_Layer: 5
   m_Name: origi EndPoint
   m_TagString: Codes
@@ -79,26 +79,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6559594119983410828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 454771707007839674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eeff78c00662d46468e24b89dc8bbbce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  codes: []
-  Collision: {fileID: 0}
-  Canvas: {fileID: 0}
-  originCanvas: {fileID: 0}
-  inside: {fileID: 0}
-  Iscollision: 0
-  Up: 0
-  index: 0
 --- !u!61 &253491242490572303
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -146,3 +126,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-2070588699696311245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454771707007839674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae200eedf19ad4732a4cd2fc81b75c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefebs:
+  - {fileID: 454771707007839674, guid: 2b925f14924fb4a1489444eca6da82b3, type: 3}
+  Canvas: {fileID: 2956038975457430873, guid: dcddbca15e0fd4b44afb8b5cceddee52, type: 3}
+  count: 0
