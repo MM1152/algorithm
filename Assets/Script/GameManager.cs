@@ -12,9 +12,9 @@ public class GameManager : MonoBehaviour
     public string Level;
     public bool firstIn;
 
-    public int[] Level1_inputData = { 1, 2, 3, 4, 5 };
-    public int[] Level1_outputData = { 1, 2, 3, 4, 5 };
-    public bool[] Level1_codes = { true, true, false, false, false, false };
+    public int[] Level1_inputData;
+    public int[] Level1_outputData;
+    public bool[] Level1_codes;
     // Start is called before the first frame update
     void Awake()
     {

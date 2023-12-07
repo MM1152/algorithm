@@ -7,11 +7,13 @@ public class CheckCode : MonoBehaviour
 {
     Dictionary<string, int> check;
     public inputBelt inputBelt;
+    public outBelt outBelt;
 
+    public GameManager gameManager;
     public GameObject CodePoint;
     public static bool CodeRunning;
     public Transform inputBelttrans;
-    public Transform outBelt;
+    public Transform outBelttrans;
     public GameObject[] Values;
     public Transform target;
 
@@ -38,9 +40,9 @@ public class CheckCode : MonoBehaviour
         {
             Destroy(CodePoint);
         }
-       
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         Lay = GameObject.FindWithTag("Content").gameObject;
-        count = 1;
+        count = 0;
         IF = true;
         Ifvalue = new char[2];
         IsCopy = false;
@@ -75,7 +77,7 @@ public class CheckCode : MonoBehaviour
                     }
                     if (code.name == "Pick off(Clone)")
                     {
-                        player.Move(outBelt);
+                        player.Move(outBelttrans);
                     }
                     if (code.name == "Copy(Clone)")
                     {
@@ -142,6 +144,7 @@ public class CheckCode : MonoBehaviour
         
         for (int i = 0; i < Lay.transform.childCount; i++)
          {
+            Debug.Log($"i : {i}");
             try
             {
                 wait = new WaitForSeconds(2f);
@@ -194,8 +197,9 @@ public class CheckCode : MonoBehaviour
                 }
                 else if (code.name.Substring(0, 2) == "ju" && check.ContainsKey(code.name))
                 {
-
-                    if (count < inputBelt.boxNum.Count)
+                    Debug.Log(inputBelt.boxNum.Count);
+                    
+                    if (inputBelt.boxNum.Count > count)
                     {
                         i = check[code.name];
                     }
@@ -208,7 +212,10 @@ public class CheckCode : MonoBehaviour
             {
                 Debug.Log(e);
             }
-
+            if(i == Lay.transform.childCount - 1)
+            {
+                outBelt.GetComponent<outBelt>().Finish();
+            }
             yield return wait;
         }
     }
