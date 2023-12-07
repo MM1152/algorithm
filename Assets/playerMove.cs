@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System;
 public class playerMove : MonoBehaviour
 {
     private Animator ani;
@@ -88,31 +88,39 @@ public class playerMove : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.name == "InputBelt")
+        try
         {
-            ani.SetBool("IsRun", false);
-            ani.SetBool("IsCarry", true);
-            if (gameObject.transform.Find("Box(Clone)"))
+            if (collision.name == "InputBelt")
             {
-                Destroy(gameObject.transform.Find("Box(Clone)").gameObject);
-                collision.transform.GetChild(0).gameObject.transform.SetParent(gameObject.transform);
-                gameObject.transform.GetChild(3).transform.localPosition = new Vector3(0f, 1f, 0f);
+                ani.SetBool("IsRun", false);
+                ani.SetBool("IsCarry", true);
+                if (gameObject.transform.Find("Box(Clone)"))
+                {
+                    Destroy(gameObject.transform.Find("Box(Clone)").gameObject);
+                    collision.transform.GetChild(0).gameObject.transform.SetParent(gameObject.transform);
+                    gameObject.transform.GetChild(3).transform.localPosition = new Vector3(0f, 0.5f, 0f);
+                }
+                else
+                {
+                    collision.transform.GetChild(0).gameObject.transform.SetParent(gameObject.transform);
+                    gameObject.transform.GetChild(2).transform.localPosition = new Vector3(0f, 0.5f, 0f);
+                }
+
             }
-            else
+            if (collision.name == "OutputBelt")
             {
-                collision.transform.GetChild(0).gameObject.transform.SetParent(gameObject.transform);
-                gameObject.transform.GetChild(2).transform.localPosition = new Vector3(0f, 1f, 0f);
+                gameObject.transform.GetChild(transform.Find("Box(Clone)").GetSiblingIndex()).transform.SetParent(collision.gameObject.transform);
+
+                collision.gameObject.transform.GetChild(count++).transform.localPosition = new Vector3(0f, -0.4f + sum, 0f);
+                sum += 0.2f;
+                ani.SetBool("IsCarry", false);
             }
-            
-        }
-        if (collision.name == "OutputBelt")
+        }catch(Exception e)
         {
-            gameObject.transform.GetChild(transform.Find("Box(Clone)").GetSiblingIndex()).transform.SetParent(collision.gameObject.transform);
-           
-            collision.gameObject.transform.GetChild(count++).transform.localPosition = new Vector3(0f, -0.4f + sum, 0f);
-            sum += 0.2f;
-            ani.SetBool("IsCarry", false);
+            Debug.Log(e);
+            Time.timeScale = 0;
         }
+        
 
     }
     private void OnTriggerStay2D(Collider2D collision)
