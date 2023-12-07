@@ -15,6 +15,7 @@ TagManager:
   - Content
   - Draging
   - GameManager
+  - Code
   layers:
   - Default
   - TransparentFX

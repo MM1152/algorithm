@@ -3,27 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-public class Onclick : MonoBehaviour , IPointerClickHandler
+public class CustomClick : MonoBehaviour, IPointerClickHandler
 {
-    public GameObject[] prefebs; 
+    public GameObject[] prefebs;
     public GameObject Canvas;
 
     GameObject prefeb;
     public int count;
     private void Awake()
     {
-        Canvas = GameObject.FindWithTag("Content").gameObject;
+        Canvas = GameObject.FindWithTag("Code").gameObject;
         count = 0;
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        
+
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition), Mathf.Infinity, LayerMask.GetMask("Boxobj"));
         if (hit.collider != null)
         {
-            prefeb = Instantiate(prefebs[0] , Canvas.transform) as GameObject;
+            prefeb = Instantiate(prefebs[0], Canvas.transform) as GameObject;
 
-            if(hit.collider.name == "Jump")
+            gameObject.SetActive(false);
+
+            if (hit.collider.name == "Jump")
             {
                 prefeb.name = "jump" + count;
                 prefeb = Instantiate(prefebs[1], Canvas.transform) as GameObject;
@@ -35,10 +37,10 @@ public class Onclick : MonoBehaviour , IPointerClickHandler
                 prefeb.name = "if" + count;
                 prefeb = Instantiate(prefebs[1], Canvas.transform) as GameObject;
                 prefeb.name = "if" + count++;
-                prefeb.GetComponent<Image>().color = new Color(0.7f, 0.3f, 1, 1); 
+                prefeb.GetComponent<Image>().color = new Color(0.7f, 0.3f, 1, 1);
             }
-            
-            
+
+
         }
     }
 }
