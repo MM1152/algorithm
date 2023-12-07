@@ -8,6 +8,8 @@ public class typingeffect : MonoBehaviour
 
     public Text tx;
     private string m_text = "\n본 게임은 협성대학교 졸업작품으로 \n\n알고리즘 교육용 프로그래밍 게임 입니다.";
+    private string[] Level1 = { "반가워요 " , " 게임이용 방법을 알려드릴게요 " };
+
     // Start is called before the first frame update
     void Start()
     {

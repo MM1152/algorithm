@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class inputBelt : MonoBehaviour
 {
     public List<int> boxNum; 
-
+   
     public GameObject Box;
     private float boxtransY;
     private void Start()

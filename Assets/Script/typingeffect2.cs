@@ -21,7 +21,7 @@ public class typingeffect2 : MonoBehaviour
         {
             flashingText.text = "";
             yield return new WaitForSeconds(.2f);
-            flashingText.text = "Enter to Start";
+            flashingText.text = "Enter";
             yield return new WaitForSeconds(.2f);
         }
     }
