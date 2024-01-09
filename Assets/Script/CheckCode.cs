@@ -31,7 +31,7 @@ public class CheckCode : MonoBehaviour
     public char[] Ifvalue;
     public GameObject value;
 
-    public WaitUntil wait; // ÁöÁ¤µÈ µ¿ÀÛÀÌ ³¡³ª´Â ½Ã°£.
+    public WaitUntil wait; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½.
 
     public bool IF;
     private void Start()
@@ -78,7 +78,7 @@ public class CheckCode : MonoBehaviour
             if (code != null)
             {
 
-
+                
                 if (code.name.Substring(0, 2) == "if" && check.ContainsKey(code.name))
 
                 {
@@ -94,7 +94,9 @@ public class CheckCode : MonoBehaviour
                 Console.WriteLine($"IF : {IF}");
                 if (IF)
                 {
-                    if (code.name == "Pick up(Clone)")
+
+                    Debug.Log("ssd");
+                    if (code.name == "Pick up(Clone) || Clone Pick up(Clone)")
                     {
                         player.Move(inputBelttrans);
                     }
@@ -155,7 +157,7 @@ public class CheckCode : MonoBehaviour
                 code = list[i];
                 if (IF)
                 {
-                    if (code.name == "Pick up(Clone)")
+                    if (code.name == "Pick up(Clone) ||Clone Pick up(Clone)")
                     {
                         count++;
                     }
