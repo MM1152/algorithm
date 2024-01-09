@@ -12,6 +12,11 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
         Canvas = GameObject.FindWithTag("Canvas").gameObject;
         _thisGameObj = transform.parent.gameObject;
     }
+    private void OnLevelWasLoaded(int level)
+    {
+        Canvas = GameObject.FindWithTag("Canvas").gameObject;
+        _thisGameObj = transform.parent.gameObject;
+    }
     public void OnPointerClick(PointerEventData eventData)
     {
         

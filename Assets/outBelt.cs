@@ -9,13 +9,14 @@ public class outBelt : MonoBehaviour
     public int ChildCount;
     public int BoxCount;
     public int SetOutputDataLength;
+    public int[] SetOutputData;
  
     private void Start()
     {
         gameManger = GameObject.Find("GameManager").GetComponent<GameManager>();
         Level = gameManger.Level;
-        
     }
+    
     // Update is called once per frame
     void Update()
     {
@@ -32,12 +33,11 @@ public class outBelt : MonoBehaviour
         if (ChildCount != 0)
         {
         
-                Debug.Log($"child Count : {ChildCount} , boxNum : {gameObject.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text}");
                 if (BoxCount != gameManger.Level1_outputData[ChildCount - 1])
                 {
                     Time.timeScale = 0;
                 }
-                else if (ChildCount == gameManger.Level1_outputData.Length)
+                else if (ChildCount == SetOutputDataLength)
                 {
                     gameManger.Finish();
                 }
@@ -45,5 +45,10 @@ public class outBelt : MonoBehaviour
 
 
         }
+    }
+    public void SetOutput(int[] outPutData)
+    {
+        SetOutputData = outPutData;
+        SetOutputDataLength = outPutData.Length;
     }
 }

@@ -21,6 +21,8 @@ public class playerMove : MonoBehaviour
     public CheckCode checkcode;
     public int count = 0;
     public float sum = 0.2f;
+    public bool BoxPickUp = true;
+    public GameObject valueBox;
     private void Start()
     {
         playerstate = PlayerState.Idle;
@@ -32,6 +34,10 @@ public class playerMove : MonoBehaviour
             sprite[i + 1] = gameObject.transform.GetChild(i).GetComponent<SpriteRenderer>();
         }
         checkcode = GameObject.FindWithTag("CheckCode").GetComponent<CheckCode>();
+    }
+    public void SetValueBox(GameObject valueBox)
+    {
+        this.valueBox = valueBox;
     }
     public void Move(Transform target)
     {
@@ -64,13 +70,15 @@ public class playerMove : MonoBehaviour
         
     }
     public void checkIF(GameObject valueBox)
-    {   
-        
+    {
+        this.valueBox = valueBox;
         int a = int.Parse(valueBox.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>().text);
         int b = int.Parse(gameObject.transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Text>().text);
+        Debug.Log($"ifvalue : {checkcode.Ifvalue[0]} , 박스에 있는 숫자 : {a} , 내손에 있는 숫자 {b}");
         if (checkcode.Isif)
         {
-                if (checkcode.Ifvalue[0] == '>')
+            
+            if (checkcode.Ifvalue[0] == '>')
                 {
                     if (b > a)
                     {
@@ -107,26 +115,8 @@ public class playerMove : MonoBehaviour
         try
         {
             
-            if (collision.name == "InputBelt")
-            {
-                ani.SetBool("IsRun", false);
-                ani.Play("PlayerPickUp", 0 , 0);
-                inputBelt.transform.GetChild(0).gameObject.SetActive(false);
-                if (gameObject.transform.Find("Box(Clone)"))
-                {
-                    Destroy(gameObject.transform.Find("Box(Clone)").gameObject);
-                    collision.transform.GetChild(0).gameObject.transform.SetParent(gameObject.transform);
-                    gameObject.transform.GetChild(3).transform.localPosition = new Vector3(0f, 0.5f, 0f);
-                }
-                else
-                {
-                    collision.transform.GetChild(0).gameObject.transform.SetParent(gameObject.transform);
-                    gameObject.transform.GetChild(2).transform.localPosition = new Vector3(0f, 0.5f, 0f);
-                }
-                StartCoroutine(BoxShow());
-                
-
-            }
+           
+            
             if (collision.name == "OutputBelt")
             {
                 gameObject.transform.GetChild(transform.Find("Box(Clone)").GetSiblingIndex()).transform.SetParent(collision.gameObject.transform);
@@ -147,8 +137,39 @@ public class playerMove : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.name == "A" || collision.name == "B")
+        
+        if (collision.name == "InputBelt")
         {
+            if(checkcode.code.name.Equals("Pick up(Clone)") && BoxPickUp){
+
+                BoxPickUp = false;
+                if (collision.name == "InputBelt")
+                {
+
+                    ani.SetBool("IsRun", false);
+                   
+                    ani.Play("PlayerPickUp", 0, 0);
+                    inputBelt.transform.GetChild(0).gameObject.SetActive(false);
+                    if (gameObject.transform.Find("Box(Clone)"))
+                    {
+                        Destroy(gameObject.transform.Find("Box(Clone)").gameObject);
+                        collision.transform.GetChild(0).gameObject.transform.SetParent(gameObject.transform);
+                        gameObject.transform.GetChild(3).transform.localPosition = new Vector3(0f, 0.5f, 0f);
+                    }
+                    else
+                    {
+                        collision.transform.GetChild(0).gameObject.transform.SetParent(gameObject.transform);
+                        gameObject.transform.GetChild(2).transform.localPosition = new Vector3(0f, 0.5f, 0f);
+                    }
+                    StartCoroutine(BoxShow());
+                    
+
+                }
+            }
+        }
+        if (collision.name.Equals("A") || collision.name.Equals("B"))
+        {
+            
             if (checkcode.IsCopy)
             {
                 if (gameObject.transform.childCount != 0)
@@ -171,13 +192,24 @@ public class playerMove : MonoBehaviour
             }
             if (checkcode.IsPaste)
             {
-                ani.Play("PlayerPickUp", 0, 0);
+                valueBox.transform.Find("Box(Clone)").gameObject.SetActive(false);
+                if (valueBox.transform.position.x <= this.gameObject.transform.position.x)
+                {
+                    ani.Play("PlayerPickUp", 0, 0);
+                    StartCoroutine(BoxShow());
+                }
+                else if (valueBox.transform.position.x > this.gameObject.transform.position.x)
+                {
+                    ani.Play("PlayerPickUp2", 0, 0);
+                    StartCoroutine(Boxshow1());
+                }
+                
                 if (transform.Find("Box(Clone)"))
                 {
                     Destroy(gameObject.transform.GetChild(transform.Find("Box(Clone)").GetSiblingIndex()).gameObject);
                 }
                 collision.transform.GetChild(1).transform.SetParent(gameObject.transform);
-                gameObject.transform.GetChild(transform.Find("Box(Clone)").GetSiblingIndex()).transform.localPosition = Vector3.up;
+                gameObject.transform.GetChild(transform.Find("Box(Clone)").GetSiblingIndex()).transform.localPosition = new Vector3(0f , 0.5f, 0f);
 
                 ani.SetBool("IsCarry", true);   
                 checkcode.IsPaste = false;
@@ -190,6 +222,12 @@ public class playerMove : MonoBehaviour
     IEnumerator BoxShow()
     {
         yield return new WaitUntil(() => ani.GetCurrentAnimatorStateInfo(0).IsName("PlayerPickUp") && ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
+        gameObject.transform.Find("Box(Clone)").gameObject.SetActive(true);
+        BoxPickUp = true;
+    }
+    IEnumerator Boxshow1()
+    {
+        yield return new WaitUntil(() => ani.GetCurrentAnimatorStateInfo(0).IsName("PlayerPickUp2") && ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
         gameObject.transform.Find("Box(Clone)").gameObject.SetActive(true);
     }
 }

@@ -61,18 +61,22 @@ public class GameManager : MonoBehaviour
         if(Level == "1")
         {
             Level1_Setting();
+            outputBelt.GetComponent<outBelt>().SetOutput(Level1_outputData);
         }
         else if(Level == "1_1")
         {
             Level1_1_Setting();
+            outputBelt.GetComponent<outBelt>().SetOutput(Level1_1_outputData);
         }
         else if(Level == "1_2")
         {
             Level1_2_Setting();
+            outputBelt.GetComponent<outBelt>().SetOutput(Level1_2_outputData);
         }
        
         
     }
+    
     public void Finish()
     {
         GameEnd.SetActive(true);
@@ -92,7 +96,7 @@ public class GameManager : MonoBehaviour
         {
             canvas.transform.GetChild(i).gameObject.SetActive(Level1_codes[i]);
         }
-        outputBelt.GetComponent<outBelt>().SetOutputDataLength = Level1_outputData.Length;
+        
     }
     public void Level1_1_Setting()
     {
@@ -109,7 +113,7 @@ public class GameManager : MonoBehaviour
         {
             canvas.transform.GetChild(i).gameObject.SetActive(Level1_1_codes[i]);
         }
-        outputBelt.GetComponent<outBelt>().SetOutputDataLength = Level1_1_outputData.Length;
+       
     }
     public void Level1_2_Setting()
     {
@@ -126,6 +130,6 @@ public class GameManager : MonoBehaviour
         {
             canvas.transform.GetChild(i).gameObject.SetActive(Level1_2_codes[i]);
         }
-        outputBelt.GetComponent<outBelt>().SetOutputDataLength = Level1_2_outputData.Length;
+        
     }
 }

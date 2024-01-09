@@ -31,6 +31,7 @@ public class CheckCode : MonoBehaviour
     public char[] Ifvalue;
     public GameObject value;
 
+    public bool FinAction = false;
     public WaitUntil wait; // 지정된 동작이 끝나는 시간.
 
     public bool IF;
@@ -68,20 +69,21 @@ public class CheckCode : MonoBehaviour
             list.Add(Lay.gameObject.transform.GetChild(i).gameObject);
         }
         CodeRunning = true;
+        
         StartCoroutine(Run());
     }
 
     private void Update()
     {
-        if(Time.unscaledDeltaTime != 0)
+       
+        if (Time.unscaledDeltaTime != 0)
         {
             if (code != null)
             {
-
-
+                
                 if (code.name.Substring(0, 2) == "if" && check.ContainsKey(code.name))
-
                 {
+                  
                     if (Ifvalue[1] == 'A')
                     {
                         player.checkIF(Values[0]);
@@ -91,36 +93,43 @@ public class CheckCode : MonoBehaviour
                         player.checkIF(Values[1]);
                     }
                 }
-                Console.WriteLine($"IF : {IF}");
-                if (IF)
+                else
                 {
                     if (code.name == "Pick up(Clone)")
                     {
+                        target = inputBelttrans;
                         player.Move(inputBelttrans);
+                        
                     }
                     if (code.name == "Pick off(Clone)")
                     {
+                        target = outBelttrans;
                         player.Move(outBelttrans);
                     }
                     if (code.name == "Copy(Clone)")
                     {
                         if (copyValue == 'A')
                         {
+                            target = Values[0].transform;
                             player.Move(Values[0].transform);
                         }
                         else if (copyValue == 'B')
                         {
+                            target = Values[1].transform;
                             player.Move(Values[1].transform);
                         }
                     }
                     if (code.name == "take(Clone)")
                     {
+                        player.SetValueBox(Values[0].gameObject);
                         if (copyValue == 'A')
                         {
+                            target = Values[0].transform;
                             player.Move(Values[0].transform);
                         }
                         else if (copyValue == 'B')
                         {
+                            target = Values[1].transform;
                             player.Move(Values[1].transform);
                         }
                     }
@@ -128,18 +137,17 @@ public class CheckCode : MonoBehaviour
                     {
                         if (Ifvalue[1] == 'A')
                         {
+                            target = Values[0].transform;
                             player.Move(Values[0].transform);
                         }
                         else if (Ifvalue[1] == 'B')
                         {
+                            target = Values[1].transform;
                             player.Move(Values[1].transform);
                         }
 
                     }
                 }
-               
-                
-
             }
         }
         
@@ -167,21 +175,16 @@ public class CheckCode : MonoBehaviour
                     if (code.name == "take(Clone)")
                     {
                         IsPaste = true;
-
                         copyValue = code.transform.GetChild(1).GetChild(0).GetComponent<Text>().text[0];
                     }
 
-                }
-                else
-                {
-                    
                 }
 
                 if (!check.ContainsKey(code.name) && code.name.Substring(0, 2) == "if")
                 {
                     check.Add(code.name, i);
-                    Ifvalue[0] = code.transform.GetChild(1).GetChild(0).GetComponent<Text>().text[0]; // > , <
-                    Ifvalue[1] = code.transform.GetChild(2).GetChild(0).GetComponent<Text>().text[0]; // value
+                    Ifvalue[1] = code.transform.GetChild(1).GetChild(0).GetComponent<Text>().text[0]; // > , <
+                    Ifvalue[0] = code.transform.GetChild(2).GetChild(0).GetComponent<Text>().text[0]; // value
                     Isif = true;
                 }
                 else if (code.name.Substring(0, 2) == "if" && check.ContainsKey(code.name))
@@ -225,24 +228,37 @@ public class CheckCode : MonoBehaviour
                 armPos.SetArmPos();
                 
             }
-           /*if (IF)
+            else if (code.name.Equals("take(Clone)"))
             {
-                if (code.name.Equals("take(Clone)"))
-                {
-                    yield return new WaitForSeconds(0.01f);
-                    yield return new WaitUntil(() => player.ani.GetCurrentAnimatorStateInfo(0).IsName("PlayerPickUp") && player.ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
+                yield return new WaitForSeconds(0.01f);
+                yield return new WaitUntil(() => player.ani.GetCurrentAnimatorStateInfo(0).IsName("PlayerPickUp") || player.ani.GetCurrentAnimatorStateInfo(0).IsName("PlayerPickUp2")  && player.ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
 
-                    player.ani.SetBool("IsPickUp", false);
-                    armPos.SetArmPos();
+                player.ani.SetBool("IsPickUp", false);
+                player.ani.SetBool("IsPickUp2", false);
+                armPos.SetArmPos();
 
-                }
-            }*/
+            }
+            /*if (IF)
+             {
+                 if (code.name.Equals("take(Clone)"))
+                 {
+                     yield return new WaitForSeconds(0.01f);
+                     yield return new WaitUntil(() => player.ani.GetCurrentAnimatorStateInfo(0).IsName("PlayerPickUp") && player.ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
+
+                     player.ani.SetBool("IsPickUp", false);
+                     armPos.SetArmPos();
+
+                 }
+             }*/
             else if(code.name.Substring(0, 2) == "ju" || code.name.Substring(0, 2) == "if")
             {
                 yield return new WaitForSeconds(0f);
             }else
             {
-                yield return new WaitForSeconds(2f);
+                
+                yield return new WaitForSeconds(0.5f);
+                yield return new WaitUntil(() => Vector3.Distance(player.transform.position , target.position) < 0.25f);
+                
             }
         }
         
