@@ -1310,6 +1310,8 @@ MonoBehaviour:
   checkcode: {fileID: 0}
   count: 0
   sum: 0.2
+  BoxPickUp: 1
+  valueBox: {fileID: 0}
 --- !u!50 &301965701
 Rigidbody2D:
   serializedVersion: 4
@@ -3400,6 +3402,7 @@ MonoBehaviour:
   Level: 
   ChildCount: 0
   BoxCount: 0
+  SetOutputDataLength: 0
 --- !u!1 &869400870
 GameObject:
   m_ObjectHideFlags: 0

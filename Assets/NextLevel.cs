@@ -24,15 +24,29 @@ public class NextLevel : MonoBehaviour
         {
             gameManager.Level = "1_2";
         }
+        else if(Level == "1_2")
+        {
+            gameManager.Level = "1_3";
+        }
     }
     public void NextStage()
     {
-        
+
+        Debug.Log(gameManager.Level.Substring(Level.Length - 1));
         for(int i = 0; i < Content.transform.childCount; i++)
         {
-            Debug.Log($"{Content.transform.GetChild(0).gameObject.name}");
             Destroy(Content.transform.GetChild(i).gameObject);
+            
         }
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if(gameManager.Level.Substring(Level.Length - 1) != "3")
+        {
+            
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }else
+        {
+            SceneManager.LoadScene("StartScene");
+        }
+        
+        
     }
 }
