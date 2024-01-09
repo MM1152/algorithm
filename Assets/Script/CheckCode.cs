@@ -225,7 +225,7 @@ public class CheckCode : MonoBehaviour
                 armPos.SetArmPos();
                 
             }
-            if (IF)
+           /*if (IF)
             {
                 if (code.name.Equals("take(Clone)"))
                 {
@@ -236,7 +236,7 @@ public class CheckCode : MonoBehaviour
                     armPos.SetArmPos();
 
                 }
-            }
+            }*/
             else if(code.name.Substring(0, 2) == "ju" || code.name.Substring(0, 2) == "if")
             {
                 yield return new WaitForSeconds(0f);
