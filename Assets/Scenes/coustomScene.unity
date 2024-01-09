@@ -269,10 +269,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b18819eb0d4bd24a933043997882595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputBelt: {fileID: 1296792688}
+  armPos: {fileID: 248191922}
+  inputBelt: {fileID: 1101661681}
+  outBelt: {fileID: 867940561}
+  gameManager: {fileID: 0}
   CodePoint: {fileID: 497931633}
-  inputBelttrans: {fileID: 0}
-  outBelt: {fileID: 1055253383}
+  inputBelttrans: {fileID: 1296792688}
+  outBelttrans: {fileID: 1055253383}
   Values:
   - {fileID: 641169935}
   - {fileID: 1418211608}
@@ -719,6 +722,7 @@ GameObject:
   m_Component:
   - component: {fileID: 248191920}
   - component: {fileID: 248191921}
+  - component: {fileID: 248191922}
   m_Layer: 0
   m_Name: Arm
   m_TagString: Untagged
@@ -793,6 +797,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &248191922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248191919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d013296f4bd7e7a4c9c9808cc732edfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armPos: {fileID: 0}
 --- !u!1 &268494451
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,6 +1015,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aac819546e00cb478626959e1317271, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ani: {fileID: 0}
+  inputBelt: {fileID: 0}
+  playerstate: 0
   checkcode: {fileID: 0}
   count: 0
   sum: 0.2
@@ -2154,6 +2174,7 @@ GameObject:
   - component: {fileID: 867940560}
   - component: {fileID: 867940556}
   - component: {fileID: 867940558}
+  - component: {fileID: 867940561}
   m_Layer: 0
   m_Name: OutputBelt
   m_TagString: OutputBelt
@@ -2259,6 +2280,23 @@ RectTransform:
   m_AnchoredPosition: {x: -0.76, y: 0.64999986}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &867940561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867940555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d38df0ff526bcb4281220767a763cca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManger: {fileID: 0}
+  Level: 
+  ChildCount: 0
+  BoxCount: 0
+  SetOutputDataLength: 0
 --- !u!1 &869400870
 GameObject:
   m_ObjectHideFlags: 0
@@ -2603,7 +2641,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 869400871}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.92818075
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4174,7 +4212,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -5279428291942519702, guid: d5bb45d55a08748c386855f3dc627b5c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d5bb45d55a08748c386855f3dc627b5c, type: 3}
 --- !u!1001 &1749320040831160973
 PrefabInstance:
