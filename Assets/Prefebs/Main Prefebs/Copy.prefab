@@ -251,6 +251,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1a04ba09e4798540a2fcb3e3581f4fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Canvas: {fileID: 0}
+  _thisGameObj: {fileID: 0}
 --- !u!1 &8591194213992514597
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,6 +412,7 @@ GameObject:
   - component: {fileID: 2415481911038269582}
   - component: {fileID: 666686230449438155}
   - component: {fileID: 3261208517896034268}
+  - component: {fileID: -6398148239306618174}
   m_Layer: 5
   m_Name: Copy
   m_TagString: Codes
@@ -493,6 +496,7 @@ MonoBehaviour:
   Collision: {fileID: 0}
   Canvas: {fileID: 0}
   originCanvas: {fileID: 0}
+  inside: {fileID: 0}
   Iscollision: 0
   Up: 0
   index: 0
@@ -543,3 +547,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 200, y: 70}
   m_EdgeRadius: 0
+--- !u!114 &-6398148239306618174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9006499625713870021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e62af157895d584bab783c951b31425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

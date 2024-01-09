@@ -5,25 +5,45 @@ using UnityEngine.UI;
 public class outBelt : MonoBehaviour
 {
     public GameManager gameManger;
-    public GameObject Sussecs;
+    public string Level;
+    public int ChildCount;
+    public int BoxCount;
+    public int SetOutputDataLength;
+ 
     private void Start()
     {
         gameManger = GameObject.Find("GameManager").GetComponent<GameManager>();
+        Level = gameManger.Level;
+        
     }
     // Update is called once per frame
     void Update()
     {
-        if(gameObject.transform.childCount != 0)
+        ChildCount = gameObject.transform.childCount;
+        if(ChildCount != 0)
         {
-            if (int.Parse(gameObject.transform.GetChild(gameObject.transform.childCount - 1).GetChild(0).GetChild(0).GetComponent<Text>().text) != gameManger.Level1_outputData[gameObject.transform.childCount - 1])
-            {
-                Time.timeScale = 0;
-            }
+            BoxCount = int.Parse(gameObject.transform.GetChild(ChildCount - 1).GetChild(0).GetChild(0).GetComponent<Text>().text);
         }
+        
+        
     }
-
-    public void Finish()
+    private void FixedUpdate()
     {
-        Sussecs.SetActive(true);
+        if (ChildCount != 0)
+        {
+        
+                Debug.Log($"child Count : {ChildCount} , boxNum : {gameObject.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text}");
+                if (BoxCount != gameManger.Level1_outputData[ChildCount - 1])
+                {
+                    Time.timeScale = 0;
+                }
+                else if (ChildCount == gameManger.Level1_outputData.Length)
+                {
+                    gameManger.Finish();
+                }
+
+
+
+        }
     }
 }

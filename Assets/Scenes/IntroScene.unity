@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a4685affa3a4b4c8bbff5a84f289da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: MainScene
+  nextSceneName: StartScene
   gameManager: {fileID: 1376729600}
 --- !u!4 &815024410
 Transform:
@@ -587,13 +587,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 278e10e644c113b4a822a1d9368d29e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  outputBelt: {fileID: 0}
   inputbelt: {fileID: 0}
   canvas: {fileID: 0}
+  player: {fileID: 0}
+  GameEnd: {fileID: 0}
+  values: {fileID: 0}
   Level: 
   firstIn: 0
   Level1_inputData: 010000000200000003000000
   Level1_outputData: 010000000200000003000000
-  Level1_codes: 010101000000
+  Level1_value: 0
+  Level1_codes: 010100000000
+  Level1_1_inputData: 010000000200000003000000
+  Level1_1_outputData: 010000000200000003000000
+  Level1_1_value: 0
+  Level1_1_codes: 010101000000
+  Level1_2_inputData: 0500000004000000030000000200000001000000
+  Level1_2_outputData: 01000000
+  Level1_2_value: 1
+  Level1_2_codes: 010101010101
 --- !u!4 &1376729601
 Transform:
   m_ObjectHideFlags: 0

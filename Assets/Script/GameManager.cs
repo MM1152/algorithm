@@ -6,15 +6,30 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public inputBelt inputbelt;
+    public GameObject outputBelt;
+    public GameObject inputbelt;
     public GameObject canvas;
+    public playerMove player;
+    public GameObject GameEnd;
+    public GameObject values;
 
     public string Level;
     public bool firstIn;
 
     public int[] Level1_inputData;
     public int[] Level1_outputData;
+    public int Level1_value;
     public bool[] Level1_codes;
+
+    public int[] Level1_1_inputData;
+    public int[] Level1_1_outputData;
+    public int Level1_1_value;
+    public bool[] Level1_1_codes;
+
+    public int[] Level1_2_inputData;
+    public int[] Level1_2_outputData;
+    public int Level1_2_value;
+    public bool[] Level1_2_codes;
     // Start is called before the first frame update
     void Awake()
     {
@@ -34,24 +49,83 @@ public class GameManager : MonoBehaviour
         }
 
     }
+    
     private void OnLevelWasLoaded(int level)
     {
-        inputbelt = GameObject.FindWithTag("InputBelt").GetComponent<inputBelt>();
+        values = GameObject.FindWithTag("Value").gameObject;
+        inputbelt = GameObject.FindWithTag("InputBelt").gameObject;
+        outputBelt = GameObject.FindWithTag("OutputBelt").gameObject;
         canvas = GameObject.FindWithTag("Canvas").gameObject;
+        GameEnd = GameObject.FindWithTag("GameEnd").gameObject;
+        GameEnd.SetActive(false);
         if(Level == "1")
         {
             Level1_Setting();
         }
+        else if(Level == "1_1")
+        {
+            Level1_1_Setting();
+        }
+        else if(Level == "1_2")
+        {
+            Level1_2_Setting();
+        }
+       
+        
+    }
+    public void Finish()
+    {
+        GameEnd.SetActive(true);
     }
     public void Level1_Setting()
     {
-        for(int i = 0; i < Level1_inputData.Length; i++)
+        inputBelt input = inputbelt.GetComponent<inputBelt>();
+        for (int i = 0; i < Level1_value; i++)
         {
-            inputbelt.boxNum.Add(Level1_inputData[i]);
+            values.transform.GetChild(i).gameObject.SetActive(true);
+        }
+        for (int i = 0; i < Level1_inputData.Length; i++)
+        {
+            input.boxNum.Add(Level1_inputData[i]);
         }
         for(int i = 0; i < Level1_codes.Length; i++)
         {
             canvas.transform.GetChild(i).gameObject.SetActive(Level1_codes[i]);
         }
+        outputBelt.GetComponent<outBelt>().SetOutputDataLength = Level1_outputData.Length;
+    }
+    public void Level1_1_Setting()
+    {
+        inputBelt input = inputbelt.GetComponent<inputBelt>();
+        for (int i = 0; i < Level1_1_value; i++)
+        {
+            values.transform.GetChild(i).gameObject.SetActive(true);
+        }
+        for (int i = 0; i < Level1_1_inputData.Length; i++)
+        {
+            input.boxNum.Add(Level1_1_inputData[i]);
+        }
+        for (int i = 0; i < Level1_1_codes.Length; i++)
+        {
+            canvas.transform.GetChild(i).gameObject.SetActive(Level1_1_codes[i]);
+        }
+        outputBelt.GetComponent<outBelt>().SetOutputDataLength = Level1_1_outputData.Length;
+    }
+    public void Level1_2_Setting()
+    {
+        inputBelt input = inputbelt.GetComponent<inputBelt>();
+        for (int i = 0; i < Level1_2_value; i++)
+        {
+            values.transform.GetChild(i).gameObject.SetActive(true);
+        }
+        for (int i = 0; i < Level1_2_inputData.Length; i++)
+        {
+            input.boxNum.Add(Level1_2_inputData[i]);
+        }
+        for (int i = 0; i < Level1_2_codes.Length; i++)
+        {
+            canvas.transform.GetChild(i).gameObject.SetActive(Level1_2_codes[i]);
+        }
+        outputBelt.GetComponent<outBelt>().SetOutputDataLength = Level1_2_outputData.Length;
     }
 }

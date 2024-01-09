@@ -15,15 +15,24 @@ public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler
     public bool Iscollision;
     public bool Up;
     public int index;
-    private void Awake()
+    private void OnLevelWasLoaded(int level)
     {
-
         isDrag = false;
         index = -1;
         codes = new List<GameObject>();
         Canvas = GameObject.FindWithTag("Content").gameObject;
         originCanvas = GameObject.FindWithTag("Canvas").gameObject;
         inside = GameObject.Find("Position").gameObject; // ���� ��ġ�� ���� ������ �ٸ� �������� �ڵ��� �̵��� ��ġ�� �̸� ������
+    }
+    private void Awake()
+    {
+        isDrag = false;
+        index = -1;
+        codes = new List<GameObject>();
+        Canvas = GameObject.FindWithTag("Content").gameObject;
+        originCanvas = GameObject.FindWithTag("Canvas").gameObject;
+        inside = GameObject.Find("Position").gameObject;
+
     }
     public void OnDrag(PointerEventData eventData)
     {

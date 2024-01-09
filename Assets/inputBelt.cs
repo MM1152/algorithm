@@ -20,4 +20,8 @@ public class inputBelt : MonoBehaviour
         }
         
     }
+    private void Update()
+    {
+        
+    }
 }

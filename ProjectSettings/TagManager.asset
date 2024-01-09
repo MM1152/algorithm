@@ -16,6 +16,7 @@ TagManager:
   - Draging
   - GameManager
   - Code
+  - GameEnd
   layers:
   - Default
   - TransparentFX
