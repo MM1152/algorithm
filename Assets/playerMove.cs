@@ -114,9 +114,6 @@ public class playerMove : MonoBehaviour
         
         try
         {
-            
-           
-            
             if (collision.name == "OutputBelt")
             {
                 gameObject.transform.GetChild(transform.Find("Box(Clone)").GetSiblingIndex()).transform.SetParent(collision.gameObject.transform);
@@ -167,7 +164,7 @@ public class playerMove : MonoBehaviour
                 }
             }
         }
-        if (collision.name.Equals("A") || collision.name.Equals("B"))
+        if (collision.name.Equals(valueBox.name))
         {
             
             if (checkcode.IsCopy)
@@ -215,6 +212,32 @@ public class playerMove : MonoBehaviour
                 checkcode.IsPaste = false;
 
             }
+            if (checkcode.isCal)
+            {
+                StartCoroutine(wait());
+                string num = valueBox.transform.Find("Box(Clone)").gameObject.transform.GetChild(0).GetChild(0).GetComponent<Text>().text;
+                string num1 = gameObject.transform.Find("Box(Clone)").GetChild(0).GetChild(0).GetComponent<Text>().text;
+                int sum = 0;
+                if (checkcode.calvalue[1] == '+')
+                {
+                    sum = int.Parse(num) + int.Parse(num1);
+                }
+                else if (checkcode.calvalue[1] == '-')
+                {
+                    sum = int.Parse(num) - int.Parse(num1);
+                }
+                else if (checkcode.calvalue[1] == '*')
+                {
+                    sum = int.Parse(num) * int.Parse(num1);
+                }
+                else if (checkcode.calvalue[1] == '/')
+                {
+                    sum = int.Parse(num) / int.Parse(num1);
+                }
+
+                gameObject.transform.Find("Box(Clone)").GetChild(0).GetChild(0).GetComponent<Text>().text = sum.ToString();
+                checkcode.isCal = false;
+            }
 
         }
         
@@ -229,5 +252,9 @@ public class playerMove : MonoBehaviour
     {
         yield return new WaitUntil(() => ani.GetCurrentAnimatorStateInfo(0).IsName("PlayerPickUp2") && ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
         gameObject.transform.Find("Box(Clone)").gameObject.SetActive(true);
+    }
+    IEnumerator wait()
+    {
+        yield return new WaitForSeconds(0.5f);
     }
 }
