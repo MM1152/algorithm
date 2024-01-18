@@ -598,15 +598,15 @@ MonoBehaviour:
   Level1_inputData: 010000000200000003000000
   Level1_outputData: 010000000200000003000000
   Level1_value: 0
-  Level1_codes: 010100000000
+  Level1_codes: 01010000000000
   Level1_1_inputData: 010000000200000003000000
   Level1_1_outputData: 010000000200000003000000
   Level1_1_value: 0
-  Level1_1_codes: 010101000000
+  Level1_1_codes: 01010100000000
   Level1_2_inputData: 0500000004000000030000000200000001000000
   Level1_2_outputData: 01000000
   Level1_2_value: 1
-  Level1_2_codes: 010101010101
+  Level1_2_codes: 01010101010101
 --- !u!4 &1376729601
 Transform:
   m_ObjectHideFlags: 0
