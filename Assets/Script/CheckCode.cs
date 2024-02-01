@@ -34,7 +34,7 @@ public class CheckCode : MonoBehaviour
     public GameObject value;
 
     public bool FinAction = false;
-    public WaitUntil wait; // ÁöÁ¤µÈ µ¿ÀÛÀÌ ³¡³ª´Â ½Ã°£.
+    public WaitUntil wait; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½.
 
     public bool IF;
     private void Start()
@@ -185,10 +185,12 @@ public class CheckCode : MonoBehaviour
                 
                 if(code.name.Substring(0,2) == "ca")
                 {
+
                     calvalue[1] = code.transform.GetChild(1).GetChild(0).GetComponent<Text>().text[0]; // + , - , * , /
                     calvalue[0] = code.transform.GetChild(2).GetChild(0).GetComponent<Text>().text[0]; // value
                     isCal = true;
-                    
+
+
                 }
 
                 if (!check.ContainsKey(code.name) && code.name.Substring(0, 2) == "if")
