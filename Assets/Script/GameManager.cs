@@ -30,6 +30,11 @@ public class GameManager : MonoBehaviour
     public int[] Level1_2_outputData;
     public int Level1_2_value;
     public bool[] Level1_2_codes;
+
+    public int[] TEST_inputData;
+    public int[] TEST_outputData;
+    public int TEST_value;
+    public bool[] TEST_codes;
     // Start is called before the first frame update
     void Awake()
     {
@@ -58,20 +63,24 @@ public class GameManager : MonoBehaviour
         canvas = GameObject.FindWithTag("Canvas").gameObject;
         GameEnd = GameObject.FindWithTag("GameEnd").gameObject;
         GameEnd.SetActive(false);
-        if(Level == "1")
+        if (Level == "1")
         {
             Level1_Setting();
             outputBelt.GetComponent<outBelt>().SetOutput(Level1_outputData);
         }
-        else if(Level == "1_1")
+        else if (Level == "1_1")
         {
             Level1_1_Setting();
             outputBelt.GetComponent<outBelt>().SetOutput(Level1_1_outputData);
         }
-        else if(Level == "1_2")
+        else if (Level == "1_2")
         {
             Level1_2_Setting();
             outputBelt.GetComponent<outBelt>().SetOutput(Level1_2_outputData);
+        }
+        else if (Level == "4")
+        {
+            TESTSetting();
         }
        
         
@@ -131,5 +140,21 @@ public class GameManager : MonoBehaviour
             canvas.transform.GetChild(i).gameObject.SetActive(Level1_2_codes[i]);
         }
         
+    }
+    public void TESTSetting()
+    {
+        inputBelt input = inputbelt.GetComponent<inputBelt>();
+        for (int i = 0; i < TEST_value; i++)
+        {
+            values.transform.GetChild(i).gameObject.SetActive(true);
+        }
+        for (int i = 0; i < TEST_inputData.Length; i++)
+        {
+            input.boxNum.Add(TEST_inputData[i]);
+        }
+        for (int i = 0; i < TEST_codes.Length; i++)
+        {
+            canvas.transform.GetChild(i).gameObject.SetActive(TEST_codes[i]);
+        }
     }
 }

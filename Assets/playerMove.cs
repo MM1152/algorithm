@@ -189,7 +189,9 @@ public class playerMove : MonoBehaviour
             }
             if (checkcode.IsPaste)
             {
-                valueBox.transform.Find("Box(Clone)").gameObject.SetActive(false);
+                //valueBox.transform.Find("Box(Clone)").gameObject.SetActive(false);
+                GameObject prefeb = Instantiate(collision.transform.GetChild(1).transform.gameObject, gameObject.transform) as GameObject;
+                prefeb.SetActive(false);
                 if (valueBox.transform.position.x <= this.gameObject.transform.position.x)
                 {
                     ani.Play("PlayerPickUp", 0, 0);
@@ -205,8 +207,11 @@ public class playerMove : MonoBehaviour
                 {
                     Destroy(gameObject.transform.GetChild(transform.Find("Box(Clone)").GetSiblingIndex()).gameObject);
                 }
-                collision.transform.GetChild(1).transform.SetParent(gameObject.transform);
-                gameObject.transform.GetChild(transform.Find("Box(Clone)").GetSiblingIndex()).transform.localPosition = new Vector3(0f , 0.5f, 0f);
+                prefeb.name = "Box(Clone)";
+                prefeb.transform.localPosition = new Vector3(0f, 0.5f, 0f);
+                prefeb.transform.localScale = new Vector3(0.694182277f, 0.805350602f, 1.08090448f);
+                //collision.transform.GetChild(1).transform.SetParent(gameObject.transform);
+
 
                 ani.SetBool("IsCarry", true);   
                 checkcode.IsPaste = false;
@@ -214,9 +219,9 @@ public class playerMove : MonoBehaviour
             }
             if (checkcode.isCal)
             {
-                StartCoroutine(wait());
-                string num = valueBox.transform.Find("Box(Clone)").gameObject.transform.GetChild(0).GetChild(0).GetComponent<Text>().text;
-                string num1 = gameObject.transform.Find("Box(Clone)").GetChild(0).GetChild(0).GetComponent<Text>().text;
+                string num1 = valueBox.transform.Find("Box(Clone)").gameObject.transform.GetChild(0).GetChild(0).GetComponent<Text>().text;
+                string num = gameObject.transform.Find("Box(Clone)").GetChild(0).GetChild(0).GetComponent<Text>().text;
+                Debug.Log($"num : {num1} num1 : {num}");
                 int sum = 0;
                 if (checkcode.calvalue[1] == '+')
                 {
@@ -234,6 +239,7 @@ public class playerMove : MonoBehaviour
                 {
                     sum = int.Parse(num) / int.Parse(num1);
                 }
+                Debug.Log($"sum : {sum}");
 
                 gameObject.transform.Find("Box(Clone)").GetChild(0).GetChild(0).GetComponent<Text>().text = sum.ToString();
                 checkcode.isCal = false;
@@ -245,16 +251,14 @@ public class playerMove : MonoBehaviour
     IEnumerator BoxShow()
     {
         yield return new WaitUntil(() => ani.GetCurrentAnimatorStateInfo(0).IsName("PlayerPickUp") && ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
+        Debug.Log($"pick up {ani.GetCurrentAnimatorStateInfo(0).normalizedTime}");
         gameObject.transform.Find("Box(Clone)").gameObject.SetActive(true);
         BoxPickUp = true;
     }
     IEnumerator Boxshow1()
     {
         yield return new WaitUntil(() => ani.GetCurrentAnimatorStateInfo(0).IsName("PlayerPickUp2") && ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
+        Debug.Log($"pick up2 {ani.GetCurrentAnimatorStateInfo(0).normalizedTime}");
         gameObject.transform.Find("Box(Clone)").gameObject.SetActive(true);
-    }
-    IEnumerator wait()
-    {
-        yield return new WaitForSeconds(0.5f);
     }
 }

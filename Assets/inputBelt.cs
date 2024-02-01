@@ -6,11 +6,16 @@ public class inputBelt : MonoBehaviour
 {
     public List<int> boxNum; 
    
+
     public GameObject Box;
+
+
+    private float boxinitPos;
     private float boxtransY;
     private void Start()
     {
         boxtransY = 0f;
+        boxinitPos = 0.4f;
         for (int i = 0; i < boxNum.Count; i++)
         {
             GameObject prefeb = Instantiate(Box, transform) as GameObject;
@@ -22,6 +27,24 @@ public class inputBelt : MonoBehaviour
     }
     private void Update()
     {
+        if (gameObject.transform.childCount != 0 && gameObject.transform.GetChild(0).transform.position.y <= 0.3f)
+        {
+            BoxMove();
+        }
+           
+    }
+
+    private void BoxMove()
+    {
         
+        
+            for (int i = 0; i < gameObject.transform.childCount; i++)
+            {
+                gameObject.transform.GetChild(i).transform.Translate(new Vector3(0f , 0.005f , 0f));
+              
+
+            }
+       
+         
     }
 }

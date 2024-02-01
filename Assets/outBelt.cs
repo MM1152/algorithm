@@ -30,7 +30,7 @@ public class outBelt : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (ChildCount != 0)
+        if (ChildCount != 0 && Level != "4")
         {
         
                 if (BoxCount != gameManger.Level1_outputData[ChildCount - 1])
