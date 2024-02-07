@@ -16,6 +16,7 @@ public class Values : MonoBehaviour
         rect = GetComponent<RectTransform>();
         if(gameObject.name == "values")
         {
+            
             for (int i = 0; i < GameObject.FindWithTag("Value").transform.childCount; i++)
             {
                 if(GameObject.FindWithTag("Value").transform.GetChild(i).gameObject.activeInHierarchy == true)
@@ -30,8 +31,8 @@ public class Values : MonoBehaviour
         }
         if(gameObject.name == "IFvalues")
         {
-            char[] calcu = {'<' , '>' };
-            for (int i = 0; i < 2; i++)
+            char[] calcu = {'=' , '<' , '>' };
+            for (int i = 0; i < 3; i++)
             {
                 rect.sizeDelta = new Vector3(rect.rect.width, rect.rect.height + 65f, 0f);
                 GameObject prefeb = Instantiate(valuesName, transform) as GameObject;
