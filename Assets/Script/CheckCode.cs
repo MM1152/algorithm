@@ -86,7 +86,15 @@ public class CheckCode : MonoBehaviour
                 Console.Write($"target { target } ");
                 if (code.name.Substring(0, 2) == "if" && check.ContainsKey(code.name))
                 {
-                    player.checkIF(GameObject.Find(Ifvalue[1].ToString()).gameObject);
+                    Debug.Log(Ifvalue[1]);
+                    if(Ifvalue[1] != '0')
+                    {
+                        player.checkIF(GameObject.Find(Ifvalue[1].ToString()).gameObject);
+                    }else
+                    {
+                        player.checkIF("0");
+                    }
+                    
                     /*
                     if (Ifvalue[1] == 'A')
                     {
@@ -138,9 +146,15 @@ public class CheckCode : MonoBehaviour
                     }
                     if (code.name.Substring(0, 2) == "if" && check.ContainsKey(code.name))
                     {
-                        target = GameObject.Find(Ifvalue[1].ToString()).transform;
-                        player.SetValueBox(target.gameObject);
-                        player.Move(target);
+                        if(Ifvalue[1] != '0')
+                        {
+                            target = GameObject.Find(Ifvalue[1].ToString()).transform;
+                            player.SetValueBox(target.gameObject);
+                            player.Move(target);
+                        }
+                
+                        
+                        
 
                     }
                     if(code.name == "cal(Clone)")
@@ -279,6 +293,7 @@ public class CheckCode : MonoBehaviour
                 
             }
         }
+        Time.timeScale = 0f;
         
     }
 

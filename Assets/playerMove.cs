@@ -69,6 +69,55 @@ public class playerMove : MonoBehaviour
         }
         
     }
+    public void checkIF(string id)
+    {
+        int a = int.Parse(id);
+        int b = int.Parse(gameObject.transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Text>().text);
+
+        if (checkcode.Isif)
+        {
+            if (checkcode.Ifvalue[0] == '=')
+            {
+                if (b == a)
+                {
+                    checkcode.IF = true;
+                }
+                else
+                {
+                    checkcode.IF = false;
+                }
+            }
+            else if (checkcode.Ifvalue[0] == '>')
+            {
+                if (b > a)
+                {
+                    checkcode.IF = true;
+                    Debug.Log("IF TRUE");
+                }
+                else
+                {
+                    checkcode.IF = false;
+                    Debug.Log("IF FALSE");
+                }
+            }
+            else if (checkcode.Ifvalue[0] == '<')
+            {
+                if (b < a)
+                {
+                    checkcode.IF = true;
+                    Debug.Log("IF TRUE");
+                }
+                else
+                {
+                    checkcode.IF = false;
+                    Debug.Log("IF FALSE");
+                }
+            }
+            checkcode.Isif = false;
+
+        }
+
+    }
     public void checkIF(GameObject valueBox)
     {
         this.valueBox = valueBox;
@@ -77,8 +126,17 @@ public class playerMove : MonoBehaviour
         Debug.Log($"ifvalue : {checkcode.Ifvalue[0]} , 박스에 있는 숫자 : {a} , 내손에 있는 숫자 {b}");
         if (checkcode.Isif)
         {
-            
-            if (checkcode.Ifvalue[0] == '>')
+            if(checkcode.Ifvalue[0] == '=')
+            {
+                if(b == a)
+                {
+                    checkcode.IF = true;
+                }else
+                {
+                    checkcode.IF = false;
+                }
+            }
+            else if (checkcode.Ifvalue[0] == '>')
                 {
                     if (b > a)
                     {
@@ -160,11 +218,11 @@ public class playerMove : MonoBehaviour
                     }
                     StartCoroutine(BoxShow());
                     
-
+                    
                 }
             }
         }
-        if (collision.name.Equals(valueBox.name))
+        if (valueBox != null && collision.name.Equals(valueBox.name))
         {
             
             if (checkcode.IsCopy)
