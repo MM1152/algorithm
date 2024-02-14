@@ -609,7 +609,7 @@ MonoBehaviour:
   Level1_2_codes: 01010101010100
   TEST_inputData: 0c00000003000000040000000500000008000000
   TEST_outputData: 0100000001000000
-  TEST_value: 4
+  TEST_value: 5
   TEST_codes: 01010101010101
 --- !u!4 &1376729601
 Transform:
