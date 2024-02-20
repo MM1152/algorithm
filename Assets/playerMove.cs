@@ -222,6 +222,7 @@ public class playerMove : MonoBehaviour
                 }
             }
         }
+        Debug.Log($"{collision.name}");
         if (valueBox != null && collision.name.Equals(valueBox.name))
         {
             
@@ -276,7 +277,7 @@ public class playerMove : MonoBehaviour
 
             }
             if (checkcode.isCal)
-            {
+            {   
                 string num1 = valueBox.transform.Find("Box(Clone)").gameObject.transform.GetChild(0).GetChild(0).GetComponent<Text>().text;
                 string num = gameObject.transform.Find("Box(Clone)").GetChild(0).GetChild(0).GetComponent<Text>().text;
                 Debug.Log($"num : {num1} num1 : {num}");
