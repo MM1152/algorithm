@@ -860,7 +860,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &160162238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2183,6 +2183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   videoData: {fileID: 11400000, guid: 3fbe32d8065b1474ab6b7c739524806b, type: 2}
+  gameManager: {fileID: 0}
 --- !u!328 &497731571
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -6094,7 +6095,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -336.27}
+  m_AnchoredPosition: {x: 0, y: -336.27005}
   m_SizeDelta: {x: 0, y: 672.55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1418186044
@@ -7660,7 +7661,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2037188393}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 497731570}
+        m_TargetAssemblyTypeName: VideoChange, Assembly-CSharp
+        m_MethodName: NextVideo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2037188393
 MonoBehaviour:
   m_ObjectHideFlags: 0

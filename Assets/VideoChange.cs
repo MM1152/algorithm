@@ -7,18 +7,19 @@ public class VideoChange : MonoBehaviour
     [SerializeField]
     private VideoData videoData;
     public VideoData VideoData { set { videoData = value; } }
+
+    public GameManager gameManager;
+    private VideoPlayer videoPlayer;
+
+    int count = 0;
+
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i < videoData.Videos.Length; i++)
-        {
-            
-        }
+        videoPlayer = GetComponent<VideoPlayer>();
     }
-
-    // Update is called once per frame
-    void Update()
+    public void NextVideo()
     {
-        
+        videoPlayer.clip = videoData.Videos[++count];
     }
 }
