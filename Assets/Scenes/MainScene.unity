@@ -645,6 +645,7 @@ GameObject:
   - component: {fileID: 80579500}
   - component: {fileID: 80579502}
   - component: {fileID: 80579501}
+  - component: {fileID: 80579503}
   m_Layer: 5
   m_Name: Next
   m_TagString: Untagged
@@ -714,6 +715,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 80579499}
   m_CullTransparentMesh: 1
+--- !u!114 &80579503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80579499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74e60691803b9e45abc3e0e6b6c3b76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tutorial: {fileID: 160162237}
 --- !u!1 &86706716
 GameObject:
   m_ObjectHideFlags: 0
@@ -2184,6 +2198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoData: {fileID: 11400000, guid: 3fbe32d8065b1474ab6b7c739524806b, type: 2}
   gameManager: {fileID: 0}
+  text: {fileID: 80579501}
 --- !u!328 &497731571
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -7662,6 +7677,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 80579503}
+        m_TargetAssemblyTypeName: CloseVideo, Assembly-CSharp
+        m_MethodName: checkword
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 497731570}
         m_TargetAssemblyTypeName: VideoChange, Assembly-CSharp
         m_MethodName: NextVideo

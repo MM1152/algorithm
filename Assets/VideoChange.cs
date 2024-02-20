@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Video;
 public class VideoChange : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class VideoChange : MonoBehaviour
     public VideoData VideoData { set { videoData = value; } }
 
     public GameManager gameManager;
+    public Text text;
     private VideoPlayer videoPlayer;
 
     int count = 0;
@@ -20,6 +22,14 @@ public class VideoChange : MonoBehaviour
     }
     public void NextVideo()
     {
-        videoPlayer.clip = videoData.Videos[++count];
+        Debug.Log(count);
+        if(count < videoData.Videos.Length)
+        {
+            videoPlayer.clip = videoData.Videos[++count];
+        }
+        if(count >= videoData.Videos.Length - 1)
+        {
+            text.text = "´Ý±â";
+        }     
     }
 }
