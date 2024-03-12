@@ -182,6 +182,7 @@ public class CheckCode : MonoBehaviour
                     if (code.name == "Pick up(Clone)")
                     {
                         count++;
+                        player.BoxPickUp = true;
                     }
                     if (code.name == "Copy(Clone)")
                     {

@@ -22,10 +22,12 @@ public class VideoChange : MonoBehaviour
     }
     public void NextVideo()
     {
+        count++;
         Debug.Log(count);
         if(count < videoData.Videos.Length)
         {
-            videoPlayer.clip = videoData.Videos[++count];
+            
+            videoPlayer.clip = videoData.Videos[count];
         }
         if(count >= videoData.Videos.Length - 1)
         {

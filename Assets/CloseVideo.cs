@@ -7,6 +7,7 @@ public class CloseVideo : MonoBehaviour
 {
     private Text text;
     public GameObject Tutorial;
+    public GameObject UGUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,9 @@ public class CloseVideo : MonoBehaviour
     {
         if(text.text == "´Ý±â")
         {
+            UGUI.SetActive(true);
             Tutorial.SetActive(false);
+             
         }
     }
 }
