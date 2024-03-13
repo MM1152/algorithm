@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+
+
 public class CheckCode : MonoBehaviour
 {
     public Armposition armPos;
@@ -194,8 +196,6 @@ public class CheckCode : MonoBehaviour
                         IsPaste = true;
                         copyValue = code.transform.GetChild(1).GetChild(0).GetComponent<Text>().text[0];
                     }
-                    
-
                 }
                 
                 if(code.name.Substring(0,2) == "ca")
