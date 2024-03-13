@@ -157,4 +157,6 @@ public class GameManager : MonoBehaviour
             canvas.transform.GetChild(i).gameObject.SetActive(TEST_codes[i]);
         }
     }
+
+
 }

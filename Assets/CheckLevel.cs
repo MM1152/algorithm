@@ -9,16 +9,18 @@ public class CheckLevel : MonoBehaviour
     public Text text;
 
     public string check_Level;
-    
+
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         check_Level = gameManager.Level;
+        this.gameObject.SetActive(false);
     }
 
     private void Update()
     {
-        if(this.gameObject.activeInHierarchy == true)
+        
+        if (this.gameObject.activeInHierarchy == true)
         {
             switch (check_Level)
             {
@@ -33,11 +35,13 @@ public class CheckLevel : MonoBehaviour
                     break;
             }
             StartCoroutine(Wait());
-            
+
         }
+
+
     }
 
-    
+
 
     IEnumerator Wait()
     {

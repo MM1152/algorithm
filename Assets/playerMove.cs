@@ -192,7 +192,6 @@ public class playerMove : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        
         if (collision.name == "InputBelt")
         {
             if(checkcode.code.name.Equals("Pick up(Clone)") && BoxPickUp){
@@ -276,7 +275,7 @@ public class playerMove : MonoBehaviour
 
             }
             if (checkcode.isCal)
-            {
+            {   
                 string num1 = valueBox.transform.Find("Box(Clone)").gameObject.transform.GetChild(0).GetChild(0).GetComponent<Text>().text;
                 string num = gameObject.transform.Find("Box(Clone)").GetChild(0).GetChild(0).GetComponent<Text>().text;
                 Debug.Log($"num : {num1} num1 : {num}");
@@ -311,7 +310,6 @@ public class playerMove : MonoBehaviour
         yield return new WaitUntil(() => ani.GetCurrentAnimatorStateInfo(0).IsName("PlayerPickUp") && ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
         Debug.Log($"pick up {ani.GetCurrentAnimatorStateInfo(0).normalizedTime}");
         gameObject.transform.Find("Box(Clone)").gameObject.SetActive(true);
-        BoxPickUp = true;
     }
     IEnumerator Boxshow1()
     {

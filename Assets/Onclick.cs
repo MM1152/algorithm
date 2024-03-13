@@ -37,6 +37,13 @@ public class Onclick : MonoBehaviour , IPointerClickHandler
                 prefeb.name = "if" + count++;
                 prefeb.GetComponent<Image>().color = new Color(0.7f, 0.3f, 1, 1); 
             }
+            if(hit.collider.name == "IFJump")
+            {
+                prefeb.name = "IFJump" + count;
+                prefeb = Instantiate(prefebs[1], Canvas.transform) as GameObject;
+                prefeb.name = "IFJump" + count++;
+                prefeb.GetComponent<Image>().color = new Color(1f, 0f, 0, 1f);
+            }
             
             
         }
