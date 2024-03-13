@@ -192,7 +192,6 @@ public class playerMove : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log(valueBox);
         if (collision.name == "InputBelt")
         {
             if(checkcode.code.name.Equals("Pick up(Clone)") && BoxPickUp){
@@ -222,7 +221,6 @@ public class playerMove : MonoBehaviour
                 }
             }
         }
-        Debug.Log($"{collision.name}");
         if (valueBox != null && collision.name.Equals(valueBox.name))
         {
             

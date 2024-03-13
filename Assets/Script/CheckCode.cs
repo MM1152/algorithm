@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
-
+using System.Threading;
 
 public class CheckCode : MonoBehaviour
 {
@@ -39,9 +39,13 @@ public class CheckCode : MonoBehaviour
     public WaitUntil wait; // ������ ������ ������ �ð�.
 
     public bool IF;
+    public Dictionary<string, int> ifJump_NameAndValue;
+    public int IfJump_Count;
+
     private void Start()
     {
-        
+        ifJump_NameAndValue = new Dictionary<string, int>();
+        IfJump_Count = 0;
         if(GameObject.Find("CodePoint").GetComponents<Image>().Length == 1)
         {
             CodePoint = GameObject.Find("CodePoint").gameObject;
@@ -73,11 +77,24 @@ public class CheckCode : MonoBehaviour
         {
             list.Add(Lay.gameObject.transform.GetChild(i).gameObject);
         }
-        CodeRunning = true;
+        setIfJump();
         
+        CodeRunning = true;
         StartCoroutine(Run());
-    }
 
+    }
+    public void setIfJump()
+    {
+        for (int i = 0; i < list.Count; i++)
+        {
+            if (!ifJump_NameAndValue.ContainsKey(list[i].name) && list[i].name.Substring(0, 2).Equals("IF"))
+            {
+                
+                ifJump_NameAndValue.Add(list[i].name, int.Parse(list[i].transform.GetChild(1).GetComponent<InputField>().text));
+                list[i].transform.GetChild(1).GetComponent<InputField>().text = "0";
+            }
+        }
+    }
     private void Update()
     {
        
@@ -154,10 +171,6 @@ public class CheckCode : MonoBehaviour
                             player.SetValueBox(target.gameObject);
                             player.Move(target);
                         }
-                
-                        
-                        
-
                     }
                     if(code.name == "cal(Clone)")
                     {
@@ -179,6 +192,7 @@ public class CheckCode : MonoBehaviour
             try
             {
                 code = list[i];
+                
                 if (IF)
                 {
                     if (code.name == "Pick up(Clone)")
@@ -240,9 +254,28 @@ public class CheckCode : MonoBehaviour
                     }
                     
                 }
+                
+                if (!check.ContainsKey(code.name) && code.name.Substring(0,2) == "IF")
+                {
+                    check.Add(code.name, i);
+                    IfJump_Count++;
+                    code.transform.GetChild(1).GetComponent<InputField>().text = IfJump_Count.ToString();
+                }
+                else if(code.name.Substring(0, 2) == "IF" && check.ContainsKey(code.name) && IfJump_Count != ifJump_NameAndValue[code.name] && IfJump_Count < ifJump_NameAndValue[code.name])
+                {
+                    if(list[i - 1].name.Substring(0,2) == "IF") {
+
+                        code.transform.GetChild(1).GetComponent<InputField>().text = IfJump_Count.ToString();
+                    }
+                    IfJump_Count++;
+                    
+                    Debug.Log($"if jump count : {IfJump_Count}");
+                    i = check[code.name] - 1;
+                }
+    
                 CodePoint.transform.SetParent(code.transform);
                 CodePoint.transform.localPosition = new Vector3(-150f, 0f, 0f);
-                
+
             } catch(Exception e)
             {
                 Debug.Log(e);
@@ -278,7 +311,7 @@ public class CheckCode : MonoBehaviour
 
                  }
              }*/
-            if(code.name.Substring(0, 2) == "ju" || code.name.Substring(0, 2) == "if")
+            if(code.name.Substring(0, 2) == "ju" || code.name.Substring(0, 2) == "if" || code.name.Substring(0,2) == "IF")
             {
                 yield return new WaitForSeconds(0f);
             }
@@ -290,7 +323,7 @@ public class CheckCode : MonoBehaviour
             else
             {
                 yield return new WaitForSeconds(0.5f);
-                yield return new WaitUntil(() => Vector3.Distance(player.transform.position , target.position) < 0.25f);
+                yield return new WaitUntil(() => Vector3.Distance(player.transform.position , target.position) < 0.25f); 
                 
             }
         }

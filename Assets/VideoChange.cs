@@ -23,7 +23,6 @@ public class VideoChange : MonoBehaviour
     public void NextVideo()
     {
         count++;
-        Debug.Log(count);
         if(count < videoData.Videos.Length)
         {
             
