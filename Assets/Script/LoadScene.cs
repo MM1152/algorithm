@@ -18,10 +18,18 @@ public class LoadScene : MonoBehaviour
             Debug.Log(i);
         }
     }
-
+    
     void OnClick(int i)
     {
-        gameManager.Level = i.ToString();
-        SceneManager.LoadScene("MainScene");    
+        if (i == 5)
+        {
+            SceneManager.LoadScene("coustomScene");
+
+        }
+        else
+        {
+            gameManager.Level = i.ToString();
+            SceneManager.LoadScene("MainScene");
+        }
     }
 }
