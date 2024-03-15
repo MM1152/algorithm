@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
+
 
 public class ClickEvenet : MonoBehaviour, IPointerClickHandler
 {
-
     public GameObject Canvas;
     public GameObject _thisGameObj;
     public Vector3 originTransform;
 
     public MouseDrag mouseDrag;
-    public bool isValueCopy;  
-
+    public bool isValueCopy;
+    public static bool valueSelect;
     private void Awake()
     {
+        valueSelect = false;
         isValueCopy = false;
         originTransform = this.gameObject.transform.localPosition;
         Canvas = GameObject.FindWithTag("Canvas").gameObject;
@@ -26,6 +26,7 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
     {
         Debug.Log(originTransform);
         isValueCopy = false;
+        valueSelect = false;
         originTransform = this.gameObject.transform.localPosition;
         Canvas = GameObject.FindWithTag("Canvas").gameObject;
         _thisGameObj = transform.parent.gameObject;
@@ -35,22 +36,28 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
         
         if(eventData.button == PointerEventData.InputButton.Left)
         {
-            if (!transform.GetChild(1).gameObject.activeInHierarchy)
+            if(gameObject.name == "Value" && !gameObject.transform.GetChild(1).gameObject.activeSelf)
             {
-                transform.GetChild(1).gameObject.SetActive(true);
-                transform.SetParent(Canvas.transform);
-                
-            }else
+                gameObject.transform.GetChild(1).gameObject.SetActive(true);
+            }else if(gameObject.name == "Value" && gameObject.transform.GetChild(1).gameObject.activeSelf)
             {
-                transform.GetChild(1).gameObject.SetActive(false);
-                transform.SetParent(_thisGameObj.transform);
-                transform.localPosition = originTransform;
+                gameObject.transform.GetChild(1).gameObject.SetActive(false);
             }
-            
+            else
+            {
+                valueSelect = true;
+            }
         }
     }
     private void Update()
     {
+        if (OnMousepointer.selectValue != " ")
+        {
+            transform.GetChild(0).GetComponent<Text>().text = OnMousepointer.selectValue;
+            OnMousepointer.selectValue = " ";
+            valueSelect = false;
+        }
+
         if (onDrag.isDrag)
         {
             transform.GetChild(1).gameObject.SetActive(false);

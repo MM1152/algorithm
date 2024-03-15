@@ -10,10 +10,12 @@ public class Onclick : MonoBehaviour , IPointerClickHandler
     public onDrag onDrag;
     public GameObject prefeb;
     public int count;
+    public GameObject Draw;
     private void Awake()
     {
         Canvas = GameObject.FindWithTag("Content").gameObject;
         count = 0;
+       
     }
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -25,9 +27,12 @@ public class Onclick : MonoBehaviour , IPointerClickHandler
 
             if(hit.collider.name == "Jump")
             {
+                Draw = prefeb;
+                Draw.GetComponent<DrawLine>().startPos = prefeb.transform;
                 prefeb.name = "jump" + count;
                 onDrag = prefeb.GetComponent<onDrag>();
                 prefeb = Instantiate(prefebs[1], Canvas.transform) as GameObject;
+                Draw.GetComponent<DrawLine>().endPos = prefeb.transform;
                 prefeb.name = "jump" + count++;
                 onDrag.SetChild(prefeb);
                 prefeb.GetComponent<Image>().color = new Color(1f, 0f, 0, 1f);
