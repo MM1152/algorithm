@@ -41,9 +41,10 @@ public class CheckCode : MonoBehaviour
     public bool IF;
     public Dictionary<string, int> ifJump_NameAndValue;
     public int IfJump_Count;
-    public GameObject parentIfJump;
+    public Dictionary<String , GameObject> parentIfJump;
     private void Start()
     {
+        parentIfJump = new Dictionary<string, GameObject>();
         ifJump_NameAndValue = new Dictionary<string, int>();
         IfJump_Count = 0;
         if(GameObject.Find("CodePoint").GetComponents<Image>().Length == 1)
@@ -188,6 +189,10 @@ public class CheckCode : MonoBehaviour
         
         for (int i = 0; i < Lay.transform.childCount; i++)
          {
+            foreach(var key in parentIfJump.Keys)
+            {
+                Debug.Log($"{key}  {parentIfJump[key]}");
+            }
             try
             {
                 code = list[i];
@@ -258,18 +263,18 @@ public class CheckCode : MonoBehaviour
                 {
                     check.Add(code.name, i);
                     code.transform.GetChild(1).GetComponent<InputField>().text = (int.Parse(code.transform.GetChild(1).GetComponent<InputField>().text) + 1).ToString();
-                    parentIfJump = GameObject.Find(code.name);
+                    parentIfJump.Add(code.name , GameObject.Find(code.name));
                 }
                 else if(code.name.Substring(0, 2) == "IF" && check.ContainsKey(code.name) && IfJump_Count != ifJump_NameAndValue[code.name] && 
-                    int.Parse(parentIfJump.transform.GetChild(1).GetComponent<InputField>().text) < ifJump_NameAndValue[code.name])
+                    int.Parse(parentIfJump[code.name].transform.GetChild(1).GetComponent<InputField>().text) < ifJump_NameAndValue[code.name])
                 {
                     i = check[code.name];
-                    parentIfJump.transform.GetChild(1).GetComponent<InputField>().text = (int.Parse(parentIfJump.transform.GetChild(1).GetComponent<InputField>().text) + 1).ToString();
+                    parentIfJump[code.name].transform.GetChild(1).GetComponent<InputField>().text = (int.Parse(parentIfJump[code.name].transform.GetChild(1).GetComponent<InputField>().text) + 1).ToString();
                 }
                 else if(code.name.Substring(0, 2) == "IF")
                 {
                     Debug.Log("IN");
-                    parentIfJump.transform.GetChild(1).GetComponent<InputField>().text = "0";
+                    parentIfJump[code.name].transform.GetChild(1).GetComponent<InputField>().text = "0";
                 }
                 
                 CodePoint.transform.SetParent(code.transform);

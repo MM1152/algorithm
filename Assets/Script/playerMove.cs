@@ -308,13 +308,11 @@ public class playerMove : MonoBehaviour
     IEnumerator BoxShow()
     {
         yield return new WaitUntil(() => ani.GetCurrentAnimatorStateInfo(0).IsName("PlayerPickUp") && ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
-        Debug.Log($"pick up {ani.GetCurrentAnimatorStateInfo(0).normalizedTime}");
         gameObject.transform.Find("Box(Clone)").gameObject.SetActive(true);
     }
     IEnumerator Boxshow1()
     {
         yield return new WaitUntil(() => ani.GetCurrentAnimatorStateInfo(0).IsName("PlayerPickUp2") && ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
-        Debug.Log($"pick up2 {ani.GetCurrentAnimatorStateInfo(0).normalizedTime}");
         gameObject.transform.Find("Box(Clone)").gameObject.SetActive(true);
     }
 }

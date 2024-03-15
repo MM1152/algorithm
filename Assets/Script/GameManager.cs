@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        Application.targetFrameRate = 60;
         firstIn = true;
         if (GameObject.FindGameObjectsWithTag("GameManager").Length == 1)
         {
