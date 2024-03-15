@@ -25,6 +25,13 @@ public class MouseDrag : MonoBehaviour , IDragHandler , IEndDragHandler , IBegin
     public void OnEndDrag(PointerEventData eventData)
     {
         isMouseUse = false;
+        StartCoroutine(WaitFrame());
+        
+    }
+
+    IEnumerator WaitFrame()
+    {
+        yield return new WaitForSeconds(0.05f);
         Destroy(copyValue);
     }
 }

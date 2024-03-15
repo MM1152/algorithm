@@ -172,13 +172,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeff78c00662d46468e24b89dc8bbbce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkCode: {fileID: 0}
   codes: []
   Collision: {fileID: 0}
   Canvas: {fileID: 0}
   originCanvas: {fileID: 0}
+  inside: {fileID: 0}
   Iscollision: 0
   Up: 0
   index: 0
+  Child: {fileID: 0}
 --- !u!61 &9102896373762439778
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -223,6 +226,6 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
