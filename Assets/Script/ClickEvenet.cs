@@ -28,7 +28,7 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
     {
         Debug.Log(originTransform);
         isValueCopy = false;
-        valueSelect = false;0
+        valueSelect = false;
         originTransform = this.gameObject.transform.localPosition;
         Canvas = GameObject.FindWithTag("Canvas").gameObject;
         _thisGameObj = transform.parent.gameObject;
