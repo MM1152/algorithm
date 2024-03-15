@@ -295,6 +295,8 @@ MonoBehaviour:
   value: {fileID: 24477581}
   FinAction: 0
   IF: 0
+  IfJump_Count: 0
+  parentIfJump: {fileID: 0}
 --- !u!1 &24477581
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,6 +571,8 @@ MonoBehaviour:
   prefebs:
   - {fileID: 9006499625713870021, guid: aa3aa7bb831a1e846a98deaf3fe278a7, type: 3}
   Canvas: {fileID: 1300609230}
+  onDrag: {fileID: 0}
+  prefeb: {fileID: 0}
   count: 0
 --- !u!61 &65774037
 BoxCollider2D:
@@ -1826,7 +1830,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: F
+  m_Text: 6
 --- !u!222 &396576741
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2087,6 +2091,8 @@ MonoBehaviour:
   prefebs:
   - {fileID: 971154188877978450, guid: 23ef3cdb47d34ca4597a8d6272377120, type: 3}
   Canvas: {fileID: 1300609230}
+  onDrag: {fileID: 0}
+  prefeb: {fileID: 0}
   count: 0
 --- !u!61 &458997823
 BoxCollider2D:
@@ -2532,6 +2538,8 @@ MonoBehaviour:
   - {fileID: 8906084324492065239, guid: 1a784f15cc2473849a34e5821951244c, type: 3}
   - {fileID: 454771707007839674, guid: 8f708d11ac8a2e24ba38fcdd85185002, type: 3}
   Canvas: {fileID: 1300609230}
+  onDrag: {fileID: 0}
+  prefeb: {fileID: 0}
   count: 0
 --- !u!61 &526696774
 BoxCollider2D:
@@ -2845,7 +2853,7 @@ GameObject:
   - component: {fileID: 641169936}
   - component: {fileID: 641169938}
   m_Layer: 0
-  m_Name: A
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2957,7 +2965,7 @@ GameObject:
   - component: {fileID: 643209665}
   - component: {fileID: 643209664}
   m_Layer: 0
-  m_Name: E
+  m_Name: 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3495,7 +3503,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: E
+  m_Text: 5
 --- !u!222 &706549919
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3739,7 +3747,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   check: {fileID: 24053811}
-  ifJump: []
 --- !u!114 &791257224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4514,6 +4521,8 @@ MonoBehaviour:
   - {fileID: 8906084324492065239, guid: 7a943aa06f9bb4b43944335d9458abbe, type: 3}
   - {fileID: 454771707007839674, guid: 8f708d11ac8a2e24ba38fcdd85185002, type: 3}
   Canvas: {fileID: 1300609230}
+  onDrag: {fileID: 0}
+  prefeb: {fileID: 0}
   count: 0
 --- !u!61 &1071907545
 BoxCollider2D:
@@ -4591,7 +4600,7 @@ GameObject:
   - component: {fileID: 1079385846}
   - component: {fileID: 1079385845}
   m_Layer: 0
-  m_Name: F
+  m_Name: 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4952,6 +4961,8 @@ MonoBehaviour:
   - {fileID: 2336271315081859695, guid: a5c77d30b5910a84e8a054805847112a, type: 3}
   - {fileID: 454771707007839674, guid: 8f708d11ac8a2e24ba38fcdd85185002, type: 3}
   Canvas: {fileID: 1300609230}
+  onDrag: {fileID: 0}
+  prefeb: {fileID: 0}
   count: 0
 --- !u!61 &1130049534
 BoxCollider2D:
@@ -5288,7 +5299,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: C
+  m_Text: 3
 --- !u!222 &1198248612
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5417,6 +5428,8 @@ MonoBehaviour:
   prefebs:
   - {fileID: 7575825572670548157, guid: f01b36c8034cdb8439bbca1f43e29520, type: 3}
   Canvas: {fileID: 1300609230}
+  onDrag: {fileID: 0}
+  prefeb: {fileID: 0}
   count: 0
 --- !u!1 &1216233903
 GameObject:
@@ -6364,7 +6377,7 @@ GameObject:
   - component: {fileID: 1418211610}
   - component: {fileID: 1418211611}
   m_Layer: 0
-  m_Name: B
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6520,6 +6533,8 @@ MonoBehaviour:
   prefebs:
   - {fileID: 3384568765522000393, guid: 74b4854962245074e87107a2b6d58af4, type: 3}
   Canvas: {fileID: 1300609230}
+  onDrag: {fileID: 0}
+  prefeb: {fileID: 0}
   count: 0
 --- !u!61 &1432350890
 BoxCollider2D:
@@ -6597,7 +6612,7 @@ GameObject:
   - component: {fileID: 1440885453}
   - component: {fileID: 1440885452}
   m_Layer: 0
-  m_Name: D
+  m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6768,7 +6783,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: D
+  m_Text: 4
 --- !u!222 &1443342852
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6837,7 +6852,7 @@ GameObject:
   - component: {fileID: 1547047532}
   - component: {fileID: 1547047531}
   m_Layer: 0
-  m_Name: C
+  m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7220,7 +7235,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   check: {fileID: 24053811}
-  ifJump: []
 --- !u!114 &1661886620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7689,7 +7703,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: B
+  m_Text: 2
 --- !u!222 &1880172505
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8065,6 +8079,8 @@ MonoBehaviour:
   prefebs:
   - {fileID: 3642060539125103950, guid: 3ac3acd242ea79c478e36b0e1ecd73a1, type: 3}
   Canvas: {fileID: 1300609230}
+  onDrag: {fileID: 0}
+  prefeb: {fileID: 0}
   count: 0
 --- !u!1 &2042044488
 GameObject:
@@ -8137,7 +8153,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: A
+  m_Text: 1
 --- !u!222 &2042044491
 CanvasRenderer:
   m_ObjectHideFlags: 0
