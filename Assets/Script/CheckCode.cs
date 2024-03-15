@@ -41,7 +41,7 @@ public class CheckCode : MonoBehaviour
     public bool IF;
     public Dictionary<string, int> ifJump_NameAndValue;
     public int IfJump_Count;
-
+    public GameObject parentIfJump;
     private void Start()
     {
         ifJump_NameAndValue = new Dictionary<string, int>();
@@ -89,7 +89,6 @@ public class CheckCode : MonoBehaviour
         {
             if (!ifJump_NameAndValue.ContainsKey(list[i].name) && list[i].name.Substring(0, 2).Equals("IF"))
             {
-                
                 ifJump_NameAndValue.Add(list[i].name, int.Parse(list[i].transform.GetChild(1).GetComponent<InputField>().text));
                 list[i].transform.GetChild(1).GetComponent<InputField>().text = "0";
             }
@@ -258,19 +257,19 @@ public class CheckCode : MonoBehaviour
                 if (!check.ContainsKey(code.name) && code.name.Substring(0,2) == "IF")
                 {
                     check.Add(code.name, i);
-                    IfJump_Count++;
-                    code.transform.GetChild(1).GetComponent<InputField>().text = IfJump_Count.ToString();
+                    code.transform.GetChild(1).GetComponent<InputField>().text = (int.Parse(code.transform.GetChild(1).GetComponent<InputField>().text) + 1).ToString();
+                    parentIfJump = GameObject.Find(code.name);
                 }
-                else if(code.name.Substring(0, 2) == "IF" && check.ContainsKey(code.name) && IfJump_Count != ifJump_NameAndValue[code.name] && IfJump_Count < ifJump_NameAndValue[code.name])
+                else if(code.name.Substring(0, 2) == "IF" && check.ContainsKey(code.name) && IfJump_Count != ifJump_NameAndValue[code.name] && 
+                    int.Parse(parentIfJump.transform.GetChild(1).GetComponent<InputField>().text) < ifJump_NameAndValue[code.name])
                 {
-                    if(list[i - 1].name.Substring(0,2) == "IF") {
-
-                        code.transform.GetChild(1).GetComponent<InputField>().text = IfJump_Count.ToString();
-                    }
-                    IfJump_Count++;
-                    
-                    Debug.Log($"if jump count : {IfJump_Count}");
-                    i = check[code.name] - 1;
+                    i = check[code.name];
+                    parentIfJump.transform.GetChild(1).GetComponent<InputField>().text = (int.Parse(parentIfJump.transform.GetChild(1).GetComponent<InputField>().text) + 1).ToString();
+                }
+                else if(code.name.Substring(0, 2) == "IF")
+                {
+                    Debug.Log("IN");
+                    parentIfJump.transform.GetChild(1).GetComponent<InputField>().text = "0";
                 }
     
                 CodePoint.transform.SetParent(code.transform);
@@ -278,7 +277,7 @@ public class CheckCode : MonoBehaviour
 
             } catch(Exception e)
             {
-                Debug.Log(e);
+                Debug.Log(e); 
             }
             if(code.name.Equals("Pick up(Clone)"))
             {

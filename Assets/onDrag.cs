@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler
 {
+    public CheckCode checkCode;
     public static bool isDrag;
     public List<GameObject> codes;
     public GameObject Collision;
@@ -15,20 +16,21 @@ public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler
     public bool Iscollision;
     public bool Up;
     public int index;
+    public GameObject Child;
     private void OnLevelWasLoaded(int level)
     {
+        checkCode = GameObject.Find("CheckCode").GetComponent<CheckCode>();
         isDrag = false;
         index = -1;
-        codes = new List<GameObject>();
         Canvas = GameObject.FindWithTag("Content").gameObject;
         originCanvas = GameObject.FindWithTag("Canvas").gameObject;
         inside = GameObject.Find("Position").gameObject; // ���� ��ġ�� ���� ������ �ٸ� �������� �ڵ��� �̵��� ��ġ�� �̸� ������
     }
     private void Awake()
     {
+        checkCode = GameObject.Find("CheckCode").GetComponent<CheckCode>();
         isDrag = false;
         index = -1;
-        codes = new List<GameObject>();
         Canvas = GameObject.FindWithTag("Content").gameObject;
         originCanvas = GameObject.FindWithTag("Canvas").gameObject;
         inside = GameObject.Find("Position").gameObject;
@@ -52,7 +54,15 @@ public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler
             transform.SetParent(Canvas.transform);
         } else
         {
-            Destroy(gameObject);
+            if (Child != null)
+            {
+                Destroy(gameObject);
+                Destroy(Child);
+            } else
+            {
+                Destroy(gameObject);
+            }
+            
         }
         if (index != -1)
         {
@@ -61,6 +71,10 @@ public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler
         }
         
         
+    }
+    public void SetChild(GameObject child)
+    {
+        Child = child;
     }
     private void OnTriggerStay2D(Collider2D collision)
     {

@@ -7,8 +7,8 @@ public class Onclick : MonoBehaviour , IPointerClickHandler
 {
     public GameObject[] prefebs; 
     public GameObject Canvas;
-
-    GameObject prefeb;
+    public onDrag onDrag;
+    public GameObject prefeb;
     public int count;
     private void Awake()
     {
@@ -26,22 +26,28 @@ public class Onclick : MonoBehaviour , IPointerClickHandler
             if(hit.collider.name == "Jump")
             {
                 prefeb.name = "jump" + count;
+                onDrag = prefeb.GetComponent<onDrag>();
                 prefeb = Instantiate(prefebs[1], Canvas.transform) as GameObject;
                 prefeb.name = "jump" + count++;
+                onDrag.SetChild(prefeb);
                 prefeb.GetComponent<Image>().color = new Color(1f, 0f, 0, 1f);
             }
             if (hit.collider.name == "IF")
             {
                 prefeb.name = "if" + count;
+                onDrag = prefeb.GetComponent<onDrag>();
                 prefeb = Instantiate(prefebs[1], Canvas.transform) as GameObject;
                 prefeb.name = "if" + count++;
+                onDrag.SetChild(prefeb);
                 prefeb.GetComponent<Image>().color = new Color(0.7f, 0.3f, 1, 1); 
             }
             if(hit.collider.name == "IFJump")
             {
                 prefeb.name = "IFJump" + count;
+                onDrag = prefeb.GetComponent<onDrag>();
                 prefeb = Instantiate(prefebs[1], Canvas.transform) as GameObject;
                 prefeb.name = "IFJump" + count++;
+                onDrag.SetChild(prefeb);
                 prefeb.GetComponent<Image>().color = new Color(1f, 0f, 0, 1f);
             }
             
