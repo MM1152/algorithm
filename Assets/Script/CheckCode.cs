@@ -271,7 +271,7 @@ public class CheckCode : MonoBehaviour
                     Debug.Log("IN");
                     parentIfJump.transform.GetChild(1).GetComponent<InputField>().text = "0";
                 }
-    
+                
                 CodePoint.transform.SetParent(code.transform);
                 CodePoint.transform.localPosition = new Vector3(-150f, 0f, 0f);
 

@@ -1,24 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class MouseDrag : MonoBehaviour
+public class MouseDrag : MonoBehaviour , IDragHandler ,IEndDragHandler , IBeginDragHandler
 {
-    public MouseDrag mouse;
-    public GameObject PickUp;
-    public GameObject PickOff;
+    GameObject copyInputData;
+    public GameObject parent;
     public bool isMouseUse = false;
-    public int count;
+
+    private void Start()
+    {
+        parent = gameObject.transform.parent.gameObject;
+    }
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        
+        copyInputData = Instantiate(this.gameObject, GameObject.FindWithTag("Layout").gameObject.transform) as GameObject;
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        copyInputData.transform.position = eventData.position;
+        isMouseUse = true;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        isMouseUse = false;
+        Destroy(copyInputData);
+    }
+    
 
     private void Awake()
     {
-        count = 0;
 
     }
     void Update()
     {
-
+        Debug.Log(gameObject.tag);
     }
 
-    
 }
