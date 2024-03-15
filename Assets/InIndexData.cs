@@ -7,6 +7,7 @@ public class InIndexData : MonoBehaviour
 {
     private ClickEvenet clickEvent;
     public Text text;
+    /*
     private void Awake()
     {
         clickEvent = GetComponent<ClickEvenet>();
@@ -28,5 +29,5 @@ public class InIndexData : MonoBehaviour
         }
 
     }
-
+    */
 }

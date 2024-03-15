@@ -24,7 +24,6 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
     }
     private void OnLevelWasLoaded(int level)
     {
-        mouseDragparent = null;
         Debug.Log(originTransform);
         isValueCopy = false;
         originTransform = this.gameObject.transform.localPosition;
