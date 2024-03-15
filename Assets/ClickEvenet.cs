@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ClickEvenet : MonoBehaviour, IPointerClickHandler
 {
+
     public GameObject Canvas;
     public GameObject _thisGameObj;
     public Vector3 originTransform;
 
     public MouseDrag mouseDrag;
     public bool isValueCopy;  
+
     private void Awake()
     {
         isValueCopy = false;
@@ -21,6 +24,7 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
     }
     private void OnLevelWasLoaded(int level)
     {
+        mouseDragparent = null;
         Debug.Log(originTransform);
         isValueCopy = false;
         originTransform = this.gameObject.transform.localPosition;
@@ -54,6 +58,7 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
             transform.SetParent(_thisGameObj.transform);
             transform.localPosition = originTransform;
         }
+
         if(mouseDrag != null && !mouseDrag.isMouseUse && isValueCopy)
         {
             gameObject.transform.GetChild(0).GetComponent<Text>().text = mouseDrag.parent.GetComponent<InputField>().text;
@@ -74,7 +79,7 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
         if (collision.tag.Equals("Index") && mouseDrag.isMouseUse)
         {
             isValueCopy = false;
-            
         }
-    }
+    } 
+
 }

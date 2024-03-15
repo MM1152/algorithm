@@ -34,7 +34,6 @@ public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler
         Canvas = GameObject.FindWithTag("Content").gameObject;
         originCanvas = GameObject.FindWithTag("Canvas").gameObject;
         inside = GameObject.Find("Position").gameObject;
-
     }
     public void OnDrag(PointerEventData eventData)
     {
@@ -42,6 +41,7 @@ public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler
         isDrag = true;
         gameObject.transform.position = eventData.position;
         transform.SetParent(originCanvas.transform);
+        Debug.Log("Draging");
     }
 
     public void OnEndDrag(PointerEventData eventData)

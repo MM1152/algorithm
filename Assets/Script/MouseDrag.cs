@@ -27,6 +27,4 @@ public class MouseDrag : MonoBehaviour , IDragHandler , IEndDragHandler , IBegin
         isMouseUse = false;
         Destroy(copyValue);
     }
-
-
 }
