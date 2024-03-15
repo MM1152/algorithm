@@ -9,7 +9,9 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
 {
     public GameObject Canvas;
     public GameObject _thisGameObj;
+    
     public Vector3 originTransform;
+
 
     public MouseDrag mouseDrag;
     public bool isValueCopy;
@@ -39,6 +41,7 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
             if(gameObject.name == "Value" && !gameObject.transform.GetChild(1).gameObject.activeSelf)
             {
                 gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                gameObject.transform.SetParent(Canvas.transform);
             }else if(gameObject.name == "Value" && gameObject.transform.GetChild(1).gameObject.activeSelf)
             {
                 gameObject.transform.GetChild(1).gameObject.SetActive(false);
