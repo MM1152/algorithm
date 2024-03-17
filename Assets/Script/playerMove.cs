@@ -114,9 +114,7 @@ public class playerMove : MonoBehaviour
                 }
             }
             checkcode.Isif = false;
-
         }
-
     }
     public void checkIF(GameObject valueBox)
     {
@@ -199,9 +197,7 @@ public class playerMove : MonoBehaviour
                 BoxPickUp = false;
                 if (collision.name == "InputBelt")
                 {
-
                     ani.SetBool("IsRun", false);
-                   
                     ani.Play("PlayerPickUp", 0, 0);
                     inputBelt.transform.GetChild(0).gameObject.SetActive(false);
                     if (gameObject.transform.Find("Box(Clone)"))
@@ -216,29 +212,26 @@ public class playerMove : MonoBehaviour
                         gameObject.transform.GetChild(2).transform.localPosition = new Vector3(0f, 0.5f, 0f);
                     }
                     StartCoroutine(BoxShow());
-                    
-                    
                 }
             }
         }
         if (valueBox != null && collision.name.Equals(valueBox.name))
         {
-            
             if (checkcode.IsCopy)
             {
                 if (gameObject.transform.childCount != 0)
                 {
                     if (collision.transform.Find("Box(Clone)"))
                     {
-                        Destroy(collision.transform.GetChild(1).gameObject);
+                        Destroy(collision.transform.Find("Box(Clone)").gameObject);
                         gameObject.transform.GetChild(2).SetParent(collision.transform);
-                        collision.transform.GetChild(2).transform.localPosition = Vector3.zero;
+                        collision.transform.Find("Box(Clone)").transform.localPosition = Vector3.zero;
                         checkcode.IsCopy = false;
                     }
                     else
                     {
                         gameObject.transform.GetChild(2).SetParent(collision.transform);
-                        collision.transform.GetChild(1).transform.localPosition = Vector3.zero;
+                        collision.transform.Find("Box(Clone)").transform.localPosition = Vector3.zero;
                         checkcode.IsCopy = false;
                     }
                 }
@@ -259,7 +252,7 @@ public class playerMove : MonoBehaviour
                     ani.Play("PlayerPickUp2", 0, 0);
                     StartCoroutine(Boxshow1());
                 }
-                
+
                 if (transform.Find("Box(Clone)"))
                 {
                     Destroy(gameObject.transform.GetChild(transform.Find("Box(Clone)").GetSiblingIndex()).gameObject);
@@ -270,12 +263,12 @@ public class playerMove : MonoBehaviour
                 //collision.transform.GetChild(1).transform.SetParent(gameObject.transform);
 
 
-                ani.SetBool("IsCarry", true);   
+                ani.SetBool("IsCarry", true);
                 checkcode.IsPaste = false;
 
             }
             if (checkcode.isCal)
-            {   
+            {
                 string num1 = valueBox.transform.Find("Box(Clone)").gameObject.transform.GetChild(0).GetChild(0).GetComponent<Text>().text;
                 string num = gameObject.transform.Find("Box(Clone)").GetChild(0).GetChild(0).GetComponent<Text>().text;
                 Debug.Log($"num : {num1} num1 : {num}");
@@ -301,9 +294,7 @@ public class playerMove : MonoBehaviour
                 gameObject.transform.Find("Box(Clone)").GetChild(0).GetChild(0).GetComponent<Text>().text = sum.ToString();
                 checkcode.isCal = false;
             }
-
         }
-        
     }
     IEnumerator BoxShow()
     {

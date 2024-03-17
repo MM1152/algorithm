@@ -6,6 +6,8 @@ public class OnMousepointer : MonoBehaviour , IPointerEnterHandler , IPointerExi
 {
     public List<GameObject> SelectBox;
     public static string selectValue;
+    public ClickEvenet clickEvent;
+    RaycastHit2D hit;
     private void Start()
     {
         selectValue = " ";
@@ -16,22 +18,22 @@ public class OnMousepointer : MonoBehaviour , IPointerEnterHandler , IPointerExi
             SelectBox[i].SetActive(false);
         }
     }
-    
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (ClickEvenet.valueSelect)
+        
+
+        if (ClickEvenet._this.GetComponent<ClickEvenet>().valueSelect)
         {
             for (int i = 0; i < SelectBox.Count; i++)
             {
                 SelectBox[i].SetActive(true);
             }
         }
-
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (ClickEvenet.valueSelect)
+        if (ClickEvenet._this.GetComponent<ClickEvenet>().valueSelect)
         {
             for (int i = 0; i < SelectBox.Count; i++)
             {
@@ -42,23 +44,26 @@ public class OnMousepointer : MonoBehaviour , IPointerEnterHandler , IPointerExi
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition), Mathf.Infinity, LayerMask.GetMask("Value"));
+        hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition), Mathf.Infinity, LayerMask.GetMask("Value"));
 
-        if(hit.collider != null)
+        if(hit.collider != null && ClickEvenet._this.GetComponent<ClickEvenet>().valueSelect)
         {
             selectValue = hit.collider.gameObject.name;
+            ClickEvenet._this.GetComponent<ClickEvenet>().valueSelect = false;
             for (int i = 0; i < SelectBox.Count; i++)
             {
                 SelectBox[i].SetActive(false);
             }
+            
         }
         else
         {
-            ClickEvenet.valueSelect = false;
+            ClickEvenet._this.GetComponent<ClickEvenet>().valueSelect = false;
             for (int i = 0; i < SelectBox.Count; i++)
             {
                 SelectBox[i].SetActive(false);
             }
+
         }
     }
 }
