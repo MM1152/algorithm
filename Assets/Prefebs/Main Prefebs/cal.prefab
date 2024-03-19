@@ -239,6 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeff78c00662d46468e24b89dc8bbbce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkCode: {fileID: 0}
   codes: []
   Collision: {fileID: 0}
   Canvas: {fileID: 0}
@@ -247,6 +248,7 @@ MonoBehaviour:
   Iscollision: 0
   Up: 0
   index: 0
+  Child: {fileID: 0}
 --- !u!50 &8702981696741196380
 Rigidbody2D:
   serializedVersion: 4
@@ -265,7 +267,7 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!61 &6684920712458840139
@@ -387,6 +389,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Canvas: {fileID: 0}
   _thisGameObj: {fileID: 0}
+  originTransform: {x: 0, y: 0, z: 0}
+  mouseDrag: {fileID: 0}
+  isValueCopy: 0
 --- !u!1 &2558709563286106715
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,6 +485,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Canvas: {fileID: 0}
   _thisGameObj: {fileID: 0}
+  originTransform: {x: 0, y: 0, z: 0}
+  mouseDrag: {fileID: 0}
+  isValueCopy: 0
 --- !u!1 &2558709563695841061
 GameObject:
   m_ObjectHideFlags: 0

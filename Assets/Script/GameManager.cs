@@ -35,9 +35,16 @@ public class GameManager : MonoBehaviour
     public int[] TEST_outputData;
     public int TEST_value;
     public bool[] TEST_codes;
+
+    public int[] Custom_inputData;
+    public int[] Custom_outputData;
+    public int Custom_value;
+    public bool[] Custom_codes;
+
     // Start is called before the first frame update
     void Awake()
     {
+        Application.targetFrameRate = 60;
         firstIn = true;
         if (GameObject.FindGameObjectsWithTag("GameManager").Length == 1)
         {
@@ -81,6 +88,10 @@ public class GameManager : MonoBehaviour
         else if (Level == "4")
         {
             TESTSetting();
+        }
+        else if (Level == "5")
+        {
+            CustomSetting();
         }
        
         
@@ -156,5 +167,10 @@ public class GameManager : MonoBehaviour
         {
             canvas.transform.GetChild(i).gameObject.SetActive(TEST_codes[i]);
         }
+    }
+    
+    public void CustomSetting()
+    {
+        Debug.Log("success");
     }
 }

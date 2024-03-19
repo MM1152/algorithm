@@ -1,46 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class MouseDrag : MonoBehaviour
+public class MouseDrag : MonoBehaviour , IDragHandler , IEndDragHandler , IBeginDragHandler
 {
-    public GameObject PickUp;
-    public GameObject PickOff;
     public bool isMouseUse = false;
-    public int count;
-
-    private void Awake()
+    public bool isValueIn = false;
+    public GameObject copyValue;
+    public GameObject parent;
+    public void OnBeginDrag(PointerEventData eventData)
     {
-        count = 0;
-
+        parent = gameObject;
+        copyValue = Instantiate(gameObject, GameObject.FindWithTag("Layout").gameObject.transform);
+        copyValue.GetComponent<MouseDrag>().parent = parent;
     }
-    void Update()
+
+    public void OnDrag(PointerEventData eventData)
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            
-            isMouseUse = true;
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity , LayerMask.GetMask("Boxobj")) ;
-            if (Input.GetMouseButton(0) && hit.collider != null)
-            {
-                Debug.Log(hit.collider.name);
-               if(hit.collider.name == "Box Pick Up")
-                {
-                    GameObject prefeb = Instantiate(PickUp) as GameObject;
-                    prefeb.transform.position = hit.collider.transform.position;
-                    prefeb.name = "Asd";
-                }
-                if (hit.collider.name == "Box Pick Off")
-                {
-                    GameObject prefeb = Instantiate(PickOff) as GameObject;
-                    prefeb.transform.position = hit.collider.transform.position;
-                    prefeb.name = $"PickOff{count++}";
-                }
-            }
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            isMouseUse = false;
-        }
+        copyValue.transform.position = eventData.position;
+        isMouseUse = true;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        isMouseUse = false;
+        StartCoroutine(WaitFrame());
+        
+    }
+
+    IEnumerator WaitFrame()
+    {
+        yield return new WaitForSeconds(0.05f);
+        Destroy(copyValue);
     }
 }

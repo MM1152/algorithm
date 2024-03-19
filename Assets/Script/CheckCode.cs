@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using System.Threading;
+
 public class CheckCode : MonoBehaviour
 {
     public Armposition armPos;
@@ -37,9 +39,14 @@ public class CheckCode : MonoBehaviour
     public WaitUntil wait; // ������ ������ ������ �ð�.
 
     public bool IF;
+    public Dictionary<string, int> ifJump_NameAndValue;
+    public int IfJump_Count;
+    public Dictionary<String , GameObject> parentIfJump;
     private void Start()
     {
-        
+        parentIfJump = new Dictionary<string, GameObject>();
+        ifJump_NameAndValue = new Dictionary<string, int>();
+        IfJump_Count = 0;
         if(GameObject.Find("CodePoint").GetComponents<Image>().Length == 1)
         {
             CodePoint = GameObject.Find("CodePoint").gameObject;
@@ -71,11 +78,23 @@ public class CheckCode : MonoBehaviour
         {
             list.Add(Lay.gameObject.transform.GetChild(i).gameObject);
         }
-        CodeRunning = true;
+        setIfJump();
         
+        CodeRunning = true;
         StartCoroutine(Run());
-    }
 
+    }
+    public void setIfJump()
+    {
+        for (int i = 0; i < list.Count; i++)
+        {
+            if (!ifJump_NameAndValue.ContainsKey(list[i].name) && list[i].name.Substring(0, 2).Equals("IF"))
+            {
+                ifJump_NameAndValue.Add(list[i].name, int.Parse(list[i].transform.GetChild(1).GetComponent<InputField>().text));
+                list[i].transform.GetChild(1).GetComponent<InputField>().text = "0";
+            }
+        }
+    }
     private void Update()
     {
        
@@ -152,10 +171,6 @@ public class CheckCode : MonoBehaviour
                             player.SetValueBox(target.gameObject);
                             player.Move(target);
                         }
-                
-                        
-                        
-
                     }
                     if(code.name == "cal(Clone)")
                     {
@@ -174,14 +189,20 @@ public class CheckCode : MonoBehaviour
         
         for (int i = 0; i < Lay.transform.childCount; i++)
          {
+            foreach(var key in parentIfJump.Keys)
+            {
+                Debug.Log($"{key}  {parentIfJump[key]}");
+            }
             try
             {
                 code = list[i];
+                
                 if (IF)
                 {
                     if (code.name == "Pick up(Clone)")
                     {
                         count++;
+                        player.BoxPickUp = true;
                     }
                     if (code.name == "Copy(Clone)")
                     {
@@ -193,8 +214,6 @@ public class CheckCode : MonoBehaviour
                         IsPaste = true;
                         copyValue = code.transform.GetChild(1).GetChild(0).GetComponent<Text>().text[0];
                     }
-                    
-
                 }
                 
                 if(code.name.Substring(0,2) == "ca")
@@ -239,12 +258,31 @@ public class CheckCode : MonoBehaviour
                     }
                     
                 }
+                
+                if (!check.ContainsKey(code.name) && code.name.Substring(0,2) == "IF")
+                {
+                    check.Add(code.name, i);
+                    code.transform.GetChild(1).GetComponent<InputField>().text = (int.Parse(code.transform.GetChild(1).GetComponent<InputField>().text) + 1).ToString();
+                    parentIfJump.Add(code.name , GameObject.Find(code.name));
+                }
+                else if(code.name.Substring(0, 2) == "IF" && check.ContainsKey(code.name) && IfJump_Count != ifJump_NameAndValue[code.name] && 
+                    int.Parse(parentIfJump[code.name].transform.GetChild(1).GetComponent<InputField>().text) < ifJump_NameAndValue[code.name])
+                {
+                    i = check[code.name];
+                    parentIfJump[code.name].transform.GetChild(1).GetComponent<InputField>().text = (int.Parse(parentIfJump[code.name].transform.GetChild(1).GetComponent<InputField>().text) + 1).ToString();
+                }
+                else if(code.name.Substring(0, 2) == "IF")
+                {
+                    Debug.Log("IN");
+                    parentIfJump[code.name].transform.GetChild(1).GetComponent<InputField>().text = "0";
+                }
+                
                 CodePoint.transform.SetParent(code.transform);
                 CodePoint.transform.localPosition = new Vector3(-150f, 0f, 0f);
-                
+
             } catch(Exception e)
             {
-                Debug.Log(e);
+                Debug.Log(e); 
             }
             if(code.name.Equals("Pick up(Clone)"))
             {
@@ -277,7 +315,7 @@ public class CheckCode : MonoBehaviour
 
                  }
              }*/
-            if(code.name.Substring(0, 2) == "ju" || code.name.Substring(0, 2) == "if")
+            if(code.name.Substring(0, 2) == "ju" || code.name.Substring(0, 2) == "if" || code.name.Substring(0,2) == "IF")
             {
                 yield return new WaitForSeconds(0f);
             }
@@ -289,7 +327,7 @@ public class CheckCode : MonoBehaviour
             else
             {
                 yield return new WaitForSeconds(0.5f);
-                yield return new WaitUntil(() => Vector3.Distance(player.transform.position , target.position) < 0.25f);
+                yield return new WaitUntil(() => Vector3.Distance(player.transform.position , target.position) < 0.25f); 
                 
             }
         }
