@@ -20,7 +20,6 @@ public class OnMousepointer : MonoBehaviour , IPointerEnterHandler , IPointerExi
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        
 
         if (ClickEvenet._this.GetComponent<ClickEvenet>().valueSelect)
         {
@@ -45,7 +44,7 @@ public class OnMousepointer : MonoBehaviour , IPointerEnterHandler , IPointerExi
     public void OnPointerClick(PointerEventData eventData)
     {
         hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition), Mathf.Infinity, LayerMask.GetMask("Value"));
-
+       
         if(hit.collider != null && ClickEvenet._this.GetComponent<ClickEvenet>().valueSelect)
         {
             selectValue = hit.collider.gameObject.name;

@@ -94,8 +94,10 @@ MonoBehaviour:
   Canvas: {fileID: 0}
   _thisGameObj: {fileID: 0}
   originTransform: {x: 0, y: 0, z: 0}
+  onMousepointer: {fileID: 0}
   mouseDrag: {fileID: 0}
   isValueCopy: 0
+  valueSelect: 0
 --- !u!1 &2336271315081859695
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,7 +111,7 @@ GameObject:
   - component: {fileID: 4337264589936491877}
   - component: {fileID: 9019560026068488537}
   - component: {fileID: 2713175673599988186}
-  - component: {fileID: 2843104874504514727}
+  - component: {fileID: 4506901032213595111}
   m_Layer: 5
   m_Name: If
   m_TagString: Codes
@@ -226,7 +228,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 40, y: 50}
   m_EdgeRadius: 0
---- !u!50 &2843104874504514727
+--- !u!50 &4506901032213595111
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -240,7 +242,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 0.0001
   m_LinearDrag: 0
-  m_AngularDrag: 0
+  m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -338,7 +340,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca894991e01bba04ca3369f779d58030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valuse: []
   valuesName: {fileID: 4425879277976635859, guid: 60909677b813baf44a91e265f1ad169b, type: 3}
 --- !u!114 &3656040868334458245
 MonoBehaviour:
@@ -647,8 +648,10 @@ MonoBehaviour:
   Canvas: {fileID: 0}
   _thisGameObj: {fileID: 0}
   originTransform: {x: 0, y: 0, z: 0}
+  onMousepointer: {fileID: 0}
   mouseDrag: {fileID: 0}
   isValueCopy: 0
+  valueSelect: 0
 --- !u!61 &8435752991284192104
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -847,7 +850,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca894991e01bba04ca3369f779d58030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valuse: []
   valuesName: {fileID: 4425879277976635859, guid: 60909677b813baf44a91e265f1ad169b, type: 3}
 --- !u!114 &5016817734932266915
 MonoBehaviour:

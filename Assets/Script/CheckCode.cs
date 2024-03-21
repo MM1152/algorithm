@@ -95,7 +95,7 @@ public class CheckCode : MonoBehaviour
             }
         }
     }
-    private void Update()
+    private void LateUpdate()
     {
        
         if (Time.unscaledDeltaTime != 0)
@@ -317,7 +317,7 @@ public class CheckCode : MonoBehaviour
              }*/
             if(code.name.Substring(0, 2) == "ju" || code.name.Substring(0, 2) == "if" || code.name.Substring(0,2) == "IF")
             {
-                yield return new WaitForSeconds(0f);
+                yield return new WaitForSeconds(0.2f);
             }
             else if (code.name == "cal(Clone)")
             {

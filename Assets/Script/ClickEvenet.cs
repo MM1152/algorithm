@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEditor.AnimatedValues;
+using Unity.Burst.CompilerServices;
 
 
 public class ClickEvenet : MonoBehaviour, IPointerClickHandler
@@ -12,7 +13,6 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
     public GameObject _thisGameObj;
     
     public Vector3 originTransform;
-    public OnMousepointer onMousepointer;
     public MouseDrag mouseDrag;
     public bool isValueCopy;
     public bool valueSelect;
@@ -51,17 +51,20 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
             {
                 valueSelect = true;
                 _this = this.gameObject;
+                
             }  
         }
     }
     private void Update()
     {
-        Debug.Log($"{valueSelect} {gameObject.name}");
-            if (OnMousepointer.selectValue != " ")
+        
+        if (OnMousepointer.selectValue != " ")
             {
-                transform.GetChild(0).GetComponent<Text>().text = OnMousepointer.selectValue;
+                Debug.Log(OnMousepointer.selectValue);
+                _this.transform.GetChild(0).GetComponent<Text>().text = OnMousepointer.selectValue;
                 valueSelect = false;
-                _this = null;
+                
+                //_this = null;
                 OnMousepointer.selectValue = " ";
             }
 

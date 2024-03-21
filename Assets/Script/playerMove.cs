@@ -223,12 +223,13 @@ public class playerMove : MonoBehaviour
                 {
                     if (collision.transform.Find("Box(Clone)"))
                     {
-                        Destroy(collision.transform.Find("Box(Clone)").gameObject);
-                        gameObject.transform.GetChild(2).SetParent(collision.transform);
+                        Destroy(collision.transform.Find("Box(Clone)").gameObject , 0);
+                        gameObject.transform.Find("Box(Clone)").SetParent(collision.transform);
+                        Debug.Log($"{collision.gameObject.name}");
                         collision.transform.Find("Box(Clone)").transform.localPosition = Vector3.zero;
                         checkcode.IsCopy = false;
                     }
-                    else
+                    else if(!collision.transform.Find("Box(Clone)"))
                     {
                         gameObject.transform.GetChild(2).SetParent(collision.transform);
                         collision.transform.Find("Box(Clone)").transform.localPosition = Vector3.zero;
@@ -240,7 +241,7 @@ public class playerMove : MonoBehaviour
             if (checkcode.IsPaste)
             {
                 //valueBox.transform.Find("Box(Clone)").gameObject.SetActive(false);
-                GameObject prefeb = Instantiate(collision.transform.GetChild(1).transform.gameObject, gameObject.transform) as GameObject;
+                GameObject prefeb = Instantiate(collision.transform.Find("Box(Clone)").gameObject, gameObject.transform) as GameObject;
                 prefeb.SetActive(false);
                 if (valueBox.transform.position.x <= this.gameObject.transform.position.x)
                 {
