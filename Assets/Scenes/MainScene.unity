@@ -296,7 +296,6 @@ MonoBehaviour:
   FinAction: 0
   IF: 0
   IfJump_Count: 0
-  parentIfJump: {fileID: 0}
 --- !u!1 &24477581
 GameObject:
   m_ObjectHideFlags: 0
@@ -3482,6 +3481,7 @@ MonoBehaviour:
   - {fileID: 818374648}
   - {fileID: 1176474816}
   - {fileID: 1993830902}
+  clickEvent: {fileID: 0}
 --- !u!1 &643209662
 GameObject:
   m_ObjectHideFlags: 0
@@ -3612,6 +3612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectBox: []
+  clickEvent: {fileID: 0}
 --- !u!1 &655148650
 GameObject:
   m_ObjectHideFlags: 0
@@ -5854,6 +5855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectBox: []
+  clickEvent: {fileID: 0}
 --- !u!1 &1101661678
 GameObject:
   m_ObjectHideFlags: 0
@@ -7991,6 +7993,7 @@ MonoBehaviour:
   - {fileID: 1334261054}
   - {fileID: 723741567}
   - {fileID: 154724339}
+  clickEvent: {fileID: 0}
 --- !u!1 &1432350887
 GameObject:
   m_ObjectHideFlags: 0
@@ -8245,6 +8248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectBox: []
+  clickEvent: {fileID: 0}
 --- !u!1 &1443342849
 GameObject:
   m_ObjectHideFlags: 0
@@ -8675,6 +8679,7 @@ MonoBehaviour:
   - {fileID: 186514350}
   - {fileID: 1826216975}
   - {fileID: 1473820662}
+  clickEvent: {fileID: 0}
 --- !u!1 &1557014444
 GameObject:
   m_ObjectHideFlags: 0

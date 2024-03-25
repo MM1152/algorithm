@@ -18,7 +18,7 @@ public class Copy : Codes
 
     public T getComponent<T>()
     {
-        return GetComponent<Copy>();
+        
     }
 }
     
