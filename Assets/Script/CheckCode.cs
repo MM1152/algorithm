@@ -107,7 +107,6 @@ public class CheckCode : MonoBehaviour
     }
     public void CodeRun(Codes game)
     {
-        Debug.Log(game);
         game.checkCode();
     }
     IEnumerator Run()
@@ -115,14 +114,13 @@ public class CheckCode : MonoBehaviour
 
         for (int i = 0; i < Lay.transform.childCount; i++)
         {
-
-
             code = list[i];
 
             if (IF)
             {
                 CodeRun(Lay.transform.GetChild(i).gameObject.GetComponent<Codes>());
                 yield return new WaitUntil(() => Lay.transform.GetChild(i).gameObject.GetComponent<Codes>().WaitTime());
+                yield return new WaitForSeconds(0.7f);
             }
 
         }

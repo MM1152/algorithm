@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Copy : Codes
 {
+   
+
     private void Awake()
     {
         init();
@@ -16,15 +18,15 @@ public class Copy : Codes
     {
         if (isTrue)
         {
-            player.Move(check.target);
+            player.Move(player.valueBox.transform);
         }
         
     }
     public override void checkCode()
     {
-        value = this.gameObject.transform.Find("Copy Value").transform.Find("ValueName").GetComponent<Text>().text[0];
+        value = this.gameObject.transform.Find("Copy Value").Find("ValuesName").GetComponent<Text>().text[0];
         isTrue = true;
-        player.SetValueBox(GameObject.Find(value.ToString()).gameObject);
+        player.SetValueBox(values.transform.Find(value.ToString()).gameObject);
     }
 
     public override bool WaitTime()
