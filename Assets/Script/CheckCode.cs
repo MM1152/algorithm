@@ -183,7 +183,10 @@ public class CheckCode : MonoBehaviour
         }
         
     }
+    public void CodeRun<T>(T code)
+    {
 
+    }
     IEnumerator Run()
     {
         
@@ -206,8 +209,7 @@ public class CheckCode : MonoBehaviour
                     }
                     if (code.name == "Copy(Clone)")
                     {
-                        IsCopy = true;
-                        copyValue = code.transform.GetChild(1).GetChild(0).GetComponent<Text>().text[0];
+                        CodeRun(code.GetComponent<Copy>());
                     }
                     if (code.name == "take(Clone)")
                     {
