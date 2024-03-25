@@ -41,7 +41,7 @@ public class playerMove : MonoBehaviour
     }
     public void Move(Transform target)
     {
-        
+       
         if (Vector2.Distance(transform.position, target.position) <= 0.2)
         {
             playerstate = PlayerState.Idle;

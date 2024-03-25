@@ -8,17 +8,36 @@ public class Copy : Codes
     {
         init();
     }
+    private void OnLevelWasLoaded(int level)
+    {
+        init();
+    }
+    private void LateUpdate()
+    {
+        if (isTrue)
+        {
+            player.Move(check.target);
+        }
+        
+    }
     public override void checkCode()
     {
         value = this.gameObject.transform.Find("Copy Value").transform.Find("ValueName").GetComponent<Text>().text[0];
         isTrue = true;
         player.SetValueBox(GameObject.Find(value.ToString()).gameObject);
-        player.Move(check.target);
     }
 
-    public T getComponent<T>()
+    public override bool WaitTime()
     {
-        
+        if (Vector3.Distance(player.transform.position, player.valueBox.transform.position) < 0.25f)
+        {
+            isTrue = false;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
     

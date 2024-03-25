@@ -1,35 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
-public class PickUP : Codes
+public class PickOff : Codes
 {
-    private GameObject inputBelt;
+    private GameObject outBelt;
     private void Awake()
     {
         init();
-        inputBelt = GameObject.Find("InputBeltTrans").gameObject;
+        outBelt = GameObject.Find("OutputBeltTrans").gameObject;
     }
     private void OnLevelWasLoaded(int level)
     {
         init();
-        inputBelt = GameObject.Find("InputBeltTrans").gameObject;
+        outBelt = GameObject.Find("OutputBeltTrans").gameObject;
     }
     private void LateUpdate()
     {
         if (isTrue)
         {
-            player.Move(inputBelt.transform);
+            player.Move(outBelt.transform);
         }
+
     }
     public override void checkCode()
     {
         isTrue = true;
-        player.SetValueBox(inputBelt);
+        player.SetValueBox(outBelt);
     }
+
     public override bool WaitTime()
     {
-        if (Vector3.Distance(player.transform.position, inputBelt.transform.position) < 0.25f)
+        if (Vector3.Distance(player.transform.position, outBelt.transform.position) < 0.25f)
         {
             isTrue = false;
             return true;
@@ -38,5 +41,6 @@ public class PickUP : Codes
         {
             return false;
         }
+                
     }
 }

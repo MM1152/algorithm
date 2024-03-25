@@ -9,11 +9,12 @@ public abstract class Codes : MonoBehaviour
     public char value { get; set; }
     public bool isTrue { get; set; }
     public abstract void checkCode();
-
+    public abstract bool WaitTime();
     public void init()
     {
         check = GameObject.FindWithTag("CheckCode").gameObject.GetComponent<CheckCode>();
         player = GameObject.Find("Player").GetComponent<playerMove>();
+        isTrue = false;
     }
     
 }
