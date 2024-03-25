@@ -91,7 +91,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca894991e01bba04ca3369f779d58030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valuse: []
   valuesName: {fileID: 4425879277976635859, guid: 60909677b813baf44a91e265f1ad169b, type: 3}
 --- !u!114 &4040332841313802939
 MonoBehaviour:
@@ -157,8 +156,8 @@ GameObject:
   - component: {fileID: 3932903960938389271}
   - component: {fileID: 3013495746715920947}
   - component: {fileID: 8322758681638618690}
-  - component: {fileID: 6576785378611176199}
   - component: {fileID: 9171518186026486032}
+  - component: {fileID: -3134212609585900778}
   m_Layer: 5
   m_Name: take
   m_TagString: Codes
@@ -248,27 +247,6 @@ MonoBehaviour:
   Up: 0
   index: 0
   Child: {fileID: 0}
---- !u!50 &6576785378611176199
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3384568765522000393}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.0001
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 0
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!61 &9171518186026486032
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -295,6 +273,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 200, y: 70}
   m_EdgeRadius: 0
+--- !u!50 &-3134212609585900778
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3384568765522000393}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &4130626689230417688
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,8 +389,10 @@ MonoBehaviour:
   Canvas: {fileID: 0}
   _thisGameObj: {fileID: 0}
   originTransform: {x: 0, y: 0, z: 0}
+  onMousepointer: {fileID: 0}
   mouseDrag: {fileID: 0}
   isValueCopy: 0
+  valueSelect: 0
 --- !u!61 &2753399497418994976
 BoxCollider2D:
   m_ObjectHideFlags: 0
