@@ -28,11 +28,13 @@ public class PickUP : Codes
     public override void checkCode()
     {
         isTrue = true;
+        check.CountPlus();
         player.SetValueBox(inputBelt);
     }
     public override bool WaitTime()
     {
-        if (Vector3.Distance(player.transform.position, inputBelt.transform.position) < 0.25f)
+        if (Vector3.Distance(player.transform.position, inputBelt.transform.position) < 0.25f && !player.ani.GetCurrentAnimatorStateInfo(0).IsName("PlayerPickUp")
+            && player.ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
         {
             isTrue = false;
             return true;

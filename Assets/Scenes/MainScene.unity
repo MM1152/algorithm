@@ -269,33 +269,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b18819eb0d4bd24a933043997882595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armPos: {fileID: 248191922}
-  inputBelt: {fileID: 1101661681}
-  outBelt: {fileID: 867940561}
   gameManager: {fileID: 0}
   CodePoint: {fileID: 497931633}
-  inputBelttrans: {fileID: 1296792688}
-  outBelttrans: {fileID: 1055253383}
-  Values:
-  - {fileID: 641169935}
-  - {fileID: 1418211608}
-  target: {fileID: 0}
   list: []
   code: {fileID: 0}
   Lay: {fileID: 1300609230}
   player: {fileID: 301965700}
-  count: 0
-  copyValue: 0
-  IsCopy: 0
-  IsPaste: 0
-  Isif: 0
-  isCal: 0
-  Ifvalue: 
-  calvalue: 
-  value: {fileID: 24477581}
-  FinAction: 0
-  IF: 0
-  IfJump_Count: 0
 --- !u!1 &24477581
 GameObject:
   m_ObjectHideFlags: 0
@@ -2673,9 +2652,10 @@ GameObject:
   - component: {fileID: 497931636}
   - component: {fileID: 497931635}
   - component: {fileID: 497931634}
+  - component: {fileID: 497931637}
   m_Layer: 5
   m_Name: CodePoint
-  m_TagString: Untagged
+  m_TagString: CodePoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2738,6 +2718,19 @@ RectTransform:
   m_AnchoredPosition: {x: -505.273, y: 2516.8755}
   m_SizeDelta: {x: 30, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &497931637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497931633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33a3ec8c69fd6de439140bd25d24fd6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 423480231}
 --- !u!1 &512837389
 GameObject:
   m_ObjectHideFlags: 0

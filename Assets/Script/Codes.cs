@@ -18,5 +18,5 @@ public abstract class Codes : MonoBehaviour
         values = GameObject.FindWithTag("Value").gameObject;
         isTrue = false;
     }
-    
+
 }

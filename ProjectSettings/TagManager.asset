@@ -18,6 +18,7 @@ TagManager:
   - Code
   - GameEnd
   - Index
+  - CodePoint
   layers:
   - Default
   - TransparentFX
