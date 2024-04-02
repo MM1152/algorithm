@@ -18,10 +18,8 @@ public class DrawLine : MonoBehaviour
     {
         line.positionCount = i;
         Debug.DrawRay(Vector3.zero , new Vector3(-240 , -45) , Color.red);
-        Debug.Log(startPos.position.x);
         for(int i = 0; i < line.positionCount; i++)
         {
-            Debug.Log(startPos.localPosition);
             Vector3 point = Vector3.Slerp(startPos.position, endPos.position, i / (float)(line.positionCount - 1));
             line.SetPosition(i, point);
         }

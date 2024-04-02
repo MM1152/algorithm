@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 7847950868959865608}
   - component: {fileID: -1280680857379580299}
   - component: {fileID: -4283089261235763767}
+  - component: {fileID: 2035755689711904586}
   m_Layer: 5
   m_Name: Pick up
   m_TagString: Codes
@@ -248,3 +249,15 @@ MonoBehaviour:
   prefeb: {fileID: 0}
   count: 0
   Draw: {fileID: 0}
+--- !u!114 &2035755689711904586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7575825572670548157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7cb62de88585c64588cbaf4bf2e7fac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
