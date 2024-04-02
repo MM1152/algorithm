@@ -94,7 +94,6 @@ MonoBehaviour:
   Canvas: {fileID: 0}
   _thisGameObj: {fileID: 0}
   originTransform: {x: 0, y: 0, z: 0}
-  onMousepointer: {fileID: 0}
   mouseDrag: {fileID: 0}
   isValueCopy: 0
   valueSelect: 0
@@ -112,6 +111,7 @@ GameObject:
   - component: {fileID: 9019560026068488537}
   - component: {fileID: 2713175673599988186}
   - component: {fileID: 4506901032213595111}
+  - component: {fileID: 4265776101513386335}
   m_Layer: 5
   m_Name: If
   m_TagString: Codes
@@ -236,7 +236,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2336271315081859695}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -249,6 +249,25 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4265776101513386335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2336271315081859695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e47cf9b2d891ce447b8afd9a37936c3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  check: {fileID: 0}
+  player: {fileID: 0}
+  values: {fileID: 0}
+  value: 0
+  isTrue: 0
+  child: {fileID: 0}
+  canCodeRun: 0
 --- !u!1 &3816301433289526599
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,7 +667,6 @@ MonoBehaviour:
   Canvas: {fileID: 0}
   _thisGameObj: {fileID: 0}
   originTransform: {x: 0, y: 0, z: 0}
-  onMousepointer: {fileID: 0}
   mouseDrag: {fileID: 0}
   isValueCopy: 0
   valueSelect: 0

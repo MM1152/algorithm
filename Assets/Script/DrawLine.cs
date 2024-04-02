@@ -4,25 +4,23 @@ using UnityEngine;
 
 public class DrawLine : MonoBehaviour
 {
-    public LineRenderer line;
-    public Transform startPos, endPos;
+    private onDrag ondrag;
+    private LineRenderer line;
+    private Transform startPos, endPos;
     public int i;
     // Start is called before the first frame update
     void Start()
     {
+        ondrag = GetComponent<onDrag>();
         line = GetComponent<LineRenderer>();
+        startPos = this.gameObject.transform;
+        endPos = this.ondrag.Child.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        line.positionCount = i;
-        Debug.DrawRay(Vector3.zero , new Vector3(-240 , -45) , Color.red);
-        for(int i = 0; i < line.positionCount; i++)
-        {
-            Vector3 point = Vector3.Slerp(startPos.position, endPos.position, i / (float)(line.positionCount - 1));
-            line.SetPosition(i, point);
-        }
+        
     }
 
 }

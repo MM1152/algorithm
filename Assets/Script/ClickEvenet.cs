@@ -47,7 +47,7 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
             {
                 gameObject.transform.GetChild(1).gameObject.SetActive(false);
             }
-            else if(gameObject.name == "Copy Value" || gameObject.name == "Take Value")
+            else if(gameObject.name == "Copy Value" || gameObject.name == "Take Value" || gameObject.name == "Value1")
             {
                 valueSelect = true;
                 _this = this.gameObject;

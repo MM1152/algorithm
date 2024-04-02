@@ -15,7 +15,6 @@ public class LoadScene : MonoBehaviour
         {
             int temp = i;
             buttons[i].onClick.AddListener(() => OnClick(temp + 1));
-            Debug.Log(i);
         }
     }
     
