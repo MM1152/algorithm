@@ -32,7 +32,7 @@ public class EndPoint : Codes
         if (check.code.name.Substring(0, 2).Equals("ju") && check.Count < inputbelt.boxNum.Count)
         {
             check.Seti(jumps.getData());
-        }else if(check.code.name.Substring(0, 2).Equals("IF") && (jumps.GetComponent<IFJUMP>().count < jumps.GetComponent<IFJUMP>().getEndJumpCount()))
+        }if(check.code.name.Substring(0, 2).Equals("IF") && (jumps.GetComponent<IFJUMP>().count < jumps.GetComponent<IFJUMP>().getEndJumpCount()))
         {
            //($"{jumps.GetComponent<IFJUMP>().count} À±Áö¼ö ¹Ùº¸");
             IFJUMP ifJump = jumps.GetComponent<IFJUMP>();
@@ -41,7 +41,8 @@ public class EndPoint : Codes
             check.Seti(jumps.GetComponent<IFJUMP>().getData());
         }else
         {
-            return;
+            IFJUMP ifJump = jumps.GetComponent<IFJUMP>();
+            ifJump.count = ifJump.getSetJumpCount();
         }
         
     }
