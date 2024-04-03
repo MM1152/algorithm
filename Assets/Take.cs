@@ -23,6 +23,7 @@ public class Take : Codes
     }
     public override void checkCode()
     {
+        player.setIsPaste(true);
         value = this.gameObject.transform.Find("Take Value").Find("ValuesName").GetComponent<Text>().text[0];
         isTrue = true;
         player.SetValueBox(values.transform.Find(value.ToString()).gameObject);
@@ -30,7 +31,7 @@ public class Take : Codes
 
     public override bool WaitTime()
     {
-        if (Vector3.Distance(player.transform.position, player.valueBox.transform.position) < 0.25f)
+        if (Vector3.Distance(player.transform.position, player.valueBox.transform.position) < 10f && (player.ani.GetCurrentAnimatorStateInfo(0).IsName("PlayerPickUp") || player.ani.GetCurrentAnimatorStateInfo(0).IsName("PlayerPickUp2")) && player.ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
         {
             isTrue = false;
             return true;

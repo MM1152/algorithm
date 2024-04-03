@@ -47,7 +47,7 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
             {
                 gameObject.transform.GetChild(1).gameObject.SetActive(false);
             }
-            else if(gameObject.name == "Copy Value" || gameObject.name == "Take Value")
+            else if(gameObject.name == "Copy Value" || gameObject.name == "Take Value" || gameObject.name == "Value1")
             {
                 valueSelect = true;
                 _this = this.gameObject;
@@ -85,6 +85,13 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
         if (collision.tag.Equals("Index") && !onDrag.isDrag)  
         {
             mouseDrag = collision.GetComponent<MouseDrag>().parent.GetComponent<MouseDrag>();
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.tag.Equals("Index") && !onDrag.isDrag)
+        {
+            mouseDrag = null;
         }
     }
     private void OnTriggerStay2D(Collider2D collision)

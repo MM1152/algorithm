@@ -28,7 +28,6 @@ public class Jump : Codes
     }
     public int getData()
     {
-        Debug.Log(jumps[this.gameObject.name]);
         return jumps[this.gameObject.name];
     }
 }

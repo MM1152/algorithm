@@ -91,7 +91,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca894991e01bba04ca3369f779d58030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valuse: []
   valuesName: {fileID: 4425879277976635859, guid: 60909677b813baf44a91e265f1ad169b, type: 3}
 --- !u!114 &1986221141428861920
 MonoBehaviour:
@@ -257,7 +256,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 971154188877978450}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -392,6 +391,7 @@ MonoBehaviour:
   originTransform: {x: 0, y: 0, z: 0}
   mouseDrag: {fileID: 0}
   isValueCopy: 0
+  valueSelect: 0
 --- !u!1 &2558709563286106715
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,6 +488,7 @@ MonoBehaviour:
   originTransform: {x: 0, y: 0, z: 0}
   mouseDrag: {fileID: 0}
   isValueCopy: 0
+  valueSelect: 0
 --- !u!1 &2558709563695841061
 GameObject:
   m_ObjectHideFlags: 0
