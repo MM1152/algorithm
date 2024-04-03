@@ -87,6 +87,13 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
             mouseDrag = collision.GetComponent<MouseDrag>().parent.GetComponent<MouseDrag>();
         }
     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.tag.Equals("Index") && !onDrag.isDrag)
+        {
+            mouseDrag = null;
+        }
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.tag.Equals("Index") && !onDrag.isDrag && !mouseDrag.isMouseUse)
