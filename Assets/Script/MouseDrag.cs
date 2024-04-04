@@ -32,6 +32,7 @@ public class MouseDrag : MonoBehaviour , IDragHandler , IEndDragHandler , IBegin
     IEnumerator WaitFrame()
     {
         yield return new WaitForSeconds(0.05f);
+
         Destroy(copyValue);
     }
 }
