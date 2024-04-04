@@ -60,6 +60,11 @@ public class GameManager : MonoBehaviour
             firstIn = false;
         }
 
+        if (SceneManager.GetActiveScene().name == "CustomScene" && firstIn)
+        {
+            firstIn = false;
+        }
+
     }
     
     private void OnLevelWasLoaded(int level)
@@ -171,6 +176,18 @@ public class GameManager : MonoBehaviour
     
     public void CustomSetting()
     {
-        Debug.Log("success");
+        inputBelt input = inputbelt.GetComponent<inputBelt>();
+        for(int i = 0; i < Custom_value; i++)
+        {
+            values.transform.GetChild(i).gameObject.SetActive(true);
+        }
+        for(int i = 0; i < Custom_inputData.Length; i++)
+        {
+            input.boxNum.Add(Custom_inputData[i]);
+        }
+        for(int i = 0; i < Custom_codes.Length; i++)
+        {
+            canvas.transform.GetChild(i).gameObject.SetActive(Custom_codes[i]);
+        }
     }
 }

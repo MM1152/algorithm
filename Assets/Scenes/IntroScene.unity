@@ -614,7 +614,11 @@ MonoBehaviour:
   Custom_inputData: 010000000200000003000000
   Custom_outputData: 010000000200000003000000
   Custom_value: 0
+<<<<<<< HEAD
   Custom_codes: 
+=======
+  Custom_codes: 010101
+>>>>>>> 2e8fe7825e053a988b8bbb2ee0ff86c874f96a59
 --- !u!4 &1376729601
 Transform:
   m_ObjectHideFlags: 0
