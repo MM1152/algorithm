@@ -208,7 +208,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &24053809
 BoxCollider2D:
@@ -269,33 +269,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b18819eb0d4bd24a933043997882595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armPos: {fileID: 248191922}
-  inputBelt: {fileID: 1101661681}
-  outBelt: {fileID: 867940561}
   gameManager: {fileID: 0}
   CodePoint: {fileID: 497931633}
-  inputBelttrans: {fileID: 1296792688}
-  outBelttrans: {fileID: 1055253383}
-  Values:
-  - {fileID: 641169935}
-  - {fileID: 1418211608}
-  target: {fileID: 0}
   list: []
   code: {fileID: 0}
   Lay: {fileID: 1300609230}
   player: {fileID: 301965700}
-  count: 0
-  copyValue: 0
-  IsCopy: 0
-  IsPaste: 0
-  Isif: 0
-  isCal: 0
-  Ifvalue: 
-  calvalue: 
-  value: {fileID: 0}
-  FinAction: 0
-  IF: 0
-  IfJump_Count: 0
 --- !u!1 &24477581
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,7 +306,7 @@ Transform:
   - {fileID: 641169937}
   - {fileID: 1418211609}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &138155871
 GameObject:
@@ -423,7 +402,7 @@ RectTransform:
   m_Children:
   - {fileID: 1988474277}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -709,7 +688,7 @@ RectTransform:
   m_Children:
   - {fileID: 268494452}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1005,7 +984,7 @@ Transform:
   - {fileID: 200574768}
   - {fileID: 248191920}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &301965700
 MonoBehaviour:
@@ -1020,12 +999,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ani: {fileID: 0}
-  inputBelt: {fileID: 0}
-  playerstate: 0
   checkcode: {fileID: 0}
   count: 0
   sum: 0.2
-  BoxPickUp: 1
   valueBox: {fileID: 0}
 --- !u!50 &301965701
 Rigidbody2D:
@@ -1359,7 +1335,7 @@ RectTransform:
   m_Children:
   - {fileID: 688449152}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1475,7 +1451,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2066,7 +2042,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &827974802
 GameObject:
@@ -2279,7 +2255,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2380,74 +2356,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 869400870}
   m_CullTransparentMesh: 1
---- !u!1 &891106038
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 891106040}
-  - component: {fileID: 891106039}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &891106039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 891106038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 278e10e644c113b4a822a1d9368d29e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outputBelt: {fileID: 0}
-  inputbelt: {fileID: 0}
-  canvas: {fileID: 0}
-  player: {fileID: 0}
-  GameEnd: {fileID: 0}
-  values: {fileID: 0}
-  Level: 
-  firstIn: 0
-  Level1_inputData: 
-  Level1_outputData: 
-  Level1_value: 0
-  Level1_codes: 
-  Level1_1_inputData: 
-  Level1_1_outputData: 
-  Level1_1_value: 0
-  Level1_1_codes: 
-  Level1_2_inputData: 
-  Level1_2_outputData: 
-  Level1_2_value: 0
-  Level1_2_codes: 
-  TEST_inputData: 
-  TEST_outputData: 
-  TEST_value: 0
-  TEST_codes: 
---- !u!4 &891106040
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 891106038}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 851.19495, y: 531.84766, z: -5.551514}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1055253381
 GameObject:
   m_ObjectHideFlags: 0
@@ -2504,7 +2412,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1101661678
 GameObject:
@@ -2590,7 +2498,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1101661681
 MonoBehaviour:
@@ -3010,7 +2918,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1300609230 stripped
 GameObject:
@@ -3397,7 +3305,7 @@ RectTransform:
   - {fileID: 1661886618}
   - {fileID: 1256186294}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
