@@ -5,17 +5,17 @@ using UnityEngine;
 public class PickUP : Codes
 {
     private GameObject inputBelt;
-    private bool animationEnd;
+   // private bool animationEnd;
     private void Awake()
     {
         init();
-        animationEnd = false;
+       // animationEnd = false;
         inputBelt = GameObject.Find("InputBeltTrans").gameObject;
     }
     private void OnLevelWasLoaded(int level)
     {
         init();
-        animationEnd = false;
+       // animationEnd = false;
         inputBelt = GameObject.Find("InputBeltTrans").gameObject;
     }
     private void LateUpdate()

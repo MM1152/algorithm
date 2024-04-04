@@ -10,13 +10,13 @@ public class inputBelt : MonoBehaviour
     public GameObject Box;
     public BeltController beltController;
 
-    private float boxinitPos;
+//    private float boxinitPos;
     private float boxtransY;
     private void Start()
     {
         beltController = GameObject.Find("Belt").GetComponent<BeltController>();
         boxtransY = 0f;
-        boxinitPos = 0.4f;
+      //  boxinitPos = 0.4f;
         for (int i = 0; i < boxNum.Count; i++)
         {
             GameObject prefeb = Instantiate(Box, transform) as GameObject;

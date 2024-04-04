@@ -611,6 +611,10 @@ MonoBehaviour:
   TEST_outputData: 0100000001000000
   TEST_value: 5
   TEST_codes: 01010101010101
+  Custom_inputData: 010000000200000003000000
+  Custom_outputData: 010000000200000003000000
+  Custom_value: 0
+  Custom_codes: 
 --- !u!4 &1376729601
 Transform:
   m_ObjectHideFlags: 0
