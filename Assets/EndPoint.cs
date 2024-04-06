@@ -28,21 +28,22 @@ public class EndPoint : Codes
     }
     public override void checkCode()
     {
-        Debug.Log($"{jumps.GetComponent<IFJUMP>().count} {jumps.GetComponent<IFJUMP>().getEndJumpCount()}");
         if (check.code.name.Substring(0, 2).Equals("ju") && check.Count < inputbelt.boxNum.Count)
         {
             check.Seti(jumps.getData());
-        }if(check.code.name.Substring(0, 2).Equals("IF") && (jumps.GetComponent<IFJUMP>().count < jumps.GetComponent<IFJUMP>().getEndJumpCount()))
+        }
+        if(check.code.name.Substring(0, 2).Equals("IF") && (jumps.GetComponent<IFJUMP>().count < jumps.GetComponent<IFJUMP>().getEndJumpCount()))
         {
-           //($"{jumps.GetComponent<IFJUMP>().count} À±Áö¼ö ¹Ùº¸");
             IFJUMP ifJump = jumps.GetComponent<IFJUMP>();
             ifJump.count++;
             ifJump.transform.Find("Input").GetComponent<InputField>().text = ifJump.count.ToString();
             check.Seti(jumps.GetComponent<IFJUMP>().getData());
-        }else
+        }else if(check.code.name.Substring(0, 2).Equals("IF"))
         {
             IFJUMP ifJump = jumps.GetComponent<IFJUMP>();
             ifJump.count = ifJump.getSetJumpCount();
+            ifJump.transform.Find("Input").GetComponent<InputField>().text = ifJump.count.ToString();
+            ifJump.removejumps();
         }
         
     }

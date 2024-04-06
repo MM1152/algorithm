@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler
+public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler , IBeginDragHandler
 {
     public CheckCode checkCode;
     public static bool isDrag;
@@ -41,7 +41,7 @@ public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler
         isDrag = true;
         gameObject.transform.position = eventData.position;
         transform.SetParent(originCanvas.transform);
-        Debug.Log("Draging");
+        
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -83,11 +83,10 @@ public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler
             if(collision.transform.position.y < transform.position.y)
             {
                 index = collision.transform.GetSiblingIndex();
-                inside.transform.SetParent(Canvas.transform);
+                //inside.transform.SetParent(Canvas.transform);
                 inside.transform.SetSiblingIndex(index);
             } 
         }
-        
         if(collision.tag == "Layout")
         {
             Iscollision = true;
@@ -103,5 +102,9 @@ public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler
         }
     }
 
-
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        inside.transform.SetParent(Canvas.transform);
+        inside.transform.SetSiblingIndex(gameObject.transform.GetSiblingIndex());
+    }
 }

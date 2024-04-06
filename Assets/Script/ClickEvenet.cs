@@ -27,12 +27,15 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
     }
     private void OnLevelWasLoaded(int level)
     {
-        Debug.Log(originTransform);
-        isValueCopy = false;
         valueSelect = false;
         originTransform = this.gameObject.transform.localPosition;
         Canvas = GameObject.FindWithTag("Canvas").gameObject;
         _thisGameObj = transform.parent.gameObject;
+
+        if (isValueCopy)
+        {
+            gameObject.transform.GetChild(0).GetComponent<Text>().text = mouseDrag.parent.GetComponent<InputField>().text;
+        }
     }
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -41,6 +44,7 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
         {
             if(gameObject.name == "Value" && !gameObject.transform.GetChild(1).gameObject.activeSelf)
             {
+
                 gameObject.transform.GetChild(1).gameObject.SetActive(true);
                 gameObject.transform.SetParent(Canvas.transform);
             }else if(gameObject.name == "Value" && gameObject.transform.GetChild(1).gameObject.activeSelf)
@@ -51,19 +55,17 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
             {
                 valueSelect = true;
                 _this = this.gameObject;
-                
+                isValueCopy = false;
             }  
         }
     }
     private void Update()
     {
-        
+        Debug.Log(MouseDrag.isMouseUse);
         if (OnMousepointer.selectValue != " ")
             {
-                Debug.Log(OnMousepointer.selectValue);
                 _this.transform.GetChild(0).GetComponent<Text>().text = OnMousepointer.selectValue;
                 valueSelect = false;
-                
                 //_this = null;
                 OnMousepointer.selectValue = " ";
             }
@@ -75,29 +77,17 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
             transform.localPosition = originTransform;
         }
 
-        if(mouseDrag != null && !mouseDrag.isMouseUse && isValueCopy)
+        if(mouseDrag != null && !MouseDrag.isMouseUse && isValueCopy)
         {
             gameObject.transform.GetChild(0).GetComponent<Text>().text = mouseDrag.parent.GetComponent<InputField>().text;
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag.Equals("Index") && !onDrag.isDrag)  
-        {
-            mouseDrag = collision.GetComponent<MouseDrag>().parent.GetComponent<MouseDrag>();
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if(collision.tag.Equals("Index") && mouseDrag.isMouseUse)
-        {
-            isValueCopy = false;
-        }
-    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.tag.Equals("Index") && !onDrag.isDrag && !mouseDrag.isMouseUse)
+        if(collision.tag.Equals("Index") && !onDrag.isDrag && !MouseDrag.isMouseUse)
         {
+            mouseDrag = collision.GetComponent<MouseDrag>().parent.GetComponent<MouseDrag>();
             isValueCopy = true;
         }
     }

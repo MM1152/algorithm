@@ -120,7 +120,7 @@ public class playerMove : MonoBehaviour
     private void BoxPickOff(Collider2D collision)
     {
         gameObject.transform.GetChild(transform.Find("Box(Clone)").GetSiblingIndex()).transform.SetParent(collision.gameObject.transform);
-        collision.gameObject.transform.GetChild(count++).transform.localPosition = new Vector3(0f, -0.4f + sum, 0f);
+        collision.gameObject.transform.GetChild(++count).transform.localPosition = new Vector3(0f, 0.4f, 0f);
         sum += 0.2f;
     }
     private void Copy(Collider2D collision)

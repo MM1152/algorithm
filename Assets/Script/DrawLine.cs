@@ -1,38 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DrawLine : MonoBehaviour
 {
     private onDrag ondrag;
     private LineRenderer line;
-    private Transform startPos, endPos;
+    private Vector2 startPos, endPos;
     public int i;
-
+    // Debug.Log(Camera.main.ScreenToWorldPoint(transform.position)); 써서 좌표 구할 수 있음
     // Start is called before the first frame update
     void Start()
     {
         ondrag = GetComponent<onDrag>();
         line = GetComponent<LineRenderer>();
-        startPos = this.gameObject.transform;
-        endPos = this.ondrag.Child.transform;
+        startPos = Camera.main.ScreenToWorldPoint(transform.position);
+        endPos = Camera.main.ScreenToWorldPoint(this.ondrag.Child.transform.position);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        Invoke("showPosition" , 1f);
-        
-    }
-    public void showPosition()
-    {
-        Debug.Log($"transform : {this.gameObject.transform.position}");
-        Debug.Log($"WorldToScreenPoint : {Camera.main.WorldToScreenPoint(this.gameObject.transform.position)}");
-        Debug.Log($"WorldToViewportPoint : {Camera.main.WorldToViewportPoint(this.gameObject.transform.position)}");
-        Debug.Log($"ScreenToViewportPoint : {Camera.main.ScreenToViewportPoint(this.gameObject.transform.position)}");
-        Debug.Log($"ViewportToScreenPoint : {Camera.main.ViewportToScreenPoint(this.gameObject.transform.position)}");
-        Debug.Log($"ViewportToWorldPoint : {Camera.main.ViewportToWorldPoint(this.gameObject.transform.position)}");
 
-    }
 
 }

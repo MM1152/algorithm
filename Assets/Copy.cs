@@ -24,6 +24,7 @@ public class Copy : Codes
     }
     public override void checkCode()
     {
+        
         value = this.gameObject.transform.Find("Copy Value").Find("ValuesName").GetComponent<Text>().text[0];
         isTrue = true;
         player.SetValueBox(values.transform.Find(value.ToString()).gameObject);

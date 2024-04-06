@@ -10,28 +10,33 @@ public class inputBelt : MonoBehaviour
     public GameObject Box;
     public BeltController beltController;
 
+    public GameObject box;
 //    private float boxinitPos;
     private float boxtransY;
     private void Start()
     {
-        beltController = GameObject.Find("Belt").GetComponent<BeltController>();
-        boxtransY = 0f;
+        beltController = gameObject.transform.Find("Belt").GetComponent<BeltController>();
+        boxtransY = -1f;
       //  boxinitPos = 0.4f;
         for (int i = 0; i < boxNum.Count; i++)
         {
             GameObject prefeb = Instantiate(Box, transform) as GameObject;
             prefeb.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "" + boxNum[i];
-            prefeb.transform.position += Vector3.down * boxtransY;
-            boxtransY += 1f;   
+            prefeb.transform.localPosition += new Vector3(0f , boxtransY , 0f);
+            boxtransY += -0.2f;   
         }
         
     }
     private void Update()
     {
-        if (gameObject.transform.childCount != 0 && gameObject.transform.GetChild(0).transform.position.y <= 0.3f)
+        if (gameObject.transform.Find("Box(Clone)"))
+        {
+            box = gameObject.transform.Find("Box(Clone)").gameObject;
+        }
+        
+        if (gameObject.transform.childCount != 0 && gameObject.transform.Find("Box(Clone)").transform.position.y <= -0.6f)
         {
             BoxMove();
-            
         }else if(beltController.BeltAni[0].GetBool("IsBeltMove"))
         {
             beltController.BeltStop();
@@ -41,12 +46,10 @@ public class inputBelt : MonoBehaviour
 
     private void BoxMove()
     {
-            for (int i = 0; i < gameObject.transform.childCount; i++)
+            for (int i = 1; i < gameObject.transform.childCount; i++)
             {
-                gameObject.transform.GetChild(i).transform.Translate(new Vector3(0f , 0.005f , 0f));
+                gameObject.transform.GetChild(i).transform.Translate(new Vector3(0f , 0.05f , 0f));
                 beltController.BeltMove();
             }
-       
-         
     }
 }
