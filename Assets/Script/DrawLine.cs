@@ -53,7 +53,7 @@ public class DrawLine : MonoBehaviour
                 t = (float)i / (line.positionCount - 1);
             }
 
-            Vector3 bezier = Bezier(startPos, startPos + new Vector2(-2f, 0f), endPos + new Vector2(-2f, 0f) , endPos , t); ;
+            Vector3 bezier = Bezier(startPos, startPos + new Vector2(-3f , 0), endPos + new Vector2(-3f, 0), endPos  , t); ;
 
 
             line.SetPosition(i, bezier); // 라인을 설정합니다

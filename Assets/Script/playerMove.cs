@@ -130,7 +130,7 @@ public class playerMove : MonoBehaviour
             Destroy(collision.transform.Find("Box(Clone)").gameObject);
         }
         GameObject Box = gameObject.transform.Find("Box(Clone)").gameObject;
-        Box.transform.SetParent(valueBox.transform);
+        Box.transform.SetParent(valueBox.transform , false);
         Box.transform.localPosition = Vector3.zero;
     }
     private void Paste(Collider2D collsion)
@@ -141,7 +141,7 @@ public class playerMove : MonoBehaviour
         }
         GameObject BoxPrefeb = Instantiate(collsion.gameObject.transform.Find("Box(Clone)")).gameObject as GameObject;
         BoxPrefeb.name = "Box(Clone)";
-        BoxPrefeb.transform.SetParent(this.gameObject.transform);
+        BoxPrefeb.transform.SetParent(this.gameObject.transform , false);
         BoxPrefeb.transform.localPosition = boxPos;
 
         
