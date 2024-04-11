@@ -5,10 +5,15 @@ using UnityEngine.EventSystems;
 
 public class MouseDrag : MonoBehaviour , IDragHandler , IEndDragHandler , IBeginDragHandler
 {
-    public bool isMouseUse = false;
+    public static bool isMouseUse = false;
     public bool isValueIn = false;
+    
     public GameObject copyValue;
     public GameObject parent;
+
+    [SerializeField]
+    private ClickEvenet clickEvenet;
+    private bool inTrigger;
     public void OnBeginDrag(PointerEventData eventData)
     {
         parent = gameObject;
@@ -26,9 +31,7 @@ public class MouseDrag : MonoBehaviour , IDragHandler , IEndDragHandler , IBegin
     {
         isMouseUse = false;
         StartCoroutine(WaitFrame());
-        
     }
-
     IEnumerator WaitFrame()
     {
         yield return new WaitForSeconds(0.05f);

@@ -16,28 +16,42 @@ public class ChangeContentSize : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rect.sizeDelta = new Vector2(0f, gameObject.transform.childCount * 100f);
-        SetPos();   
+        
+        checkChildYsize();
+        
     }
-
-    void SetPos()
+    void checkChildYsize()
     {
-        if(childcount != transform.childCount)
+        if (childcount != transform.childCount)
         {
-            if(childcount > transform.childCount)
+            Debug.Log($"{childcount} , {gameObject.transform.childCount}");
+            if (childcount < transform.childCount)
             {
-                childcount = transform.childCount;
+                rect.sizeDelta = Vector2.zero;
+                rect.anchoredPosition = Vector2.zero;
+                childcount = gameObject.transform.childCount;
+                for (int i = 0; i < childcount; i++)
+                {
+                    rect.sizeDelta += new Vector2(0f, (gameObject.transform.GetChild(i).GetComponent<RectTransform>().rect.height * gameObject.transform.GetChild(i).GetComponent<RectTransform>().localScale.y) + 10f);
+                    Debug.Log($"{gameObject.transform.GetChild(i).GetComponent<RectTransform>().rect.height}");
+                    rect.anchoredPosition += new Vector2(0f, (gameObject.transform.GetChild(i).GetComponent<RectTransform>().rect.height * gameObject.transform.GetChild(i).GetComponent<RectTransform>().localScale.y) + 10f);
+                }
+                
             }
-            else if(childcount < transform.childCount)
+            else if(childcount > transform.childCount)
             {
-                rect.anchoredPosition += new Vector2(0f, 200f);
-                childcount = transform.childCount;
-            }   
+                rect.sizeDelta = Vector2.zero;
+                rect.anchoredPosition = Vector2.zero;
+                childcount = gameObject.transform.childCount;
+                for (int i = 0; i < childcount; i++)
+                {
+                    rect.sizeDelta += new Vector2(0f, gameObject.transform.GetChild(i).GetComponent<RectTransform>().rect.height);
+                }
+            }
             
         }
-        
-    }
 
-        
+    }
+    
     
 }

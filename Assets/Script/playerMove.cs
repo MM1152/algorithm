@@ -65,6 +65,7 @@ public class playerMove : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (checkcode.code.name.Equals("Pick off(Clone)") && collision.name == "OutputBelt")
         {
             BoxPickOff(collision);
@@ -74,7 +75,7 @@ public class playerMove : MonoBehaviour
             ani.Play("PlayerPickUp", 0 , 0);
             BoxPickUP(collision);
         }
-        else if(checkcode.code.name.Equals("Copy(Clone)") && collision.name.Equals(valueBox.name))
+        else if (checkcode.code.name.Equals("Copy(Clone)") && collision.name.Equals(valueBox.name))
         {
             Copy(collision);
         }
@@ -86,6 +87,7 @@ public class playerMove : MonoBehaviour
             isPaste = false;
             Paste(collision);
         }
+        
     }
     public void setIsPaste(bool paste)
     {
@@ -120,7 +122,7 @@ public class playerMove : MonoBehaviour
     private void BoxPickOff(Collider2D collision)
     {
         gameObject.transform.GetChild(transform.Find("Box(Clone)").GetSiblingIndex()).transform.SetParent(collision.gameObject.transform);
-        collision.gameObject.transform.GetChild(count++).transform.localPosition = new Vector3(0f, -0.4f + sum, 0f);
+        collision.gameObject.transform.GetChild(++count).transform.localPosition = new Vector3(0f, 0.4f, 0f);
         sum += 0.2f;
     }
     private void Copy(Collider2D collision)
@@ -130,7 +132,7 @@ public class playerMove : MonoBehaviour
             Destroy(collision.transform.Find("Box(Clone)").gameObject);
         }
         GameObject Box = gameObject.transform.Find("Box(Clone)").gameObject;
-        Box.transform.SetParent(valueBox.transform);
+        Box.transform.SetParent(valueBox.transform , false);
         Box.transform.localPosition = Vector3.zero;
     }
     private void Paste(Collider2D collsion)
@@ -141,7 +143,7 @@ public class playerMove : MonoBehaviour
         }
         GameObject BoxPrefeb = Instantiate(collsion.gameObject.transform.Find("Box(Clone)")).gameObject as GameObject;
         BoxPrefeb.name = "Box(Clone)";
-        BoxPrefeb.transform.SetParent(this.gameObject.transform);
+        BoxPrefeb.transform.SetParent(this.gameObject.transform , false);
         BoxPrefeb.transform.localPosition = boxPos;
 
         
