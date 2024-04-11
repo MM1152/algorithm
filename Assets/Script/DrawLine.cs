@@ -21,7 +21,6 @@ public class DrawLine : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(Camera.main.ScreenToWorldPoint(transform.position));
         endPos = Camera.main.ScreenToWorldPoint(this.ondrag.Child.transform.position);
         startPos = Camera.main.ScreenToWorldPoint(transform.position);
         endPos = Camera.main.ScreenToWorldPoint(this.ondrag.Child.transform.position);

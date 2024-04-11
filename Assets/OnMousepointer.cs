@@ -21,24 +21,29 @@ public class OnMousepointer : MonoBehaviour , IPointerEnterHandler , IPointerExi
     public void OnPointerEnter(PointerEventData eventData)
     {
 
-        if (ClickEvenet._this.GetComponent<ClickEvenet>().valueSelect)
-        {
-            for (int i = 0; i < SelectBox.Count; i++)
+            if (ClickEvenet._this.GetComponent<ClickEvenet>().valueSelect)
             {
-                SelectBox[i].SetActive(true);
+                for (int i = 0; i < SelectBox.Count; i++)
+                {
+                    SelectBox[i].SetActive(true);
+                }
             }
-        }
+        
+
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (ClickEvenet._this.GetComponent<ClickEvenet>().valueSelect)
-        {
-            for (int i = 0; i < SelectBox.Count; i++)
+
+            if (ClickEvenet._this.GetComponent<ClickEvenet>().valueSelect)
             {
-                SelectBox[i].SetActive(false);
+                for (int i = 0; i < SelectBox.Count; i++)
+                {
+                    SelectBox[i].SetActive(false);
+                }
             }
-        }
+
+
     }
 
     public void OnPointerClick(PointerEventData eventData)

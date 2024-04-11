@@ -56,35 +56,45 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
                 valueSelect = true;
                 _this = this.gameObject;
                 isValueCopy = false;
-            }  
+            }
+            else
+            {
+                _this = this.gameObject;
+            }
         }
     }
     private void Update()
     {
         Debug.Log(MouseDrag.isMouseUse);
-        if (OnMousepointer.selectValue != " ")
+
+        if(gameObject.name != "Image")
+        {
+            if (OnMousepointer.selectValue != " ")
             {
                 _this.transform.GetChild(0).GetComponent<Text>().text = OnMousepointer.selectValue;
                 valueSelect = false;
                 //_this = null;
                 OnMousepointer.selectValue = " ";
             }
-
-        if (onDrag.isDrag)
-        {
-            transform.GetChild(1).gameObject.SetActive(false);
-            transform.SetParent(_thisGameObj.transform);
-            transform.localPosition = originTransform;
         }
+            if (onDrag.isDrag)  
+            {
+                transform.GetChild(1).gameObject.SetActive(false);
+                transform.SetParent(_thisGameObj.transform);
+                transform.localPosition = originTransform;
+            }
 
-        if(mouseDrag != null && !MouseDrag.isMouseUse && isValueCopy)
-        {
-            gameObject.transform.GetChild(0).GetComponent<Text>().text = mouseDrag.parent.GetComponent<InputField>().text;
-        }
+            if (mouseDrag != null && !MouseDrag.isMouseUse && isValueCopy)
+            {
+                gameObject.transform.GetChild(0).GetComponent<Text>().text = mouseDrag.parent.GetComponent<InputField>().text;
+            }
+        
+        
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        Debug.Log(collision.name);
         if(collision.tag.Equals("Index") && !onDrag.isDrag && !MouseDrag.isMouseUse)
         {
             mouseDrag = collision.GetComponent<MouseDrag>().parent.GetComponent<MouseDrag>();

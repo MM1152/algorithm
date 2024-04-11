@@ -85,7 +85,13 @@ public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler , IBeginDra
                 index = collision.transform.GetSiblingIndex();
                 //inside.transform.SetParent(Canvas.transform);
                 inside.transform.SetSiblingIndex(index);
-            } 
+            }
+            if (collision.transform.position.y > transform.position.y)
+            {
+                index = collision.transform.GetSiblingIndex() + 1;
+                //inside.transform.SetParent(Canvas.transform);
+                inside.transform.SetSiblingIndex(index);
+            }
         }
         if(collision.tag == "Layout")
         {
@@ -104,6 +110,7 @@ public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler , IBeginDra
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        inside.GetComponent<RectTransform>().sizeDelta = gameObject.GetComponent<RectTransform>().sizeDelta * gameObject.GetComponent<RectTransform>().localScale;
         inside.transform.SetParent(Canvas.transform);
         inside.transform.SetSiblingIndex(gameObject.transform.GetSiblingIndex());
     }
