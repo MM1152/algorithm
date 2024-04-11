@@ -65,6 +65,7 @@ public class playerMove : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (checkcode.code.name.Equals("Pick off(Clone)") && collision.name == "OutputBelt")
         {
             BoxPickOff(collision);
@@ -74,7 +75,7 @@ public class playerMove : MonoBehaviour
             ani.Play("PlayerPickUp", 0 , 0);
             BoxPickUP(collision);
         }
-        else if(checkcode.code.name.Equals("Copy(Clone)") && collision.name.Equals(valueBox.name))
+        else if (checkcode.code.name.Equals("Copy(Clone)") && collision.name.Equals(valueBox.name))
         {
             Copy(collision);
         }
@@ -86,6 +87,7 @@ public class playerMove : MonoBehaviour
             isPaste = false;
             Paste(collision);
         }
+        
     }
     public void setIsPaste(bool paste)
     {
