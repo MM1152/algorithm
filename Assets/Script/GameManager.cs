@@ -190,4 +190,14 @@ public class GameManager : MonoBehaviour
             canvas.transform.GetChild(i).gameObject.SetActive(Custom_codes[i]);
         }
     }
+
+    
+    public void SetVariable(int index, int newValue)
+    {
+        // 배열에서 해당 인덱스의 변수를 변경합니다.
+        Custom_inputData[index] = newValue;
+
+        // 변경된 값을 확인하기 위해 콘솔에 출력합니다.
+        Debug.Log("게임 매니저의 변수가 변경되었습니다. 인덱스: " + index + ", 새 값: " + newValue);
+    }
 }
