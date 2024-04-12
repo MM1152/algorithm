@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class MouseDrag : MonoBehaviour , IDragHandler , IEndDragHandler , IBeginDragHandler
 {
@@ -16,9 +17,13 @@ public class MouseDrag : MonoBehaviour , IDragHandler , IEndDragHandler , IBegin
     private bool inTrigger;
     public void OnBeginDrag(PointerEventData eventData)
     {
-        parent = gameObject;
-        copyValue = Instantiate(gameObject, GameObject.FindWithTag("Layout").gameObject.transform);
-        copyValue.GetComponent<MouseDrag>().parent = parent;
+        if(gameObject.GetComponent<InputField>().text != "")
+        {
+            parent = gameObject;
+            copyValue = Instantiate(gameObject, GameObject.FindWithTag("Layout").gameObject.transform);
+            copyValue.GetComponent<MouseDrag>().parent = parent;
+        }
+        
     }
 
     public void OnDrag(PointerEventData eventData)

@@ -65,9 +65,8 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
     }
     private void Update()
     {
-        Debug.Log(MouseDrag.isMouseUse);
 
-        if(gameObject.name != "Image")
+        if(gameObject.name != "Image" && gameObject.name != "Value3")
         {
             if (OnMousepointer.selectValue != " ")
             {
@@ -86,7 +85,15 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
 
             if (mouseDrag != null && !MouseDrag.isMouseUse && isValueCopy)
             {
-                gameObject.transform.GetChild(0).GetComponent<Text>().text = mouseDrag.parent.GetComponent<InputField>().text;
+                if (mouseDrag.gameObject.name.Equals("InputName"))
+                {
+                    gameObject.transform.GetChild(0).GetComponent<Text>().text = mouseDrag.parent.transform.parent.GetComponent<VarData>().getVarValue().ToString();
+                }
+                else
+                {
+                    gameObject.transform.GetChild(0).GetComponent<Text>().text = mouseDrag.parent.GetComponent<InputField>().text;
+                }
+               
             }
         
         
@@ -94,7 +101,6 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log(collision.name);
         if(collision.tag.Equals("Index") && !onDrag.isDrag && !MouseDrag.isMouseUse)
         {
             mouseDrag = collision.GetComponent<MouseDrag>().parent.GetComponent<MouseDrag>();

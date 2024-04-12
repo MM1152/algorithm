@@ -14,8 +14,6 @@ public class DrawLine : MonoBehaviour
     {
         ondrag = GetComponent<onDrag>();
         line = GetComponent<LineRenderer>();
-        
-
         line.positionCount = lineCount;    
     }
 
@@ -59,3 +57,7 @@ public class DrawLine : MonoBehaviour
         }
     }
 }
+
+
+
+
