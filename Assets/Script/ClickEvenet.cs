@@ -34,7 +34,14 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
 
         if (isValueCopy)
         {
-            gameObject.transform.GetChild(0).GetComponent<Text>().text = mouseDrag.parent.GetComponent<InputField>().text;
+            if (mouseDrag.gameObject.name.Equals("InputName"))
+            {
+                gameObject.transform.GetChild(0).GetComponent<Text>().text = mouseDrag.parent.transform.parent.GetComponent<VarData>().getVarValue().ToString();
+            }
+            else
+            {
+                gameObject.transform.GetChild(0).GetComponent<Text>().text = mouseDrag.parent.GetComponent<InputField>().text;
+            }
         }
     }
     public void OnPointerClick(PointerEventData eventData)
@@ -101,8 +108,10 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.tag.Equals("Index") && !onDrag.isDrag && !MouseDrag.isMouseUse)
+        
+        if (collision.tag.Equals("Index") && !onDrag.isDrag && !MouseDrag.isMouseUse)
         {
+            Debug.Log($"Collision name : {collision.name}");
             mouseDrag = collision.GetComponent<MouseDrag>().parent.GetComponent<MouseDrag>();
             isValueCopy = true;
         }
