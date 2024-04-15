@@ -23,7 +23,6 @@ public class VarData : MonoBehaviour
 
     void Update()
     {
-        
         Setting();
     }
 
@@ -65,7 +64,7 @@ public class VarData : MonoBehaviour
             }
         }
 
-        if (name.text != null && varValue.Count == 0)
+        if (!name.text.Equals("") && !value.text.Equals("") && varValue.Count == 0)
         {
             if (calcu.text[0].Equals('+'))
             {
@@ -91,7 +90,6 @@ public class VarData : MonoBehaviour
             }
 
         }
-        Debug.Log($"varValue : {varValue[name.text]}");
     }
     public int getVarValue()
     {
