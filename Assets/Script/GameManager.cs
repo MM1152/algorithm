@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,7 +15,6 @@ public class GameManager : MonoBehaviour
     public GameObject values;
 
     public string Level;
-    public bool firstIn;
 
     public int[] Level1_inputData;
     public int[] Level1_outputData;
@@ -45,7 +45,6 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Application.targetFrameRate = 60;
-        firstIn = true;
         if (GameObject.FindGameObjectsWithTag("GameManager").Length == 1)
         {
             DontDestroyOnLoad(this.gameObject);
@@ -54,21 +53,24 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (SceneManager.GetActiveScene().name == "MainScene" && firstIn)
-        {
-            
-            firstIn = false;
-        }
-
-        if (SceneManager.GetActiveScene().name == "CustomScene" && firstIn)
-        {
-            firstIn = false;
-        }
 
     }
-    
+    private void checkNull(GameObject obj , string str)
+    {
+        if(GameObject.FindWithTag(str) != null)
+        {
+            obj = GameObject.FindWithTag(str).gameObject;
+        }
+    }
     private void OnLevelWasLoaded(int level)
     {
+        if (SceneManager.GetActiveScene().name.Equals("coustomScene"))
+        {
+            this.gameObject.SetActive(false);
+        }else
+        {
+            this.gameObject.SetActive(true);
+        }
         values = GameObject.FindWithTag("Value").gameObject;
         inputbelt = GameObject.FindWithTag("InputBelt").gameObject;
         outputBelt = GameObject.FindWithTag("OutputBelt").gameObject;
