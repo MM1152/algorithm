@@ -5,12 +5,15 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
 using System;
+using UnityEngine.UI;
 public class getJsonData : MonoBehaviour
 {
-
+    private Data zipData;
+    public GameObject scenePrefeb;
+    public Transform Canvas;
     private void Start()
     {
-        StartCoroutine(GetRequest("http://222.233.117.117:3000/data.json"));
+        StartCoroutine(GetRequest("http://localhost:3000/cccc"));
     }
     IEnumerator GetRequest(string url)
     {
@@ -21,12 +24,19 @@ public class getJsonData : MonoBehaviour
             if(request.result == UnityWebRequest.Result.Success && request.responseCode == 200)
             {
                 Debug.Log(request.downloadHandler.text);
-                ZIP zip = JsonUtility.FromJson<ZIP>(request.downloadHandler.text);
-                Debug.Log(zip.NAME);
+                zipData = JsonUtility.FromJson<Data>(request.downloadHandler.text);
+                
+
+                for(int i = 0; i < zipData.results.Length; i++)
+                {
+                    GameObject prefeb = Instantiate(scenePrefeb, Canvas) as GameObject;
+                    prefeb.transform.Find("CreateDay").GetComponent<Text>().text = zipData.results[i].created_date;
+                    prefeb.transform.Find("Title").GetComponent<Text>().text = zipData.results[i].title;
+                }
             }
             else
             {
-                Debug.Log(request.error);
+                StartCoroutine(GetRequest("http://localhost:3000/cccc"));
             }
             
         }
