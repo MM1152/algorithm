@@ -8,7 +8,7 @@ using System;
 
 public class playerMove : MonoBehaviour
 {
-    private bool isPaste;
+    public bool isPaste;
     private Vector3 boxPos;
     public Animator ani;
     private SpriteRenderer[] sprite;
@@ -16,9 +16,11 @@ public class playerMove : MonoBehaviour
     public int count = 0;
     public float sum = 0.2f;
     public GameObject valueBox;
+    public Rigidbody2D rg;
     private void Start()
     {
         isPaste = false;
+        rg = GetComponent<Rigidbody2D>();
         boxPos = new Vector3(0f, 0.6f);
         ani = GetComponent<Animator>();
         sprite = new SpriteRenderer[3];
@@ -35,9 +37,8 @@ public class playerMove : MonoBehaviour
     }
     public void Move(Transform target)
     {
-       
         if (Vector2.Distance(transform.position, target.position) >= 0.2)
-        {
+        {  
             transform.position += (target.position - transform.position).normalized * Time.deltaTime * 5f;
         }
         
@@ -57,8 +58,19 @@ public class playerMove : MonoBehaviour
         }
         
     }
-
-    private void Update()
+    void SetAnimation()
+    {
+        if (this.gameObject.transform.Find("Box(Clone)"))
+        {
+            ani.SetBool("IsCarry", true);
+            ani.SetBool("IsRun", false);
+        }else
+        {
+            ani.SetBool("IsCarry", false);
+            ani.SetBool("IsRun", true);
+        }
+    }
+    private void FixedUpdate()
     {
         SetAnimation();
         //Debug.Log($"게임오브젝트 x좌표 : {gameObject.transform.position.x}  valueBox x좌표 : {valueBox.transform.position.x}");
@@ -84,6 +96,7 @@ public class playerMove : MonoBehaviour
     {
         if (isPaste && checkcode.code.name.Equals("take(Clone)") && collision.name.Equals(valueBox.name))   
         {
+            
             isPaste = false;
             Paste(collision);
         }
@@ -93,19 +106,7 @@ public class playerMove : MonoBehaviour
     {
         this.isPaste = paste;
     }
-    private void SetAnimation()
-    {
-        if (gameObject.transform.Find("Box(Clone)"))
-        {
-            ani.SetBool("IsRun", false);
-            ani.SetBool("IsCarry", true);
-        }
-        else if (!gameObject.transform.Find("Box(Clone)"))
-        {
-            ani.SetBool("IsCarry", false);
-            ani.SetBool("IsRun", true);
-        }
-    }
+
     private void BoxPickUP(Collider2D collision)
     {
  

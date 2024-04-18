@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class CanvasInCode : MonoBehaviour
 {
     
@@ -19,6 +19,14 @@ public class CanvasInCode : MonoBehaviour
             Destroy(gameObject);
         }
 
+    }
+    private void OnLevelWasLoaded(int level)
+    {
+        
+        if (!SceneManager.GetActiveScene().name.Equals("MainScene"))
+        {
+            Destroy(this.gameObject);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -55,12 +55,11 @@ public class CheckCode : MonoBehaviour
         {
             code = list[i];
             CodeRun(code.GetComponent<Codes>());
+
             yield return new WaitUntil(() => Lay.transform.GetChild(i).gameObject.GetComponent<Codes>().WaitTime());
             
                 
         }
-        Time.timeScale = 0f;
-
     }
     
 }

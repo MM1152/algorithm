@@ -9,7 +9,7 @@ public class outBelt : MonoBehaviour
     public int ChildCount;
     public int BoxCount;
     public int SetOutputDataLength;
-    public int[] SetOutputData;
+    public List<int> SetOutputData;
     public BeltController beltController;
     private void Start()
     {
@@ -23,7 +23,6 @@ public class outBelt : MonoBehaviour
         ChildCount = gameObject.transform.childCount;
         if(ChildCount > 1)
         {
-            Debug.Log(ChildCount);
             BoxCount = int.Parse(gameObject.transform.GetChild(ChildCount - 1).GetChild(0).GetChild(0).GetComponent<Text>().text);
             if(BoxCount != SetOutputData[ChildCount - 2])
             {
@@ -45,10 +44,10 @@ public class outBelt : MonoBehaviour
         }
     }
 
-    public void SetOutput(int[] outPutData)
+    public void SetOutput(List<int> outPutData)
     {
         SetOutputData = outPutData;
-        SetOutputDataLength = outPutData.Length;
+        SetOutputDataLength = outPutData.Count;
         
     }
     private void BoxMove()

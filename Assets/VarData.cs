@@ -4,16 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 public class VarData : MonoBehaviour
 {
-    private Dictionary<string , int> varValue;
+    private Dictionary<string , int> varValue = new Dictionary<string, int>();
 
+    [SerializeField]
     private InputField name;
+    [SerializeField]
     private Text value;
+    [SerializeField]
     private Text calcu;
+    [SerializeField]
     private InputField count;
     // Start is called before the first frame update
     void Start()
     {
-        varValue = new Dictionary<string , int>();
         name = gameObject.transform.Find("InputName").GetComponent<InputField>();
         value = gameObject.transform.Find("Image").Find("num").GetComponent<Text>();
         calcu = gameObject.transform.Find("Value").Find("calcu").GetComponent<Text>();
@@ -28,6 +31,7 @@ public class VarData : MonoBehaviour
 
     void Setting()
     {
+        Debug.Log(varValue.Count);
         if(varValue.Count >= 1)
         {
             if (varValue.ContainsKey(name.text))

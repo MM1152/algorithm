@@ -12,15 +12,22 @@ public class ZIP
         public string bbbb_id;
 }
 [Serializable]
-public class CustuomMapData
-{
-    public int[] Custom_inputData;
-    public int[] Custom_outputData;
-    public int Custom_value;
-    public bool[] Custom_codes;
-}
-[Serializable]
 public class Data
 {
     public ZIP[] results;
+}
+
+[Serializable]
+public class PlayData
+{
+    public int id;
+    public string input;
+    public string output;
+    public int boolean;
+}
+
+[Serializable]
+public class PlayDatas
+{
+    public PlayData[] results;
 }

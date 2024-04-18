@@ -17,23 +17,22 @@ public class IF : Codes
     {
         init();
     }
-    private void LateUpdate()
+    
+    private void FixedUpdate()
     {
         if (isTrue)
         {
             player.Move(player.valueBox.transform);
         }
-
     }
+    
     
     public override void checkCode()
     {
-        player.setIsPaste(true);
         value = this.gameObject.transform.Find("Value1").Find("calcu").GetComponent<Text>().text[0];
         Operator = this.gameObject.transform.Find("Value").Find("calcu").GetComponent<Text>().text[0];
         isTrue = true;
         player.SetValueBox(values.transform.Find(value.ToString()).gameObject);
-
     }
     public override bool WaitTime()
     {
@@ -45,10 +44,11 @@ public class IF : Codes
                 check.Seti(sbling);
             }
 
+            isTrue = false;
             return true;
         }else
         {
-            return false;
+            return false;   
         }
         
     }
@@ -58,6 +58,7 @@ public class IF : Codes
     }
     private bool checkIF(GameObject value , int values , char Operator)
     {
+        Debug.Log($"{value} {values} {Operator}");
         if(Operator == '>')
         {
             if (value.transform.Find("Box(Clone)") && (values > int.Parse(value.transform.Find("Box(Clone)").transform.Find("Canvas").transform.Find("Text (Legacy)").GetComponent<Text>().text)))
@@ -82,5 +83,10 @@ public class IF : Codes
 
         return false;
     }
-    
+    IEnumerator Wait()
+    {
+        canCodeRun = false;
+        yield return new WaitForSeconds(0.08f);
+        canCodeRun = true;
+    }
 }

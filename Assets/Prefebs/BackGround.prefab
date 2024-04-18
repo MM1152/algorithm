@@ -331,6 +331,7 @@ GameObject:
   - component: {fileID: 3035570976543526144}
   - component: {fileID: 3035570976543526145}
   - component: {fileID: 3035570976543526150}
+  - component: {fileID: 8913184145582718611}
   m_Layer: 5
   m_Name: Button (Legacy)
   m_TagString: Untagged
@@ -440,4 +441,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3035570976543526145}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8913184145582718611}
+        m_TargetAssemblyTypeName: GetGameData, Assembly-CSharp
+        m_MethodName: GetData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8913184145582718611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3035570976543526148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3f378378bb5b2409df8406516c8730, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gamedata: {fileID: 11400000, guid: d4cc270c3636c1c4881894465a85a6a2, type: 2}
+  playdata:
+    results: []

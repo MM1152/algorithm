@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System;
-using UnityEngine.UIElements;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -16,14 +13,19 @@ public class GameManager : MonoBehaviour
     public GameObject GameEnd;
     public GameObject values;
 
+    public Texture2D image;
     // Start is called before the first frame update
     void Awake()
     {
+        Cursor.SetCursor(image, Vector2.zero , CursorMode.Auto);
+        Application.targetFrameRate = 120;
+
         if (GameObject.FindGameObjectsWithTag("GameManager").Length == 1)
         {
             DontDestroyOnLoad(this.gameObject);
         }
     }
+
     private void OnLevelWasLoaded(int level)
     {
         if (SceneManager.GetActiveScene().name.Equals("coustomScene"))
@@ -57,7 +59,7 @@ public class GameManager : MonoBehaviour
     { 
         inputBelt input = inputbelt.GetComponent<inputBelt>();
         outBelt _out = outputBelt.GetComponent<outBelt>();
-        for (int i = 0; i < gameData.inputData.Length; i++)
+        for (int i = 0; i < gameData.inputData.Count; i++)
         {
             input.boxNum.Add(gameData.inputData[i]);
         }
