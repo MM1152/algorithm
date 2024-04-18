@@ -9,19 +9,17 @@ public class SceneSwitcher : MonoBehaviour
     private void Update()
     {
         // 엔터 키를 누르면 다음 씬으로 이동
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        if ((Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)))
         {
             SwitchToNextScene();
         }
     }
 
     // 다음 씬으로 이동하는 함수
-    private void SwitchToNextScene()
+    public void SwitchToNextScene()
     {
-        gameManager.Level = "1";
         if (!string.IsNullOrEmpty(nextSceneName))
         {
-
             SceneManager.LoadScene(nextSceneName);
         }
         else

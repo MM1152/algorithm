@@ -32,7 +32,6 @@ public class PickOff : Codes
 
     public override bool WaitTime()
     {
-        Debug.Log(Vector3.Distance(player.transform.position, outBelt.transform.position));
         if (Vector3.Distance(player.transform.position, outBelt.transform.position) < 0.25f)
         {
             isTrue = false;

@@ -168,6 +168,54 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &485258080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 485258082}
+  - component: {fileID: 485258081}
+  m_Layer: 0
+  m_Name: GameDataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &485258081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485258080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 299548151053de548a9a9e3bc03f7d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameData:
+  - {fileID: 11400000, guid: 6922c8b937c024a41b1716dac7661420, type: 2}
+  - {fileID: 11400000, guid: 8c77db3cd51460045a051aec0e00d824, type: 2}
+  count: 0
+--- !u!4 &485258082
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485258080}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &523224939
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,7 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a4685affa3a4b4c8bbff5a84f289da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: StartScene
+  nextSceneName: MainScene
   gameManager: {fileID: 1376729600}
 --- !u!4 &815024410
 Transform:
@@ -593,28 +641,6 @@ MonoBehaviour:
   player: {fileID: 0}
   GameEnd: {fileID: 0}
   values: {fileID: 0}
-  Level: 
-  firstIn: 0
-  Level1_inputData: 010000000200000003000000
-  Level1_outputData: 010000000200000003000000
-  Level1_value: 0
-  Level1_codes: 01010000000000
-  Level1_1_inputData: 010000000200000003000000
-  Level1_1_outputData: 010000000200000003000000
-  Level1_1_value: 0
-  Level1_1_codes: 01010100000000
-  Level1_2_inputData: 0500000004000000030000000200000001000000
-  Level1_2_outputData: 01000000
-  Level1_2_value: 1
-  Level1_2_codes: 01010101010100
-  TEST_inputData: 0c00000003000000040000000500000008000000
-  TEST_outputData: 0100000001000000
-  TEST_value: 5
-  TEST_codes: 01010101010101
-  Custom_inputData: 000000000000000000000000
-  Custom_outputData: 000000000000000000000000
-  Custom_value: 0
-  Custom_codes: 010101
 --- !u!4 &1376729601
 Transform:
   m_ObjectHideFlags: 0

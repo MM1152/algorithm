@@ -11,9 +11,9 @@ public class getJsonData : MonoBehaviour
     private Data zipData;
     public GameObject scenePrefeb;
     public Transform Canvas;
-    private void Start()
+    private void Awake()
     {
-        StartCoroutine(GetRequest("http://localhost:3000/cccc"));
+        StartCoroutine(GetRequest("http://222.233.117.117:3000/cccc"));
     }
     IEnumerator GetRequest(string url)
     {
@@ -30,6 +30,7 @@ public class getJsonData : MonoBehaviour
                 for(int i = 0; i < zipData.results.Length; i++)
                 {
                     GameObject prefeb = Instantiate(scenePrefeb, Canvas) as GameObject;
+                    Debug.Log(zipData.results[i].created_date);
                     prefeb.transform.Find("CreateDay").GetComponent<Text>().text = zipData.results[i].created_date;
                     prefeb.transform.Find("Title").GetComponent<Text>().text = zipData.results[i].title;
                 }

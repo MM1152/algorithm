@@ -13,28 +13,21 @@ public class inputBelt : MonoBehaviour
     public GameObject box;
 //    private float boxinitPos;
     private float boxtransY;
-    private void Start()
+    private void Awake()
     {
+        boxNum = new List<int>();
         beltController = gameObject.transform.Find("Belt").GetComponent<BeltController>();
         boxtransY = -1f;
       //  boxinitPos = 0.4f;
-        for (int i = 0; i < boxNum.Count; i++)
-        {
-            GameObject prefeb = Instantiate(Box, transform) as GameObject;
-            prefeb.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "" + boxNum[i];
-            prefeb.transform.localPosition += new Vector3(0f , boxtransY , 0f);
-            boxtransY += -0.2f;   
-        }
-        
     }
-    private void Update()
+    private void LateUpdate()
     {
         if (gameObject.transform.Find("Box(Clone)"))
         {
             box = gameObject.transform.Find("Box(Clone)").gameObject;
         }
         
-        if (gameObject.transform.childCount != 0 && gameObject.transform.Find("Box(Clone)").transform.position.y <= -0.6f)
+        if (gameObject.transform.childCount > 1 && gameObject.transform.Find("Box(Clone)").transform.position.y <= -0.6f)
         {
             BoxMove();
         }else if(beltController.BeltAni[0].GetBool("IsBeltMove"))
@@ -48,8 +41,18 @@ public class inputBelt : MonoBehaviour
     {
             for (int i = 1; i < gameObject.transform.childCount; i++)
             {
-                gameObject.transform.GetChild(i).transform.Translate(new Vector3(0f , 0.05f , 0f));
+                gameObject.transform.GetChild(i).transform.Translate(new Vector3(0f , 0.01f , 0f));
                 beltController.BeltMove();
             }
+    }
+    public void SettingBox()
+    {
+        for (int i = 0; i < boxNum.Count; i++)
+        {
+            GameObject prefeb = Instantiate(Box, transform) as GameObject;
+            prefeb.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "" + boxNum[i];
+            prefeb.transform.localPosition += new Vector3(0f, boxtransY, 0f);
+            boxtransY += -0.2f;
+        }
     }
 }

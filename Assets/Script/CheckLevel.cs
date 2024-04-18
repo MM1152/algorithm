@@ -13,7 +13,6 @@ public class CheckLevel : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        check_Level = gameManager.Level;
         this.gameObject.SetActive(false);
     }
 
