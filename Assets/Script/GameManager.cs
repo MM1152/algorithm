@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public playerMove player;
     public GameObject GameEnd;
     public GameObject values;
-
+    [SerializeField]
     private GameObject FailGui;
     private GameObject Tutorial;
     [SerializeField]
@@ -72,12 +72,12 @@ public class GameManager : MonoBehaviour
         if (isFail)
         {
             FailGui.SetActive(true);
-            FailGui.transform.Find("FailText").GetComponent<Text>().text = worngText;
+            FailGui.transform.GetChild(0).Find("FailText").GetChild(0).GetComponent<Text>().text = worngText;
         } else
         {
             GameEnd.SetActive(true);
         }
-       
+         Time.timeScale = 0;
     }
     public void mainSecneSetting(GameData gameData)
     { 

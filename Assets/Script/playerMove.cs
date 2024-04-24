@@ -17,8 +17,10 @@ public class playerMove : MonoBehaviour
     public float sum = 0.2f;
     public GameObject valueBox;
     public Rigidbody2D rg;
+    private GameManager gameManager;
     private void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         isPaste = false;
         rg = GetComponent<Rigidbody2D>();
         boxPos = new Vector3(0f, 0.6f);
@@ -122,30 +124,50 @@ public class playerMove : MonoBehaviour
     }
     private void BoxPickOff(Collider2D collision)
     {
-        gameObject.transform.GetChild(transform.Find("Box(Clone)").GetSiblingIndex()).transform.SetParent(collision.gameObject.transform);
-        collision.gameObject.transform.GetChild(++count).transform.localPosition = new Vector3(0f, 0.4f, 0f);
-        sum += 0.2f;
+        if (gameObject.transform.Find("Box(Clone)"))
+        {
+            gameObject.transform.GetChild(transform.Find("Box(Clone)").GetSiblingIndex()).transform.SetParent(collision.gameObject.transform);
+            collision.gameObject.transform.GetChild(++count).transform.localPosition = new Vector3(0f, 0.4f, 0f);
+            sum += 0.2f;
+        }
+        else {
+            gameManager.Finish(true, "아무것도 들지 않은 상태에선\n 박스를 내려놓을 수 없어요!"); 
+        }
+        
     }
     private void Copy(Collider2D collision)
     {
-        if (collision.transform.Find("Box(Clone)"))
+        if (gameObject.transform.Find("Box(Clone)"))
         {
-            Destroy(collision.transform.Find("Box(Clone)").gameObject);
+            if (collision.transform.Find("Box(Clone)"))
+            {
+                Destroy(collision.transform.Find("Box(Clone)").gameObject);
+            }
+            GameObject Box = gameObject.transform.Find("Box(Clone)").gameObject;
+            Box.transform.SetParent(valueBox.transform, false);
+            Box.transform.localPosition = Vector3.zero;
+        } else
+        {
+            gameManager.Finish(true, "아무것도 들지 않고\n 복사하기를 할 수 없어요 !");
         }
-        GameObject Box = gameObject.transform.Find("Box(Clone)").gameObject;
-        Box.transform.SetParent(valueBox.transform , false);
-        Box.transform.localPosition = Vector3.zero;
+
     }
     private void Paste(Collider2D collsion)
     {
-        if (gameObject.transform.Find("Box(Clone)"))
+        if (collsion.transform.Find("Box(Clone)")) {
+            if (gameObject.transform.Find("Box(Clone)"))
+            {
+                Destroy(gameObject.transform.Find("Box(Clone)").gameObject);
+            }
+            GameObject BoxPrefeb = Instantiate(collsion.gameObject.transform.Find("Box(Clone)")).gameObject as GameObject;
+            BoxPrefeb.name = "Box(Clone)";
+            BoxPrefeb.transform.SetParent(this.gameObject.transform, false);
+            BoxPrefeb.transform.localPosition = boxPos;
+        } else
         {
-            Destroy(gameObject.transform.Find("Box(Clone)").gameObject);
+            gameManager.Finish(true, "아무것도 없는 곳에서\n 변수집기는 불가능해요 !");
         }
-        GameObject BoxPrefeb = Instantiate(collsion.gameObject.transform.Find("Box(Clone)")).gameObject as GameObject;
-        BoxPrefeb.name = "Box(Clone)";
-        BoxPrefeb.transform.SetParent(this.gameObject.transform , false);
-        BoxPrefeb.transform.localPosition = boxPos;
+        
 
         
         if(gameObject.transform.position.x > collsion.transform.position.x)
