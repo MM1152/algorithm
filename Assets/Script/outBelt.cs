@@ -25,13 +25,15 @@ public class outBelt : MonoBehaviour
         {
             BoxCount = int.Parse(gameObject.transform.GetChild(ChildCount - 1).GetChild(0).GetChild(0).GetComponent<Text>().text);
             if(BoxCount != SetOutputData[ChildCount - 2])
-            {
-                Time.timeScale = 0f;                
+            { 
+                Time.timeScale = 0f;
+                gameManger.Finish(true , "제가 원하는 정답이 아니에요 !");
             }
 
             if(ChildCount - 1 == SetOutputDataLength)
             {
-                gameManger.Finish();
+                Time.timeScale = 0f;
+                gameManger.Finish(false , null);
             }
         }
         if (gameObject.transform.childCount > 1 && gameObject.transform.GetChild(gameObject.transform.childCount - 1).transform.position.y >= -6f)

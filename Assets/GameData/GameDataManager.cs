@@ -19,6 +19,7 @@ public class GameDataManager : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         gameManger = GameObject.Find("GameManager").GetComponent<GameManager>();
+        maxCount = tutorialData.Length; 
         count = 0;
     }
     private void OnLevelWasLoaded(int level)
@@ -26,6 +27,7 @@ public class GameDataManager : MonoBehaviour
         if(count < maxCount)
         {
             gameManger.setGameData(tutorialData[count]);
+            
         }else
         {
             gameManger.setGameData(customGameData);
@@ -40,9 +42,14 @@ public class GameDataManager : MonoBehaviour
     public void setCount()
     {
         count++;
+        gameManger.first_in = true;
     }
     public int getCount()
     {
         return count;
+    }
+    public int getMaxCount()
+    {
+        return maxCount;
     }
 }

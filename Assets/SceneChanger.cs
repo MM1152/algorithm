@@ -21,7 +21,7 @@ public class SceneChanger : MonoBehaviour
         }
 
         gameDataManager.setCount();
-        if (gameDataManager.getCount() >= 2)
+        if (gameDataManager.getCount() >= gameDataManager.getMaxCount())
         {
             SceneManager.LoadScene("Custom");
             

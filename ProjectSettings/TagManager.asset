@@ -19,6 +19,9 @@ TagManager:
   - GameEnd
   - Index
   - CodePoint
+  - FailGui
+  - Tutorial
+  - FailText
   layers:
   - Default
   - TransparentFX

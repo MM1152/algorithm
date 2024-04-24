@@ -1,6 +1,7 @@
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour
@@ -13,10 +14,16 @@ public class GameManager : MonoBehaviour
     public GameObject GameEnd;
     public GameObject values;
 
+    private GameObject FailGui;
+    private GameObject Tutorial;
+    [SerializeField]
+    public bool first_in;
+
     public Texture2D image;
     // Start is called before the first frame update
     void Awake()
     {
+        first_in = true;
         Cursor.SetCursor(image, Vector2.zero , CursorMode.Auto);
         Application.targetFrameRate = 120;
 
@@ -38,12 +45,21 @@ public class GameManager : MonoBehaviour
     }
     public void setGameData(GameData gameData)
     {
+        FailGui = GameObject.FindWithTag("FailGui").gameObject;
+        Tutorial = GameObject.FindWithTag("Tutorial").gameObject;
         values = GameObject.FindWithTag("Value").gameObject;
         inputbelt = GameObject.FindWithTag("InputBelt").gameObject;
         outputBelt = GameObject.FindWithTag("OutputBelt").gameObject;
         canvas = GameObject.FindWithTag("Canvas").gameObject;
         GameEnd = GameObject.FindWithTag("GameEnd").gameObject;
+        Tutorial.SetActive(false);
         GameEnd.SetActive(false);
+        FailGui.SetActive(false);
+        if (first_in)
+        {
+            first_in = false;
+            Tutorial.SetActive(true);
+        }
         this.gameData = gameData;
         mainSecneSetting(this.gameData);
     }
@@ -51,9 +67,17 @@ public class GameManager : MonoBehaviour
     {
         return gameData;
     }
-    public void Finish()
+    public void Finish(bool isFail , string worngText)
     {
-        GameEnd.SetActive(true);
+        if (isFail)
+        {
+            FailGui.SetActive(true);
+            FailGui.transform.Find("FailText").GetComponent<Text>().text = worngText;
+        } else
+        {
+            GameEnd.SetActive(true);
+        }
+       
     }
     public void mainSecneSetting(GameData gameData)
     { 

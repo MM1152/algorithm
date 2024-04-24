@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d8baa19299e4f349a9782517d611007, type: 3}
-  m_Name: GameData 3
+  m_Name: "\uC870\uAC74\uBB38"
   m_EditorClassIdentifier: 
   inputData: 0100000001000000010000000100000001000000
-  outputData: 0100000001000000010000000100000001000000
+  outputData: 0500000001000000010000000100000001000000
   valueData: 6
+  codeData: 010101010101010000

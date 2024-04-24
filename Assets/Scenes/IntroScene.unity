@@ -200,6 +200,7 @@ MonoBehaviour:
   tutorialData:
   - {fileID: 11400000, guid: 6922c8b937c024a41b1716dac7661420, type: 2}
   - {fileID: 11400000, guid: 8c77db3cd51460045a051aec0e00d824, type: 2}
+  - {fileID: 11400000, guid: 2881e43678828e4429be55290f095362, type: 2}
   customGameData: {fileID: 0}
   gameManger: {fileID: 0}
   count: 0
@@ -644,6 +645,7 @@ MonoBehaviour:
   player: {fileID: 0}
   GameEnd: {fileID: 0}
   values: {fileID: 0}
+  first_in: 0
   image: {fileID: 2800000, guid: 7da95b5b733608c468110fa9b9357c72, type: 3}
 --- !u!4 &1376729601
 Transform:
