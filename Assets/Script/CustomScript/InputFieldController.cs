@@ -23,6 +23,25 @@ public class InputFieldController : MonoBehaviour
         saveButton.onClick.AddListener(SaveToArray); // 저장 버튼에 SaveToArray 메서드를 연결
     }
 
+    public List<int> GetInputnumbersList()
+    {
+        List<int> inputnumbersList = new List<int>();
+        foreach (InputField inputField in inputFields)
+        {
+            inputnumbersList.Add(int.Parse(inputField.text));
+        }
+        return inputnumbersList;
+    }
+
+    public List<int> GetOutputnumbersList()
+    {
+        List<int> outputnumbersList = new List<int>();
+        foreach (InputField outputField in outputFields)
+        {
+            outputnumbersList.Add(int.Parse(outputField.text));
+        }
+        return outputnumbersList;
+    }
 
     // 저장 버튼을 클릭했을 때 호출되는 메서드
     public void SaveToArray()
