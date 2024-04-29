@@ -1,28 +1,39 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine.UI;
 
 public class Scene1Script : MonoBehaviour
 {
-    private InputFieldController inputFieldController;
-    private GameManager gameManager;
+    [SerializeField]
+    private GameData gamedata;
+    private GameDataManager gameDataManager;
+
+    [SerializeField] private GameObject inputData;
+    [SerializeField] private GameObject outputData;
+
 
     private void Start()
     {
-        inputFieldController = FindObjectOfType<InputFieldController>();
-        gameManager = FindObjectOfType<GameManager>();
+        gameDataManager = GameObject.Find("GameDataManager").GetComponent<GameDataManager>();
+
     }
 
-    public void SendListToNextScene()
+    public void setData()
     {
-        // InputFieldController에서 inputnumbersList와 outputnumbersList 가져오기
-        List<int> inputnumbersList = inputFieldController.GetInputnumbersList();
-        List<int> outputnumbersList = inputFieldController.GetOutputnumbersList();
-     
-        // GameManager에 리스트들 전달
-        gameManager.ProcessLists(inputnumbersList, outputnumbersList);
-
-        // 다음 씬으로 전환
+        gamedata.inputData.Clear();
+        gamedata.outputData.Clear();
+        for (int i = 0; i < inputData.transform.childCount; i++)
+        {
+            gamedata.inputData.Add(int.Parse(inputData.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<InputField>().text));
+        }
+        for (int i = 0; i < outputData.transform.childCount; i++)
+        {
+            gamedata.outputData.Add(int.Parse(inputData.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<InputField>().text));
+        }
+        gameDataManager.setCustomGameData(gamedata);
         SceneManager.LoadScene("NewMainScene");
     }
 }
+

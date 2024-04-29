@@ -13,6 +13,9 @@ public class codeRunner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.K)) {
+            SceneManager.LoadScene("NewCustom");
+        }
+
     }
 }

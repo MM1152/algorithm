@@ -5,7 +5,6 @@ public class SceneSwitcher : MonoBehaviour
 {
     // 다음 씬의 이름을 설정
     public string nextSceneName = "StartScene";
-    public GameManager gameManager;
     private void Update()
     {
         // 엔터 키를 누르면 다음 씬으로 이동

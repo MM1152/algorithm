@@ -23,7 +23,7 @@ public class CanvasInCode : MonoBehaviour
     private void OnLevelWasLoaded(int level)
     {
         
-        if (!SceneManager.GetActiveScene().name.Equals("MainScene"))
+        if (!SceneManager.GetActiveScene().name.Equals("MainScene") && !SceneManager.GetActiveScene().name.Equals("NewMainScene"))
         {
             Destroy(this.gameObject);
         }

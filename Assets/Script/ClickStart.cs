@@ -15,4 +15,16 @@ public class ClickStart : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void PlusButton()
+    {
+        answer.SetActive(!answer.activeSelf);
+    }
+    public void BackButton()
+    {
+        SceneManager.LoadScene("Custom");
+    }
+    public void BackCustomMap()
+    {
+        SceneManager.LoadScene("NewCustom");
+    }
 }

@@ -31,4 +31,10 @@ public class SceneChanger : MonoBehaviour
             SceneManager.LoadScene("MainScene");
         }
     }
+
+    public void PostData()
+    {
+        //Ã¤¿ö¾ß‰Î.
+        return;
+    }
 }
