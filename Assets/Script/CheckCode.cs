@@ -33,6 +33,7 @@ public class CheckCode : MonoBehaviour
         {
             list.Add(Lay.gameObject.transform.GetChild(i).gameObject);
         }
+        player.setIsidle(false) ;
         StartCoroutine(Run());
 
     }

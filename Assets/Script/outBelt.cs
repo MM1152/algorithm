@@ -50,7 +50,6 @@ public class outBelt : MonoBehaviour
     {
         SetOutputData = outPutData;
         SetOutputDataLength = outPutData.Count;
-        
     }
     private void BoxMove()
     {

@@ -24,7 +24,6 @@ public class ChangeContentSize : MonoBehaviour
     {
         if (childcount != transform.childCount)
         {
-            Debug.Log($"{childcount} , {gameObject.transform.childCount}");
             if (childcount < transform.childCount)
             {
                 rect.sizeDelta = Vector2.zero;

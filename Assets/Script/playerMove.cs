@@ -18,8 +18,10 @@ public class playerMove : MonoBehaviour
     public GameObject valueBox;
     public Rigidbody2D rg;
     private GameManager gameManager;
+    private bool isIdle;
     private void Start()
     {
+        isIdle = true;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         isPaste = false;
         rg = GetComponent<Rigidbody2D>();
@@ -32,6 +34,10 @@ public class playerMove : MonoBehaviour
             sprite[i + 1] = gameObject.transform.GetChild(i).GetComponent<SpriteRenderer>();
         }
         checkcode = GameObject.FindWithTag("CheckCode").GetComponent<CheckCode>();
+    }
+    public void setIsidle(bool value)
+    {
+        this.isIdle = value;
     }
     public void SetValueBox(GameObject valueBox)
     {
@@ -62,11 +68,11 @@ public class playerMove : MonoBehaviour
     }
     void SetAnimation()
     {
-        if (this.gameObject.transform.Find("Box(Clone)"))
+        if (this.gameObject.transform.Find("Box(Clone)") && !isIdle)
         {
             ani.SetBool("IsCarry", true);
             ani.SetBool("IsRun", false);
-        }else
+        }else if(!this.gameObject.transform.Find("Box(Clone)") && !isIdle)
         {
             ani.SetBool("IsCarry", false);
             ani.SetBool("IsRun", true);

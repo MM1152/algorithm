@@ -13,7 +13,7 @@ public class getJsonData : MonoBehaviour
     public Transform Canvas;
     private void Awake()
     {
-        StartCoroutine(GetRequest("http://172.18.4.31:3000/cccc"));
+        StartCoroutine(GetRequest("http://222.233.117.117:3000/cccc"));
     }
     IEnumerator GetRequest(string url)
     {
@@ -37,7 +37,7 @@ public class getJsonData : MonoBehaviour
             }
             else
             {
-                StartCoroutine(GetRequest("http://localhost:3000/cccc"));
+                StartCoroutine(GetRequest("http://222.233.117.117:3000/cccc"));
             }
             
         }

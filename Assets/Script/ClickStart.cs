@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class ClickStart : MonoBehaviour
 {
     public CheckCode check;
-    public void Clickstart()
+    public GameObject answer;
+    public void StartButton()
     {
-        check.checkCode();
+        check.checkCode(); 
     }
-    public void ResetScene()
+    public void ResetButton()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -27,4 +28,5 @@ public class ClickStart : MonoBehaviour
     {
         SceneManager.LoadScene("NewCustom");
     }
+
 }

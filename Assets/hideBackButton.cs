@@ -5,12 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class hideBackButton : MonoBehaviour
 {
-    private GameDataManager gameDataManager;
     // Start is called before the first frame update
     void Start()
     {
-        gameDataManager = GameObject.Find("GameDataManager").GetComponent<GameDataManager>();
-        if(gameDataManager.getCount() < gameDataManager.getMaxCount())
+        if(!(SceneManager.GetActiveScene().name == "Custom"))
         {
             this.gameObject.SetActive(false);
         }   
