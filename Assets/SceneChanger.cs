@@ -69,7 +69,7 @@ public class SceneChanger : MonoBehaviour
             input += gameData.inputData[i].ToString();
             if (!(i == gameData.inputData.Count - 1))
             {
-                 input += " ";
+                 input += ",";
             }
             
         }
@@ -80,7 +80,7 @@ public class SceneChanger : MonoBehaviour
             input += gameData.outputData[i].ToString();
             if (!(i == gameData.outputData.Count - 1))
             {
-                input += " ";
+                input += ",";
             }
         }
         form.AddField("output", input);

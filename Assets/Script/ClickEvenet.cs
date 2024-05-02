@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using Unity.Burst.CompilerServices;
+using Unity.Burst.CompilerServices; 
 
 
 public class ClickEvenet : MonoBehaviour, IPointerClickHandler
