@@ -59,7 +59,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _BumpScale: 1
+<<<<<<< Updated upstream
     - _ColorMask: 20
+=======
+    - _ColorMask: 15
+>>>>>>> Stashed changes
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -75,9 +79,15 @@ Material:
     - _SrcBlend: 1
     - _Stencil: 1
     - _StencilComp: 5
+<<<<<<< Updated upstream
     - _StencilOp: 10
     - _StencilReadMask: 1
     - _StencilWriteMask: 10
+=======
+    - _StencilOp: 0
+    - _StencilReadMask: 1
+    - _StencilWriteMask: 0
+>>>>>>> Stashed changes
     - _UVSec: 0
     - _UseUIAlphaClip: 0
     - _ZWrite: 1

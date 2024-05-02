@@ -14,5 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputData: 010000000100000001000000
   outputData: 010000000100000001000000
+<<<<<<< Updated upstream
   valueData: 6
+=======
+  valueData: 0
+>>>>>>> Stashed changes
   codeData: 010100000000000000
