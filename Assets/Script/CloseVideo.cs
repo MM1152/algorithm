@@ -19,7 +19,7 @@ public class CloseVideo : MonoBehaviour
         {
             UGUI.SetActive(true);
             Tutorial.SetActive(false);
-             
+            
         }
     }
 }

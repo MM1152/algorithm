@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class pass : MonoBehaviour
 {
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,7 @@ public class pass : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.K)) {
-            SceneManager.LoadScene("NewCustom");
+            SceneManager.LoadScene("Custom");
         }
     }
 }
