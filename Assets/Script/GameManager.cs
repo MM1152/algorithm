@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     private GameData gameData;
+    public GameDataManager gameDataManager;
     public GameObject outputBelt;
     public GameObject inputbelt;
     public GameObject canvas;
@@ -59,7 +60,7 @@ public class GameManager : MonoBehaviour
         Tutorial.SetActive(false);
         GameEnd.SetActive(false);
         FailGui.SetActive(false);
-        if (first_in)
+        if (first_in && (gameDataManager.getCount() < gameDataManager.getMaxCount()))
         {
             first_in = false;
             Tutorial.SetActive(true);
