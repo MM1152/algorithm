@@ -37,7 +37,6 @@ public class GameManager : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
-        Debug.Log(level);
         if (SceneManager.GetActiveScene().name.Equals("coustomScene"))
         {
             this.gameObject.SetActive(false);

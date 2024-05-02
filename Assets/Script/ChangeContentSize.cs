@@ -32,7 +32,7 @@ public class ChangeContentSize : MonoBehaviour
                 for (int i = 0; i < childcount; i++)
                 {
                     rect.sizeDelta += new Vector2(0f, (gameObject.transform.GetChild(i).GetComponent<RectTransform>().rect.height * gameObject.transform.GetChild(i).GetComponent<RectTransform>().localScale.y) + 10f);
-                    
+                    Debug.Log($"{gameObject.transform.GetChild(i).GetComponent<RectTransform>().rect.height}");
                     rect.anchoredPosition += new Vector2(0f, (gameObject.transform.GetChild(i).GetComponent<RectTransform>().rect.height * gameObject.transform.GetChild(i).GetComponent<RectTransform>().localScale.y) + 10f);
                 }
                 

@@ -2,15 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneChanger : MonoBehaviour
 {
     private GameDataManager gameDataManager;
     private GameObject Content;
+    [SerializeField]
+    private GameObject titleinput;
+    private GameObject wrongText;
     private void Awake()
     {
         gameDataManager = GameObject.Find("GameDataManager").GetComponent<GameDataManager>();
         Content = GameObject.FindWithTag("Content").gameObject;
+        wrongText = gameObject.transform.Find("WrongText").gameObject;
+        if(wrongText != null)
+        {
+            wrongText.SetActive(false);
+        }
     }
     public void ChangeScene()
     {
@@ -34,7 +43,14 @@ public class SceneChanger : MonoBehaviour
 
     public void PostData()
     {
-        //Ã¤¿ö¾ß‰Î.
+        if (!titleinput.GetComponent<InputField>().text.Equals(""))
+        {
+
+        }else
+        {
+            wrongText.SetActive(true);
+        }
+
         return;
     }
 }

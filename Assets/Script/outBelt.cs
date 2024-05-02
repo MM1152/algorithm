@@ -11,9 +11,6 @@ public class outBelt : MonoBehaviour
     public int SetOutputDataLength;
     public List<int> SetOutputData;
     public BeltController beltController;
-
-    [SerializeField]
-    private GameObject Error;
     private void Start()
     {
         gameManger = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -28,26 +25,15 @@ public class outBelt : MonoBehaviour
         {
             BoxCount = int.Parse(gameObject.transform.GetChild(ChildCount - 1).GetChild(0).GetChild(0).GetComponent<Text>().text);
             if(BoxCount != SetOutputData[ChildCount - 2])
-<<<<<<< Updated upstream
             { 
                 Time.timeScale = 0f;
                 gameManger.Finish(true , "제가 원하는 정답이 아니에요 !");
-=======
-            {
-                Time.timeScale = 0f;
-                Error.SetActive(true);
->>>>>>> Stashed changes
             }
 
             if(ChildCount - 1 == SetOutputDataLength)
             {
-<<<<<<< Updated upstream
                 Time.timeScale = 0f;
                 gameManger.Finish(false , null);
-=======
-                gameManger.Finish();
-                Time.timeScale = 0f;
->>>>>>> Stashed changes
             }
         }
         if (gameObject.transform.childCount > 1 && gameObject.transform.GetChild(gameObject.transform.childCount - 1).transform.position.y >= -6f)

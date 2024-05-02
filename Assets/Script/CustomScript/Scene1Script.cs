@@ -26,11 +26,11 @@ public class Scene1Script : MonoBehaviour
         gamedata.outputData.Clear();
         for (int i = 0; i < inputData.transform.childCount; i++)
         {
-            gamedata.inputData.Add(int.Parse(inputData.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<InputField>().text));
+            gamedata.inputData.Add(int.Parse(inputData.transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<InputField>().text));
         }
         for (int i = 0; i < outputData.transform.childCount; i++)
         {
-            gamedata.outputData.Add(int.Parse(inputData.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<InputField>().text));
+            gamedata.outputData.Add(int.Parse(outputData.transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<InputField>().text));
         }
         gameDataManager.setCustomGameData(gamedata);
         SceneManager.LoadScene("NewMainScene");

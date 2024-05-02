@@ -203,6 +203,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2881e43678828e4429be55290f095362, type: 2}
   customGameData: {fileID: 0}
   gameManger: {fileID: 0}
+  count: 0
+  maxCount: 2
 --- !u!4 &485258082
 Transform:
   m_ObjectHideFlags: 0

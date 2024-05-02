@@ -10,7 +10,9 @@ public class GameDataManager : MonoBehaviour
     private GameData customGameData;
     [SerializeField]
     private GameManager gameManger;
+    [SerializeField]
     private int count;
+    [SerializeField]
     private int maxCount;
    
     private void Awake()
@@ -19,7 +21,6 @@ public class GameDataManager : MonoBehaviour
         gameManger = GameObject.Find("GameManager").GetComponent<GameManager>();
         maxCount = tutorialData.Length; 
         count = 0;
-        maxCount = tutorialData.Length;
     }
     private void OnLevelWasLoaded(int level)
     {
