@@ -330,7 +330,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextSceneName: MainScene
-  gameManager: {fileID: 1376729600}
 --- !u!4 &815024410
 Transform:
   m_ObjectHideFlags: 0
@@ -647,7 +646,7 @@ MonoBehaviour:
   values: {fileID: 0}
   FailGui: {fileID: 0}
   first_in: 0
-  image: {fileID: 2800000, guid: 7da95b5b733608c468110fa9b9357c72, type: 3}
+  image: {fileID: 2800000, guid: 960312bd39c944063a8bb421ffd270b5, type: 3}
 --- !u!4 &1376729601
 Transform:
   m_ObjectHideFlags: 0
