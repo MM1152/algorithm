@@ -16,7 +16,10 @@ public class GetGameData : MonoBehaviour
     IEnumerator WebPost()
     {
         WWWForm form = new WWWForm();
-        form.AddField("Id", 1);
+        string id = gameObject.transform.parent.Find("ID").GetComponent<Text>().text;
+        Debug.Log(id);
+        form.AddField("Id", id);
+        
         var url = "http://172.18.4.31:3000/PostData";
         using (UnityWebRequest request = UnityWebRequest.Post(url, form))
         {
