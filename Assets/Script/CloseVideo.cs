@@ -15,7 +15,7 @@ public class CloseVideo : MonoBehaviour
     }
     public void checkword()
     {
-        if(text.text == "´Ý±â")
+        if(text.text == "ë‹«ê¸°")
         {
             UGUI.SetActive(true);
             Tutorial.SetActive(false);
