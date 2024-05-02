@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Level1 Video
   m_EditorClassIdentifier: 
   videoes:
-  - {fileID: 32900000, guid: f2cebce903c5a2149928013fcce5117c, type: 3}
-  - {fileID: 32900000, guid: 918a9942100f5b940b2d7a439283dac8, type: 3}
-  - {fileID: 32900000, guid: e6501bd8ae5bbbf40965f315725f98cf, type: 3}
-  - {fileID: 32900000, guid: d8b234489fff2ef4d8337f6785a0ccad, type: 3}
+  - {fileID: 32900000, guid: 7e2b3bf73ab99a14ebb895234f1f55a6, type: 3}
+  - {fileID: 32900000, guid: a77b73e63480ece45be618fe6978e0d8, type: 3}
+  - {fileID: 32900000, guid: d5d4455fbe3baf145847c8826487ade6, type: 3}

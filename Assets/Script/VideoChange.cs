@@ -7,30 +7,23 @@ public class VideoChange : MonoBehaviour
 {
     [SerializeField]
     private VideoData videoData;
-    public VideoData VideoData { set { videoData = value; } }
 
     public GameManager gameManager;
     public Text text;
     private VideoPlayer videoPlayer;
 
-    int count = 0;
+    public static int count = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         videoPlayer = GetComponent<VideoPlayer>();
+        videoPlayer.clip = videoData.Videos[count];
     }
     public void NextVideo()
     {
+        Debug.Log(count);
         count++;
-        if(count < videoData.Videos.Length)
-        {
-            
-            videoPlayer.clip = videoData.Videos[count];
-        }
-        if(count >= videoData.Videos.Length - 1)
-        {
-            text.text = "´Ý±â";
-        }     
+        
     }
 }
