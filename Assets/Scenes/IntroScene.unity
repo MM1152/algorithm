@@ -330,7 +330,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextSceneName: MainScene
-  gameManager: {fileID: 1376729600}
 --- !u!4 &815024410
 Transform:
   m_ObjectHideFlags: 0
@@ -639,6 +638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 278e10e644c113b4a822a1d9368d29e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameDataManager: {fileID: 485258081}
   outputBelt: {fileID: 0}
   inputbelt: {fileID: 0}
   canvas: {fileID: 0}
