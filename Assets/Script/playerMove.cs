@@ -122,10 +122,7 @@ public class playerMove : MonoBehaviour
         {
             Destroy(gameObject.transform.Find("Box(Clone)").gameObject);
         }
-        if (!collision.transform.Find("Box(Clone)"))
-        {
-            gameManager.Finish(true, "아무것도 없는데 집을 수 없어요 ! ");
-        }
+
         GameObject Box = collision.transform.Find("Box(Clone)").gameObject;
         collision.transform.Find("Box(Clone)").gameObject.transform.SetParent(gameObject.transform);
         Box.transform.localPosition = boxPos;
@@ -153,7 +150,7 @@ public class playerMove : MonoBehaviour
                 Destroy(collision.transform.Find("Box(Clone)").gameObject);
             }
             GameObject Box = gameObject.transform.Find("Box(Clone)").gameObject;
-            Box.transform.SetParent(valueBox.transform);
+            Box.transform.SetParent(valueBox.transform, false);
             Box.transform.localPosition = Vector3.zero;
         } else
         {
