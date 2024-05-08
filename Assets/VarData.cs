@@ -31,7 +31,6 @@ public class VarData : MonoBehaviour
 
     void Setting()
     {
-        Debug.Log(varValue.Count);
         if(varValue.Count >= 1)
         {
             if (varValue.ContainsKey(name.text))

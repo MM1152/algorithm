@@ -101,7 +101,10 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
                 }
                
             }
-        
+        if(mouseDrag == null && gameObject.tag.Equals("Index"))
+        {
+            gameObject.transform.GetChild(0).GetComponent<Text>().text = "°ª";
+        }
         
     }
 
@@ -112,6 +115,10 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
         {
             Debug.Log($"Collision name : {collision.name}");
             mouseDrag = collision.GetComponent<MouseDrag>().parent.GetComponent<MouseDrag>();
+            if (mouseDrag.gameObject.name.Equals("InputName"))
+            {
+                mouseDrag.gameObject.GetComponent<DrawGizmo>().setConnection(this.gameObject);
+            }
             isValueCopy = true;
         }
     }

@@ -117,7 +117,10 @@ public class playerMove : MonoBehaviour
 
     private void BoxPickUP(Collider2D collision)
     {
- 
+        if (collision.transform.Find("Box(Clone)"))
+        {
+            gameManager.Finish(true, "아무것도 없는 상태에선\n 박스를 집을수 없어요!");
+        }
         if (gameObject.transform.Find("Box(Clone)"))
         {
             Destroy(gameObject.transform.Find("Box(Clone)").gameObject);

@@ -20,7 +20,7 @@ public class GetGameData : MonoBehaviour
         Debug.Log(id);
         form.AddField("Id", id);
         
-        var url = "http://172.18.4.31:3000/PostData";
+        var url = "http://222.233.117.117:3000/PostData";
         using (UnityWebRequest request = UnityWebRequest.Post(url, form))
         {
             
