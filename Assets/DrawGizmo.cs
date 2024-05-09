@@ -53,6 +53,7 @@ public class DrawGizmo : MonoBehaviour
         {
             mouseDragObj = null;
         }
+
         startPoint = Camera.main.ScreenToWorldPoint(this.gameObject.transform.position) + Vector3.back * -10f;
         middlePoint_A = startPoint + Vector3.right * 2f;
 

@@ -10,6 +10,7 @@ public class playerMove : MonoBehaviour
 {
     public bool isPaste;
     public bool isCopy;
+    public bool isCal;
     private Vector3 boxPos;
     public Animator ani;
     private SpriteRenderer[] sprite;
@@ -35,6 +36,10 @@ public class playerMove : MonoBehaviour
             sprite[i + 1] = gameObject.transform.GetChild(i).GetComponent<SpriteRenderer>();
         }
         checkcode = GameObject.FindWithTag("CheckCode").GetComponent<CheckCode>();
+    }
+    public void setIsCal(bool value)
+    {
+        this.isCal = value;
     }
     public void setIsidle(bool value)
     {
@@ -112,6 +117,11 @@ public class playerMove : MonoBehaviour
             isCopy = false;
             Copy(collision);
         }
+        else if(isCal && checkcode.code.name.Equals("cal(Clone)") && collision.name.Equals(valueBox.name))
+        {
+            isCal = false;
+            Calcu(collision);
+        }
     }
     public void setIsPaste(bool paste)
     {
@@ -150,6 +160,22 @@ public class playerMove : MonoBehaviour
             gameManager.Finish(true, "아무것도 들지 않은 상태에선\n 박스를 내려놓을 수 없어요!"); 
         }
         
+    }
+    private void Calcu(Collider2D collsion)
+    {
+        if (gameObject.transform.Find("Box(Clone)"))
+        {
+            
+            if (collsion.transform.Find("Box(Clone)"))
+            {
+                int count = checkcode.code.GetComponent<calcu>().calu(int.Parse(collsion.transform.Find("Box(Clone)").GetChild(0).GetChild(0).GetComponent<Text>().text));
+                collsion.transform.Find("Box(Clone)").GetChild(0).GetChild(0).GetComponent<Text>().text = count.ToString();
+                Destroy(this.gameObject.transform.Find("Box(Clone)").gameObject);
+                
+            }
+
+            
+        }
     }
     private void Copy(Collider2D collision)
     {
