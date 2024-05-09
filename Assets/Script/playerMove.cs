@@ -9,6 +9,7 @@ using System;
 public class playerMove : MonoBehaviour
 {
     public bool isPaste;
+    public bool isCopy;
     private Vector3 boxPos;
     public Animator ani;
     private SpriteRenderer[] sprite;
@@ -95,24 +96,30 @@ public class playerMove : MonoBehaviour
             ani.Play("PlayerPickUp", 0 , 0);
             BoxPickUP(collision);
         }
-        else if (checkcode.code.name.Equals("Copy(Clone)") && collision.name.Equals(valueBox.name))
-        {
-            Copy(collision);
-        }
+        
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
+        Debug.Log($"{checkcode.code.name} {valueBox.name}");
         if (isPaste && checkcode.code.name.Equals("take(Clone)") && collision.name.Equals(valueBox.name))   
         {
-            
             isPaste = false;
             Paste(collision);
         }
-        
+        else if (isCopy && checkcode.code.name.Equals("Copy(Clone)") && collision.name.Equals(valueBox.name))
+        {
+            
+            isCopy = false;
+            Copy(collision);
+        }
     }
     public void setIsPaste(bool paste)
     {
         this.isPaste = paste;
+    }
+    public void setIsCopy(bool copy)
+    {
+        this.isCopy = copy;
     }
 
     private void BoxPickUP(Collider2D collision)

@@ -27,12 +27,13 @@ public class Copy : Codes
         
         value = this.gameObject.transform.Find("Copy Value").Find("ValuesName").GetComponent<Text>().text[0];
         isTrue = true;
+        player.setIsCopy(true);
         player.SetValueBox(values.transform.Find(value.ToString()).gameObject);
     }
-
+    
     public override bool WaitTime()
     {
-        if (Vector3.Distance(player.transform.position, player.valueBox.transform.position) < 0.25f)
+        if (Vector3.Distance(player.transform.position, player.valueBox.transform.position) < 0.2f)
         {
             isTrue = false;
             return true;

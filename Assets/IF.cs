@@ -36,7 +36,7 @@ public class IF : Codes
     }
     public override bool WaitTime()
     {
-        if(Vector3.Distance(player.transform.position, player.valueBox.transform.position) < 0.25f)
+        if(Vector3.Distance(player.transform.position, player.valueBox.transform.position) < 0.4f)
         {
             if(!checkIF(values.transform.Find(value.ToString()).gameObject, int.Parse(player.transform.Find("Box(Clone)").Find("Canvas").Find("Text (Legacy)").GetComponent<Text>().text), Operator))
             {
@@ -61,8 +61,10 @@ public class IF : Codes
         Debug.Log($"{value} {values} {Operator}");
         if(Operator == '>')
         {
+            
             if (value.transform.Find("Box(Clone)") && (values > int.Parse(value.transform.Find("Box(Clone)").transform.Find("Canvas").transform.Find("Text (Legacy)").GetComponent<Text>().text)))
             {
+                Debug.Log("IN");
                 return true;
             }
         }
