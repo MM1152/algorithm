@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputData: 010000000100000001000000
   outputData: 010000000100000001000000
-  valueData: 6
+  valueData: 0
   codeData: 010101010101010101

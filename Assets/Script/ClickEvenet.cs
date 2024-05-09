@@ -50,7 +50,6 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
         {
             if(gameObject.name == "Value" && !gameObject.transform.GetChild(1).gameObject.activeSelf)
             {
-
                 gameObject.transform.GetChild(1).gameObject.SetActive(true);
                 gameObject.transform.SetParent(Canvas.transform);
             }else if(gameObject.name == "Value" && gameObject.transform.GetChild(1).gameObject.activeSelf)
@@ -71,12 +70,15 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
     }
     private void Update()
     {
-
+        
         if(gameObject.name != "Image" && gameObject.name != "Value3")
         {
+            
             if (OnMousepointer.selectValue != " ")
             {
-                _this.transform.GetChild(0).GetComponent<Text>().text = OnMousepointer.selectValue;
+                Debug.Log(OnMousepointer.selectValue);
+                Debug.Log(_this.name);
+                _this.transform.GetChild(0).GetComponent<Text>().text = OnMousepointer.selectValue.ToString();
                 valueSelect = false;
                 //_this = null;
                 OnMousepointer.selectValue = " ";
@@ -101,10 +103,7 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
                 }
                
             }
-        if(mouseDrag == null && gameObject.tag.Equals("Index"))
-        {
-            gameObject.transform.GetChild(0).GetComponent<Text>().text = "°ª";
-        }
+        
         
     }
 

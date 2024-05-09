@@ -17,9 +17,7 @@ public class CloseVideo : MonoBehaviour
     {
         if(text.text == "닫기")
         {
-            UGUI.SetActive(true);
-            Tutorial.SetActive(false);
-            
+            Tutorial.SetActive(false);   
         }
     }
 }

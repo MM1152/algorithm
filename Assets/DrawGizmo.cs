@@ -12,7 +12,7 @@ public class DrawGizmo : MonoBehaviour
     [SerializeField]
     private GameObject mouseDragObj;
     private MouseDrag mouseDrag;
-
+    private List<Vector3> pointList = new List<Vector3>();
     public int setPosition;
 
     public Vector3 startPoint;
@@ -35,12 +35,14 @@ public class DrawGizmo : MonoBehaviour
     }
     public void Update()
     {
-        if(connection != null)
+        if(connection != null && !MouseDrag.isMouseUse)
         {
             endPoint = Camera.main.ScreenToWorldPoint(connection.transform.position) + Vector3.back * -10f;
-        } else
+            DrawLine();
+        } 
+        else if(connection == null)
         {
-            endPoint = Camera.main.ScreenToWorldPoint(mouseDragObj.transform.position) + Vector3.back * -10f;
+            lineRenderer.positionCount = 0;
         }
 
         if (MouseDrag.isMouseUse &&  mouseDragObj == null)
@@ -50,42 +52,44 @@ public class DrawGizmo : MonoBehaviour
         if (!MouseDrag.isMouseUse && mouseDragObj != null)
         {
             mouseDragObj = null;
-            lineRenderer.positionCount = 0;
-        } 
-        if (mouseDragObj != null)
-        {
-            startPoint = Camera.main.ScreenToWorldPoint(this.gameObject.transform.position) + Vector3.back * -10f;
-            middlePoint_A = startPoint + Vector3.right * 2f;
-            
-            middlePoint_B = endPoint + Vector3.left * 2f;
-            var pointList = new List<Vector3>();
-
-            Vector3 middlePoint = Vector3.Lerp(middlePoint_A, middlePoint_B, 0.5f);
-
-            for (float ratio = 0; ratio <= 1; ratio += 1 / vertexCount)
-            {
-                var tangent1 = Vector3.Lerp(startPoint, middlePoint_A, ratio);
-                var tangent2 = Vector3.Lerp(middlePoint_A, middlePoint, ratio);
-                var curve = Vector3.Lerp(tangent1, tangent2, ratio);
-
-                pointList.Add(curve);
-            }
-
-            pointList.RemoveAt(pointList.Count - 1);
-
-            for (float ratio = 0; ratio <= 1; ratio += 1 / vertexCount)
-            {
-                var tangent1 = Vector3.Lerp(middlePoint, middlePoint_B, ratio);
-                var tangent2 = Vector3.Lerp(middlePoint_B, endPoint, ratio);
-                var curve = Vector3.Lerp(tangent1, tangent2, ratio);
-
-                pointList.Add(curve);
-            }
-
-            lineRenderer.positionCount = pointList.Count;
-            lineRenderer.SetPositions(pointList.ToArray());
-
         }
+        startPoint = Camera.main.ScreenToWorldPoint(this.gameObject.transform.position) + Vector3.back * -10f;
+        middlePoint_A = startPoint + Vector3.right * 2f;
+
+        middlePoint_B = endPoint + Vector3.left * 2f;
+
+
+        Vector3 middlePoint = Vector3.Lerp(middlePoint_A, middlePoint_B, 0.5f);
+
+
+
+        for (float ratio = 0; ratio <= 1; ratio += 1 / vertexCount)
+        {
+            var tangent1 = Vector3.Lerp(startPoint, middlePoint_A, ratio);
+            var tangent2 = Vector3.Lerp(middlePoint_A, middlePoint, ratio);
+            var curve = Vector3.Lerp(tangent1, tangent2, ratio);
+
+            pointList.Add(curve);
+        }
+
+        pointList.RemoveAt(pointList.Count - 1);
+
+        for (float ratio = 0; ratio <= 1; ratio += 1 / vertexCount)
+        {
+            var tangent1 = Vector3.Lerp(middlePoint, middlePoint_B, ratio);
+            var tangent2 = Vector3.Lerp(middlePoint_B, endPoint, ratio);
+            var curve = Vector3.Lerp(tangent1, tangent2, ratio);
+
+            pointList.Add(curve);
+        }
+
+        lineRenderer.positionCount = pointList.Count;
+        lineRenderer.SetPositions(pointList.ToArray());
+
+
+    }
+    void DrawLine()
+    {
 
     }
 }
