@@ -160,7 +160,7 @@ public class playerMove : MonoBehaviour
                 Destroy(collision.transform.Find("Box(Clone)").gameObject);
             }
             GameObject Box = gameObject.transform.Find("Box(Clone)").gameObject;
-            Box.transform.SetParent(valueBox.transform, false);
+            Box.transform.SetParent(valueBox.transform);
             Box.transform.localPosition = Vector3.zero;
         } else
         {
@@ -177,7 +177,8 @@ public class playerMove : MonoBehaviour
             }
             GameObject BoxPrefeb = Instantiate(collsion.gameObject.transform.Find("Box(Clone)")).gameObject as GameObject;
             BoxPrefeb.name = "Box(Clone)";
-            BoxPrefeb.transform.SetParent(this.gameObject.transform, false);
+            BoxPrefeb.transform.SetParent(this.gameObject.transform , false);
+            BoxPrefeb.transform.localScale = new Vector3(0.7f, 0.7f, 0f);
             BoxPrefeb.transform.localPosition = boxPos;
         } else
         {
