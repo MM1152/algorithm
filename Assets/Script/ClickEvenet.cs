@@ -48,20 +48,21 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
         
         if(eventData.button == PointerEventData.InputButton.Left)
         {
-            if(gameObject.name == "Value" && !gameObject.transform.GetChild(1).gameObject.activeSelf)
+            if((gameObject.name == "Value" || gameObject.name == "cal")  && !gameObject.transform.GetChild(1).gameObject.activeSelf)
             {
                 gameObject.transform.GetChild(1).gameObject.SetActive(true);
                 gameObject.transform.SetParent(Canvas.transform);
-            }else if(gameObject.name == "Value" && gameObject.transform.GetChild(1).gameObject.activeSelf)
+            }else if((gameObject.name == "Value" || gameObject.name == "cal") && gameObject.transform.GetChild(1).gameObject.activeSelf)
             {
                 gameObject.transform.GetChild(1).gameObject.SetActive(false);
             }
-            else if(gameObject.name == "Copy Value" || gameObject.name == "Take Value" || gameObject.name == "Value1")
+            else if(gameObject.name == "Copy Value" || gameObject.name == "Take Value" || gameObject.name == "Value1" || gameObject.name == "cal Value")
             {
                 valueSelect = true;
                 _this = this.gameObject;
                 isValueCopy = false;
             }
+    
             else
             {
                 _this = this.gameObject;

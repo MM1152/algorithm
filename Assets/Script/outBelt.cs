@@ -30,7 +30,7 @@ public class outBelt : MonoBehaviour
                 gameManger.Finish(true , "제가 원하는 정답이 아니에요 !");
             }
 
-            if(ChildCount - 1 == SetOutputDataLength)
+            else if(ChildCount - 1 == SetOutputDataLength)
             {
                 Time.timeScale = 0f;
                 gameManger.Finish(false , null);
