@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using Unity.Burst.CompilerServices; 
 
 
-public class ClickEvenet : MonoBehaviour, IPointerClickHandler
+public class ClickEvenet : MonoBehaviour, IPointerClickHandler , IPointerEnterHandler
 {
     public GameObject Canvas;
     public GameObject _thisGameObj;
@@ -69,22 +69,23 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
             }
         }
     }
-    private void Update()
+    public void setValueText()
     {
-        
-        if(gameObject.name != "Image" && gameObject.name != "Value3")
+        if (gameObject.name != "Image" && gameObject.name != "Value3")
         {
-            
+
             if (OnMousepointer.selectValue != " ")
             {
-                Debug.Log(OnMousepointer.selectValue);
-                Debug.Log(_this.name);
                 _this.transform.GetChild(0).GetComponent<Text>().text = OnMousepointer.selectValue.ToString();
-                valueSelect = false;
                 //_this = null;
                 OnMousepointer.selectValue = " ";
             }
         }
+    }
+    private void Update()
+    {
+        
+
             if (onDrag.isDrag)  
             {
                 transform.GetChild(1).gameObject.SetActive(false);
@@ -123,4 +124,8 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        Debug.Log("in");
+    }
 }

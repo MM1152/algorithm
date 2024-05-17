@@ -105,7 +105,6 @@ public class playerMove : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log($"{checkcode.code.name} {valueBox.name}");
         if (isPaste && checkcode.code.name.Equals("take(Clone)") && collision.name.Equals(valueBox.name))   
         {
             isPaste = false;

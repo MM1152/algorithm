@@ -28,7 +28,6 @@ public class OnMousepointer : MonoBehaviour , IPointerEnterHandler , IPointerExi
                     SelectBox[i].SetActive(true);
                 }
             }
-        
 
     }
 
@@ -50,7 +49,7 @@ public class OnMousepointer : MonoBehaviour , IPointerEnterHandler , IPointerExi
     {
         hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition), Mathf.Infinity, LayerMask.GetMask("Value"));
        
-        if(hit.collider != null && ClickEvenet._this.GetComponent<ClickEvenet>().valueSelect)
+        if(hit.collider != null && ClickEvenet._this.GetComponent<ClickEvenet>().valueSelect)  
         {
             selectValue = hit.collider.gameObject.name;
             ClickEvenet._this.GetComponent<ClickEvenet>().valueSelect = false;
@@ -58,7 +57,7 @@ public class OnMousepointer : MonoBehaviour , IPointerEnterHandler , IPointerExi
             {
                 SelectBox[i].SetActive(false);
             }
-            
+            ClickEvenet._this.GetComponent<ClickEvenet>().setValueText();
         }
         else
         {
@@ -69,5 +68,6 @@ public class OnMousepointer : MonoBehaviour , IPointerEnterHandler , IPointerExi
             }
 
         }
+
     }
 }

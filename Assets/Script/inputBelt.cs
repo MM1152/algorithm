@@ -41,7 +41,7 @@ public class inputBelt : MonoBehaviour
     {
             for (int i = 1; i < gameObject.transform.childCount; i++)
             {
-                gameObject.transform.GetChild(i).transform.Translate(new Vector3(0f , 0.01f , 0f));
+                gameObject.transform.GetChild(i).transform.Translate(new Vector3(0f , 0.03f , 0f));
                 beltController.BeltMove();
             }
     }

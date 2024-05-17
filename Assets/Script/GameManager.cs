@@ -98,6 +98,10 @@ public class GameManager : MonoBehaviour
         {
             canvas.transform.GetChild(i).gameObject.SetActive(gameData.codeData[i]);
         }
+        for(int i = 0; i < gameData.valueData; i++)
+        {
+            values.transform.GetChild(i).gameObject.SetActive(true);
+        }
         _out.SetOutput(gameData.outputData);
         input.SettingBox();
     }
