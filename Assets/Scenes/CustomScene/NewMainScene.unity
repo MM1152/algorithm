@@ -848,7 +848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectBox: []
-  clickEvent: {fileID: 0}
+  mouseClick: 0
 --- !u!61 &71787420
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2332,7 +2332,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1106055445}
   m_HandleRect: {fileID: 1106055444}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2882,7 +2882,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1306696005}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.999994
+  m_Size: 0.99999547
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5362,7 +5362,7 @@ MonoBehaviour:
   - {fileID: 818374648}
   - {fileID: 1176474816}
   - {fileID: 1993830902}
-  clickEvent: {fileID: 0}
+  mouseClick: 0
 --- !u!1 &643209662
 GameObject:
   m_ObjectHideFlags: 0
@@ -5493,7 +5493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectBox: []
-  clickEvent: {fileID: 0}
+  mouseClick: 0
 --- !u!1 &646026825
 GameObject:
   m_ObjectHideFlags: 0
@@ -5954,8 +5954,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 826, y: -13.714}
-  m_SizeDelta: {x: 274.7709, y: 1107.4282}
+  m_AnchoredPosition: {x: 688.3, y: 0.000050545}
+  m_SizeDelta: {x: 550.17, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &688449153
 MonoBehaviour:
@@ -7389,7 +7389,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0003869209}
+  m_AnchoredPosition: {x: 0, y: 0.00048070305}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &848175081
@@ -8723,7 +8723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectBox: []
-  clickEvent: {fileID: 0}
+  mouseClick: 0
 --- !u!1 &1101661678
 GameObject:
   m_ObjectHideFlags: 0
@@ -9451,8 +9451,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 869400872}
   m_HandleRect: {fileID: 869400871}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 0.9266343
+  m_Value: 1
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9704,7 +9704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectBox: []
-  clickEvent: {fileID: 0}
+  mouseClick: 0
 --- !u!61 &1176586148
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11606,7 +11606,7 @@ MonoBehaviour:
   - {fileID: 1334261054}
   - {fileID: 723741567}
   - {fileID: 154724339}
-  clickEvent: {fileID: 0}
+  mouseClick: 0
 --- !u!1 &1430296108
 GameObject:
   m_ObjectHideFlags: 0
@@ -11966,7 +11966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectBox: []
-  clickEvent: {fileID: 0}
+  mouseClick: 0
 --- !u!1 &1443342849
 GameObject:
   m_ObjectHideFlags: 0
@@ -12642,7 +12642,7 @@ MonoBehaviour:
   - {fileID: 186514350}
   - {fileID: 1826216975}
   - {fileID: 1473820662}
-  clickEvent: {fileID: 0}
+  mouseClick: 0
 --- !u!1 &1557014444
 GameObject:
   m_ObjectHideFlags: 0
@@ -13357,7 +13357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectBox: []
-  clickEvent: {fileID: 0}
+  mouseClick: 0
 --- !u!61 &1705609972
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13740,7 +13740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectBox: []
-  clickEvent: {fileID: 0}
+  mouseClick: 0
 --- !u!61 &1811707587
 BoxCollider2D:
   m_ObjectHideFlags: 0

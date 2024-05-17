@@ -47,7 +47,14 @@ public class playerMove : MonoBehaviour
     }
     public void SetValueBox(GameObject valueBox)
     {
-        this.valueBox = valueBox;
+        if (valueBox.activeSelf)
+        {
+            this.valueBox = valueBox;
+        }else
+        {
+            gameManager.Finish(true, "그 번호의 변수는 존재하지 않아요!");
+        }
+        
     }
     public void Move(Transform target)
     {
@@ -55,9 +62,6 @@ public class playerMove : MonoBehaviour
         {  
             transform.position += (target.position - transform.position).normalized * Time.deltaTime * 5f;
         }
-        
-        
-        
         if(transform.position.x - target.position.x < 0)
         {
             sprite[0].flipX = false; // ����
@@ -70,7 +74,6 @@ public class playerMove : MonoBehaviour
             sprite[1].flipX = true; // �Ӹ�
             sprite[2].flipX = true; // ��
         }
-        
     }
     void SetAnimation()
     {
@@ -174,6 +177,9 @@ public class playerMove : MonoBehaviour
             }
 
             
+        }else
+        {
+            gameManager.Finish(true, "아무것도 들지 않고\n 사칙연산을 할 수 없어요 !");
         }
     }
     private void Copy(Collider2D collision)

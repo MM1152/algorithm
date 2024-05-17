@@ -67,7 +67,7 @@ public class VarData : MonoBehaviour
             }
         }
 
-        if (!name.text.Equals("") && !value.text.Equals("") && varValue.Count == 0)
+        if (!name.text.Equals("") && !value.text.Equals("°ª") && varValue.Count == 0)
         {
             if (calcu.text[0].Equals('+'))
             {
