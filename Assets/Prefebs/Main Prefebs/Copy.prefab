@@ -432,6 +432,7 @@ MonoBehaviour:
   mouseDrag: {fileID: 0}
   isValueCopy: 0
   valueSelect: 0
+  name: 
   rect: {fileID: 0}
 --- !u!61 &1076779439393597655
 BoxCollider2D:
@@ -708,6 +709,7 @@ MonoBehaviour:
   Up: 0
   index: 0
   Child: {fileID: 0}
+  number: {fileID: 1191367437259990110}
 --- !u!61 &3261208517896034268
 BoxCollider2D:
   m_ObjectHideFlags: 0

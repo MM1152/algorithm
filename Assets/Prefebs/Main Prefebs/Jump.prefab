@@ -173,6 +173,7 @@ MonoBehaviour:
   parentSibling: 0
   CodeSibling: {fileID: 9101803773551769149}
   parent: {fileID: 0}
+  changeContentSize: {fileID: 0}
 --- !u!1 &5061108028914956321
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,6 +360,7 @@ MonoBehaviour:
   Up: 0
   index: 0
   Child: {fileID: 0}
+  number: {fileID: 2674522529451604787}
 --- !u!61 &9102896373762439778
 BoxCollider2D:
   m_ObjectHideFlags: 0

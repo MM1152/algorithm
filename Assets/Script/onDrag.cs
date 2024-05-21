@@ -20,7 +20,7 @@ public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler , IBeginDra
     public GameObject number;
     private void OnLevelWasLoaded(int level)
     {
-        number = transform.Find("BackGround").gameObject;
+        
         checkCode = GameObject.Find("CheckCode").GetComponent<CheckCode>();
         isDrag = false;
         index = -1;
@@ -30,7 +30,6 @@ public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler , IBeginDra
     }
     private void Awake()
     {
-        number = transform.Find("BackGround").gameObject;
         checkCode = GameObject.Find("CheckCode").GetComponent<CheckCode>();
         isDrag = false;
         index = -1;
@@ -40,8 +39,11 @@ public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler , IBeginDra
     }
     public void OnDrag(PointerEventData eventData)
     {
+        if (number != null)
+        {
+            number.SetActive(false);
+        }
         gameObject.tag = "Draging";
-        number.SetActive(false);
         isDrag = true;
         gameObject.transform.position = eventData.position;
         transform.SetParent(originCanvas.transform);
@@ -51,7 +53,11 @@ public class onDrag : MonoBehaviour, IDragHandler  , IEndDragHandler , IBeginDra
     public void OnEndDrag(PointerEventData eventData)
     {
         isDrag = false;
-        number.SetActive(true);
+        if(number != null)
+        {
+            number.SetActive(true);
+        }
+        
         gameObject.tag = "Codes";
         inside.transform.SetParent(originCanvas.transform);
         if (Iscollision)

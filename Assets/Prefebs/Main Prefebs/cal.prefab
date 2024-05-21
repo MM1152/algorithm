@@ -344,6 +344,7 @@ MonoBehaviour:
   Up: 0
   index: 0
   Child: {fileID: 0}
+  number: {fileID: 938349012409710148}
 --- !u!50 &8702981696741196380
 Rigidbody2D:
   serializedVersion: 4
@@ -507,6 +508,7 @@ MonoBehaviour:
   mouseDrag: {fileID: 0}
   isValueCopy: 0
   valueSelect: 0
+  name: 
   rect: {fileID: 0}
 --- !u!61 &3799714728060953122
 BoxCollider2D:
@@ -631,6 +633,7 @@ MonoBehaviour:
   mouseDrag: {fileID: 0}
   isValueCopy: 0
   valueSelect: 0
+  name: 
   rect: {fileID: 0}
 --- !u!1 &2558709563695841061
 GameObject:

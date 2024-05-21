@@ -249,6 +249,7 @@ MonoBehaviour:
   Up: 0
   index: 0
   Child: {fileID: 0}
+  number: {fileID: 6329684232971026882}
 --- !u!61 &9171518186026486032
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -411,6 +412,8 @@ MonoBehaviour:
   mouseDrag: {fileID: 0}
   isValueCopy: 0
   valueSelect: 0
+  name: 
+  rect: {fileID: 0}
 --- !u!61 &2753399497418994976
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -610,6 +613,7 @@ MonoBehaviour:
   parentSibling: 0
   CodeSibling: {fileID: 3382423761405303202}
   parent: {fileID: 3384568765522000393}
+  changeContentSize: {fileID: 0}
 --- !u!1 &7268373756608493956
 GameObject:
   m_ObjectHideFlags: 0
