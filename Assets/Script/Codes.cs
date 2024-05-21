@@ -9,6 +9,7 @@ public abstract class Codes : MonoBehaviour
     public GameObject values;
     public char value;
     public bool isTrue;
+    
     public abstract void checkCode();
     public abstract bool WaitTime();
     public void init()

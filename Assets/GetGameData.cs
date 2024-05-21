@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 using System.Text;
 using UnityEngine.SceneManagement;
+using System;
+using Unity.VisualScripting;
 public class GetGameData : MonoBehaviour
 {
     public GameData gamedata;
@@ -26,8 +28,10 @@ public class GetGameData : MonoBehaviour
             
             yield return request.SendWebRequest();
             playdata = JsonUtility.FromJson<PlayDatas>(request.downloadHandler.text);
+            Debug.Log(request.downloadHandler.text);
             string[] inputdatas = playdata.results[0].input.Split(',');
             string[] outputdatas = playdata.results[0].output.Split(',');
+            int value = playdata.results[0].value;
             gamedata.inputData.Clear();
             gamedata.outputData.Clear();
             foreach (var a in inputdatas)
@@ -38,6 +42,7 @@ public class GetGameData : MonoBehaviour
             {
                 gamedata.outputData.Add(int.Parse(a));
             }
+            gamedata.valueData = value;
             GameObject.Find("GameDataManager").GetComponent<GameDataManager>().setCustomGameData(gamedata);
 
             SceneManager.LoadScene("MainScene");

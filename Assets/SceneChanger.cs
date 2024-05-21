@@ -7,6 +7,7 @@ using UnityEngine.Networking;
 using System;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting.FullSerializer;
 public class SceneChanger : MonoBehaviour
 {
     [SerializeField] private GameData gameData;
@@ -14,11 +15,16 @@ public class SceneChanger : MonoBehaviour
     private GameObject Content;
     [SerializeField] private GameObject titleinput;
     [SerializeField] private GameObject wrongText;
+    [SerializeField] private GameObject values;
     private void Awake()
     {
+        values = GameObject.Find("Values").gameObject;
         gameDataManager = GameObject.Find("GameDataManager").GetComponent<GameDataManager>();
         Content = GameObject.FindWithTag("Content").gameObject;
+
         wrongText = gameObject.transform.Find("WorngText").gameObject;
+        
+
         if(wrongText != null)
         {
             wrongText.SetActive(false);
@@ -84,7 +90,16 @@ public class SceneChanger : MonoBehaviour
             }
         }
         form.AddField("output", input);
-        var url = "http://172.18.4.31:3000/insert";
+        int valueCount = 0;
+        for(int i = 0; i < values.transform.childCount; i++)
+        {
+            if (values.transform.GetChild(i).gameObject.activeSelf)
+            {
+                valueCount++;
+            }
+        }
+        form.AddField("value", valueCount);
+        var url = "http://222.233.117.117:3000/insert";
         using (UnityWebRequest request = UnityWebRequest.Post(url, form))
         {
             yield return request.SendWebRequest();

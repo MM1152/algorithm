@@ -24,6 +24,8 @@ public class PlayData
     public string input;
     public string output;
     public int boolean;
+    public int cccc_id;
+    public int value;
 }
 
 [Serializable]

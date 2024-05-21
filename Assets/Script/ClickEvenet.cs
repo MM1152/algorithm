@@ -6,18 +6,22 @@ using UnityEngine.EventSystems;
 using Unity.Burst.CompilerServices; 
 
 
-public class ClickEvenet : MonoBehaviour, IPointerClickHandler
+public class ClickEvenet : MonoBehaviour, IPointerClickHandler 
 {
     public GameObject Canvas;
     public GameObject _thisGameObj;
     
+   
     public Vector3 originTransform;
     public MouseDrag mouseDrag;
     public bool isValueCopy;
     public bool valueSelect;
     public static GameObject _this;
+    public string name;
+    [SerializeField] private RectTransform rect;
     private void Awake()
     {
+        rect = GetComponent<RectTransform>();
         valueSelect = false;
         isValueCopy = false;
         originTransform = this.gameObject.transform.localPosition;
@@ -26,6 +30,7 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
     }
     private void OnLevelWasLoaded(int level)
     {
+        rect = GetComponent<RectTransform>();
         valueSelect = false;
         originTransform = this.gameObject.transform.localPosition;
         Canvas = GameObject.FindWithTag("Canvas").gameObject;
@@ -69,42 +74,51 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
             }
         }
     }
-    private void Update()
+    public void setValueText()
     {
-        
-        if(gameObject.name != "Image" && gameObject.name != "Value3")
+        if (gameObject.name != "Image" && gameObject.name != "Value3")
         {
-            
+
             if (OnMousepointer.selectValue != " ")
             {
-                Debug.Log(OnMousepointer.selectValue);
-                Debug.Log(_this.name);
                 _this.transform.GetChild(0).GetComponent<Text>().text = OnMousepointer.selectValue.ToString();
-                valueSelect = false;
                 //_this = null;
                 OnMousepointer.selectValue = " ";
             }
         }
-            if (onDrag.isDrag)  
-            {
+    }
+    private void Update()
+    {
+
+        if (valueSelect)
+        {  
+            if (rect.localScale.x < 1.3f) 
+                rect.localScale += new Vector3(0.2f, 0.2f);
+        }else
+        {
+            rect.localScale = Vector3.one;
+        }
+
+        if (onDrag.isDrag && gameObject.name == "Value")  
+        {
                 transform.GetChild(1).gameObject.SetActive(false);
                 transform.SetParent(_thisGameObj.transform);
                 transform.localPosition = originTransform;
-            }
+        }
 
-            if (mouseDrag != null && !MouseDrag.isMouseUse && isValueCopy)
+        if (mouseDrag != null && !MouseDrag.isMouseUse && isValueCopy)
+        {
+            if (mouseDrag.gameObject.name.Equals("InputName"))
             {
-                if (mouseDrag.gameObject.name.Equals("InputName"))
-                {
-                    gameObject.transform.GetChild(0).GetComponent<Text>().text = mouseDrag.parent.transform.parent.GetComponent<VarData>().getVarValue().ToString();
-                }
-                else
-                {
-                    gameObject.transform.GetChild(0).GetComponent<Text>().text = mouseDrag.parent.GetComponent<InputField>().text;
-                }
-               
+                gameObject.transform.GetChild(0).GetComponent<Text>().text = mouseDrag.parent.transform.parent.GetComponent<VarData>().getVarValue().ToString();
+                name = mouseDrag.gameObject.name;
             }
-        
+            else
+            {
+                gameObject.transform.GetChild(0).GetComponent<Text>().text = mouseDrag.parent.GetComponent<InputField>().text;
+                name = mouseDrag.gameObject.name;
+            }               
+        }
         
     }
 
@@ -113,14 +127,8 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
         
         if (collision.tag.Equals("Index") && !onDrag.isDrag && !MouseDrag.isMouseUse)
         {
-            Debug.Log($"Collision name : {collision.name}");
             mouseDrag = collision.GetComponent<MouseDrag>().parent.GetComponent<MouseDrag>();
-            if (mouseDrag.gameObject.name.Equals("InputName"))
-            {
-                mouseDrag.gameObject.GetComponent<DrawGizmo>().setConnection(this.gameObject);
-            }
             isValueCopy = true;
         }
     }
-
 }
