@@ -11,8 +11,10 @@ public class getJsonData : MonoBehaviour
     private Data zipData;
     public GameObject scenePrefeb;
     public Transform Canvas;
+    public SetContentSize content;
     private void Awake()
     {
+
         StartCoroutine(GetRequest("http://222.233.117.117:3000/cccc"));
     }
     IEnumerator GetRequest(string url)
@@ -35,6 +37,7 @@ public class getJsonData : MonoBehaviour
                     prefeb.transform.Find("Title").GetComponent<Text>().text = zipData.results[i].title;
                     prefeb.transform.Find("ID").GetComponent<Text>().text = zipData.results[i].id.ToString();
                 }
+                content.SettingBackGround();
             }
             else
             {

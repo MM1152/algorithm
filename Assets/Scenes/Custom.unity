@@ -272,6 +272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scenePrefeb: {fileID: 3035570975906132944, guid: 60c478e599801d4449d853434461abde, type: 3}
   Canvas: {fileID: 176731696}
+  content: {fileID: 406514832}
 --- !u!1 &359645492
 GameObject:
   m_ObjectHideFlags: 0
