@@ -53,13 +53,32 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
         
         if(eventData.button == PointerEventData.InputButton.Left)
         {
+            
             if((gameObject.name == "Value" || gameObject.name == "cal")  && !gameObject.transform.GetChild(1).gameObject.activeSelf)
             {
-                gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                Debug.Log(gameObject.name);
+                
+                Values values = gameObject.transform.GetChild(1).GetComponent<Values>();
+                int parentSibling = _thisGameObj.transform.GetSiblingIndex();
+                int allChildIndex = _thisGameObj.transform.parent.childCount;
+                
+                if (allChildIndex > 7 && 4 > allChildIndex - parentSibling)
+                {
+                    values.SetUpdwon(false , gameObject.transform.GetChild(1).childCount , Canvas.transform);
+                }else
+                {
+                    values.SetUpdwon(true , gameObject.transform.GetChild(1).childCount , Canvas.transform);
+                }
                 gameObject.transform.SetParent(Canvas.transform);
-            }else if((gameObject.name == "Value" || gameObject.name == "cal") && gameObject.transform.GetChild(1).gameObject.activeSelf)
+                gameObject.transform.GetChild(1).gameObject.SetActive(true);
+
+            }
+            else if((gameObject.name == "Value" || gameObject.name == "cal") && gameObject.transform.GetChild(1).gameObject.activeSelf)
             {
+                transform.SetParent(_thisGameObj.transform);
                 gameObject.transform.GetChild(1).gameObject.SetActive(false);
+                
+                
             }
             else if(gameObject.name == "Copy Value" || gameObject.name == "Take Value" || gameObject.name == "Value1" || gameObject.name == "cal Value")
             {
@@ -98,8 +117,7 @@ public class ClickEvenet : MonoBehaviour, IPointerClickHandler
         {
             rect.localScale = Vector3.one;
         }
-
-        if (onDrag.isDrag && gameObject.name == "Value")  
+        if (onDrag.isDrag && (gameObject.name == "Value" || gameObject.name == "cal"))  
         {
                 transform.GetChild(1).gameObject.SetActive(false);
                 transform.SetParent(_thisGameObj.transform);

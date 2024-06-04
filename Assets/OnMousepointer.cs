@@ -34,7 +34,7 @@ public class OnMousepointer : MonoBehaviour , IPointerEnterHandler , IPointerExi
                 ClickEvenet._this.GetComponent<ClickEvenet>().valueSelect = false;
                 for (int i = 0; i < SelectBox.Count; i++)
                 {
-                    SelectBox[i].SetActive(false);
+                    hit.collider.GetComponent<OnMousepointer>().SelectBox[i].SetActive(false);
                 }
                 ClickEvenet._this.GetComponent<ClickEvenet>().setValueText();
             }else
@@ -47,7 +47,6 @@ public class OnMousepointer : MonoBehaviour , IPointerEnterHandler , IPointerExi
             }
             
         } 
-        
     }
     public void OnPointerEnter(PointerEventData eventData)
     {

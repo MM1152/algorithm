@@ -7,7 +7,7 @@ public abstract class Codes : MonoBehaviour
     public CheckCode check;
     public playerMove player;
     public GameObject values;
-    public char value;
+    public string value;
     public bool isTrue;
     
     public abstract void checkCode();

@@ -45,7 +45,14 @@ public class outBelt : MonoBehaviour
             beltController.BeltStop();
         }
     }
-
+    public void CheckCodeEnd()
+    {
+        if(ChildCount - 1 == 0  || (ChildCount - 1 >= 1 && SetOutputDataLength > ChildCount - 1))
+        {
+            gameManger.Finish(true , "원하는 정답이 아니에요!");
+        }
+        
+    }
     public void SetOutput(List<int> outPutData)
     {
         SetOutputData = outPutData;

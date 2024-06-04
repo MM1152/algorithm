@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valuesName: {fileID: 4425879277976635859, guid: 60909677b813baf44a91e265f1ad169b, type: 3}
+  isUpDown: 0
 --- !u!114 &1986221141428861920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,7 +649,7 @@ GameObject:
   - component: {fileID: 2558709563695841070}
   - component: {fileID: 2558709563695841057}
   - component: {fileID: 2558709563695841056}
-  - component: {fileID: 2558709563695841059}
+  - component: {fileID: 718292641011114219}
   m_Layer: 5
   m_Name: values
   m_TagString: Untagged
@@ -766,7 +767,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 60, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2558709563695841059
+--- !u!114 &718292641011114219
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -775,11 +776,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2558709563695841061}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46bcf07698abc834f9ba02d0c89b5b7f, type: 3}
+  m_Script: {fileID: 11500000, guid: ca894991e01bba04ca3369f779d58030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arithmeticValues: 
-  ValueName: {fileID: 4425879277976635859, guid: 60909677b813baf44a91e265f1ad169b, type: 3}
+  valuesName: {fileID: 4425879277976635859, guid: 60909677b813baf44a91e265f1ad169b, type: 3}
+  isUpDown: 0
 --- !u!1 &2558709565177741390
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,7 +849,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 0e5fddc5ebef84c7cbe32de80aaa5f93, type: 3}
-    m_FontSize: 50
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -928,7 +929,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 0e5fddc5ebef84c7cbe32de80aaa5f93, type: 3}
-    m_FontSize: 50
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0

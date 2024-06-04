@@ -23,6 +23,13 @@ public class GameManager : MonoBehaviour
 
     public Texture2D image;
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R) && Input.GetKey(KeyCode.LeftControl))
+        {
+            SceneManager.LoadScene("IntroScene");
+        }
+    }
     // Start is called before the first frame update
     void Awake()
     {
@@ -33,9 +40,12 @@ public class GameManager : MonoBehaviour
         if (GameObject.FindGameObjectsWithTag("GameManager").Length == 1)
         {
             DontDestroyOnLoad(this.gameObject);
+        } else
+        {
+            Destroy(this.gameObject);
         }
     }
-
+    
     private void OnLevelWasLoaded(int level)
     {
         if (SceneManager.GetActiveScene().name.Equals("coustomScene"))

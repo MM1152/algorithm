@@ -17,13 +17,24 @@ public class GameDataManager : MonoBehaviour
    
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
         gameManger = GameObject.Find("GameManager").GetComponent<GameManager>();
-        maxCount = tutorialData.Length; 
+        maxCount = tutorialData.Length;
+        if(GameObject.FindObjectsOfType<GameDataManager>().Length == 1)
+        {
+            DontDestroyOnLoad(gameObject);
+        }else
+        {
+            Destroy(gameObject);
+        }
         count = 0;
     }
     private void OnLevelWasLoaded(int level)
     {
+        if (SceneManager.GetActiveScene().name == "IntroScene")
+        {
+            count = 0;
+        }
+
         if(count < maxCount)
         {
             gameManger.setGameData(tutorialData[count]);

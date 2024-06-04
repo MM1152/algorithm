@@ -29,7 +29,7 @@ public class IF : Codes
     
     public override void checkCode()
     {
-        value = this.gameObject.transform.Find("Value1").Find("calcu").GetComponent<Text>().text[0];
+        value = this.gameObject.transform.Find("Value1").Find("calcu").GetComponent<Text>().text;
         Operator = this.gameObject.transform.Find("Value").Find("calcu").GetComponent<Text>().text[0];
         isTrue = true;
         player.SetValueBox(values.transform.Find(value.ToString()).gameObject);

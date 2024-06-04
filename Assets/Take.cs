@@ -24,7 +24,7 @@ public class Take : Codes
     public override void checkCode()
     {
         player.setIsPaste(true);
-        value = this.gameObject.transform.Find("Take Value").Find("ValuesName").GetComponent<Text>().text[0];
+        value = this.gameObject.transform.Find("Take Value").Find("ValuesName").GetComponent<Text>().text;
         isTrue = true;
         player.SetValueBox(values.transform.Find(value.ToString()).gameObject);
     }

@@ -12,6 +12,7 @@ public class CheckCode : MonoBehaviour
     public GameManager gameManager;
     public GameObject CodePoint;
 
+    public outBelt outBelt;
     public List<GameObject> list;
     public GameObject code;
     public GameObject Lay;
@@ -21,7 +22,7 @@ public class CheckCode : MonoBehaviour
     public int i { get; private set; }
     private void Start()
     {
-
+        outBelt = GameObject.Find("OutputBelt").GetComponent<outBelt>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         Lay = GameObject.FindWithTag("Content").gameObject;
 
@@ -56,11 +57,13 @@ public class CheckCode : MonoBehaviour
         {
             code = list[i];
             CodeRun(code.GetComponent<Codes>());
-
+    
             yield return new WaitUntil(() => Lay.transform.GetChild(i).gameObject.GetComponent<Codes>().WaitTime());
-            
+            yield return new WaitForEndOfFrame();    
                 
         }
+        Debug.Log("asd");
+        outBelt.CheckCodeEnd();
     }
     
 }

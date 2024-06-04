@@ -23,7 +23,7 @@ public class calcu : Codes
     }
     public override void checkCode()
     {
-        value = this.gameObject.transform.Find("cal Value").Find("ValuesName").GetComponent<Text>().text[0];
+        value = this.gameObject.transform.Find("cal Value").Find("ValuesName").GetComponent<Text>().text;
         operate = this.gameObject.transform.Find("cal").Find("ValuesName").GetComponent<Text>().text[0];
         isTrue = true;
         player.setIsCal(true);

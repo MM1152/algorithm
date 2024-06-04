@@ -59,6 +59,7 @@ public class ChangeContentSize : MonoBehaviour
                 rect.anchoredPosition += new Vector2(0f, (gameObject.transform.GetChild(i).GetComponent<RectTransform>().rect.height * gameObject.transform.GetChild(i).GetComponent<RectTransform>().localScale.y) + 10f);
             }
 
+           
             
             /*if (childcount < transform.childCount)
             {
